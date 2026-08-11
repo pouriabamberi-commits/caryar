@@ -52,53 +52,41 @@
         integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- Alpine.js CDN -->
     <script defer src="./library/apline.min.js"></script>
 
-    <!-- Three.js (3D Graphics Core) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background-color: #071226;
-            /* Dark Navy Blue background */
-            color: #E3F2FD;
+            background-color: #E3F2FD;
+            color: #0D47A1;
             overflow-x: hidden;
         }
 
-        /* WebGL Background Canvas */
-        #bg-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* Dark-Light Blue Glassmorphism Panel - بهینه‌سازی بلر به 8px جهت کاهش شدید مصرف GPU */
+        /* Light Blue Glassmorphism Panel */
         .glass-panel {
-            background: rgba(13, 71, 161, 0.35);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(144, 202, 249, 0.2);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.90);
+            border: 1px solid #90CAF9;
+            box-shadow: 0 15px 35px rgba(13, 71, 161, 0.1);
         }
 
         /* Input styling */
         .input-ky {
-            background: rgba(7, 18, 38, 0.7);
-            border: 1px solid rgba(144, 202, 249, 0.3);
-            color: #E3F2FD;
+            background: #ffffff;
+            border: 1px solid #90CAF9;
+            color: #0D47A1;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .input-ky:focus {
             border-color: #2196F3;
-            box-shadow: 0 0 12px rgba(33, 150, 243, 0.3);
+            box-shadow: 0 0 12px rgba(33, 150, 243, 0.25);
             outline: none;
         }
 
@@ -108,7 +96,7 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #071226;
+            background: #E3F2FD;
         }
 
         ::-webkit-scrollbar-thumb {
@@ -120,11 +108,9 @@
 
 <body class="min-h-screen flex flex-col justify-between relative selection:bg-kyMain selection:text-white">
 
-    <!-- 3D Canvas Scene Background -->
-    <canvas id="bg-canvas"></canvas>
     <!-- Header & Navbar Navigation -->
     <header x-data="{ mobileMenuOpen: false, jobsDropdownOpen: false }"
-        class="sticky top-0 z-50 bg-white border-b border-karyar-50 shadow-sm">
+        class="sticky top-0 z-50 bg-white border-b border-karyar-50 shadow-sm animate__animated animate__fadeInDown">
 
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 
@@ -331,25 +317,23 @@
     </header>
 
     <!-- Main Content Container -->
-    <main class="relative z-10 w-full max-w-xl mx-auto px-4 py-8 my-auto">
-        <div class="glass-panel p-8 md:p-12 rounded-3xl relative overflow-hidden">
+    <main class="relative z-10 w-full max-w-xl mx-auto px-4 py-8 my-auto" data-aos="zoom-in" data-aos-duration="800">
+        <div class="glass-panel p-8 md:p-12 rounded-3xl relative overflow-hidden animate__animated animate__fadeInUp">
 
-            <!-- Glow Accent Background (بهینه‌سازی بلر برای روان‌تر شدن پردازش) -->
-            <div class="absolute -top-20 -right-20 w-40 h-40 bg-kyMain/25 rounded-full blur-xl pointer-events-none">
-            </div>
-            <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-kyDark/40 rounded-full blur-xl pointer-events-none">
-            </div>
+            <!-- Background Decor Effect -->
+            <div class="absolute -top-20 -right-20 w-40 h-40 bg-kyMain/10 rounded-full pointer-events-none"></div>
+            <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-kyLight/20 rounded-full pointer-events-none"></div>
 
             <!-- SEO Accessible Header Structure -->
             <div class="text-center mb-8">
                 <span
-                    class="text-xs font-bold text-kyLight bg-kyMain/20 px-3 py-1.5 rounded-full border border-kyMain/30 inline-block mb-3">
+                    class="text-xs font-bold text-kyMain bg-sky-100 px-3 py-1.5 rounded-full border border-kyLight inline-block mb-3">
                     خوش آمدید
                 </span>
-                <h1 class="text-3xl font-black text-white leading-tight">
+                <h1 class="text-3xl font-black text-kyDark leading-tight">
                     ورود به حساب کاربری
                 </h1>
-                <p class="text-kyLightest/70 text-sm mt-2">
+                <p class="text-kyDark/70 text-sm mt-2">
                     برای مدیریت موقعیت‌های شغلی و درخواست‌ها وارد شوید.
                 </p>
             </div>
@@ -359,14 +343,13 @@
 
                 <!-- Username / Email / Mobile Input -->
                 <div>
-                    <label for="username" class="block text-xs font-semibold text-kyLight mb-2"> شماره موبایل</label>
+                    <label for="username" class="block text-xs font-semibold text-kyDark mb-2"> شماره موبایل</label>
                     <div class="relative">
                         <input type="text" id="username" name="username" required autocomplete="username"
                             placeholder="09123456789"
-                            class="w-full px-4 py-3.5 rounded-xl input-ky text-sm placeholder:text-slate-500 text-left dir-ltr"
-                            onfocus="onInputFocus()" onblur="onInputBlur()">
+                            class="w-full px-4 py-3.5 rounded-xl input-ky text-sm placeholder:text-slate-400 text-left dir-ltr">
                         <div
-                            class="absolute inset-y-0 right-0 pl-3 pr-3 flex items-center pointer-events-none text-kyLight/50">
+                            class="absolute inset-y-0 right-0 pl-3 pr-3 flex items-center pointer-events-none text-kyMain">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
@@ -378,17 +361,16 @@
                 <!-- Password Input -->
                 <div>
                     <div class="flex justify-between items-center mb-2">
-                        <label for="password" class="block text-xs font-semibold text-kyLight">رمز عبور</label>
-                        <a href="#forgot" class="text-xs text-kyMain hover:text-kyLight transition-colors">رمز عبور را
+                        <label for="password" class="block text-xs font-semibold text-kyDark">رمز عبور</label>
+                        <a href="#forgot" class="text-xs text-kyMain hover:text-kyDark transition-colors">رمز عبور را
                             فراموش کرده‌اید؟</a>
                     </div>
                     <div class="relative">
                         <input type="password" id="password" name="password" required autocomplete="current-password"
                             placeholder="••••••••"
-                            class="w-full px-4 py-3.5 rounded-xl input-ky text-sm placeholder:text-slate-500 text-left dir-ltr"
-                            onfocus="onPasswordFocus()" onblur="onInputBlur()">
+                            class="w-full px-4 py-3.5 rounded-xl input-ky text-sm placeholder:text-slate-400 text-left dir-ltr">
                         <div
-                            class="absolute inset-y-0 right-0 pl-3 pr-3 flex items-center pointer-events-none text-kyLight/50">
+                            class="absolute inset-y-0 right-0 pl-3 pr-3 flex items-center pointer-events-none text-kyMain">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
@@ -399,17 +381,17 @@
                 </div>
 
                 <!-- Remember Me Checkbox -->
-                <div class="flex items-center justify-between text-xs text-kyLightest/80">
+                <div class="flex items-center justify-between text-xs text-kyDark/80">
                     <label class="flex items-center gap-2 cursor-pointer">
                         <input type="checkbox" id="remember" name="remember"
-                            class="w-4 h-4 rounded accent-kyMain bg-slate-900 border-kyLight/30">
+                            class="w-4 h-4 rounded accent-kyMain bg-white border-kyLight">
                         <span>مرا به خاطر بسپار</span>
                     </label>
                 </div>
 
                 <!-- Submit Button -->
                 <button type="submit" id="submit-btn"
-                    class="w-full py-4 rounded-xl bg-gradient-to-r from-kyMain via-sky-500 to-kyDark hover:from-kyDark hover:to-kyMain text-white font-bold text-base shadow-xl shadow-kyMain/30 hover:shadow-kyMain/50 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 flex items-center justify-center gap-2">
+                    class="w-full py-4 rounded-xl bg-gradient-to-r from-kyMain via-sky-500 to-kyDark hover:from-kyDark hover:to-kyMain text-white font-bold text-base shadow-xl shadow-kyMain/20 hover:shadow-kyMain/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 flex items-center justify-center gap-2">
                     <span>ورود به حساب</span>
                     <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -419,7 +401,7 @@
             </form>
 
             <!-- Signup Redirect -->
-            <div class="mt-8 text-center border-t border-kyLight/15 pt-6 text-xs text-kyLightest/70">
+            <div class="mt-8 text-center border-t border-kyLight/40 pt-6 text-xs text-kyDark/70">
                 حساب کاربری ندارید؟
                 <a href="./regester.html" class="text-kyMain font-bold hover:underline mr-1">همین حالا ثبت نام کنید</a>
             </div>
@@ -427,208 +409,32 @@
     </main>
 
     <!-- Footer -->
-    <footer class="relative z-10 w-full border-t border-kyLight/10 py-6 mt-8 bg-slate-950/50">
+    <footer class="relative z-10 w-full border-t border-kyLight py-6 mt-8 bg-white shadow-inner">
         <div
-            class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-kyLight/60">
+            class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-kyDark/80">
             <p>© ۲۰۲۶ تمامی حقوق برای سامانه هوشمند کاریابی «کار یار» محفوظ است.</p>
             <div class="flex gap-6">
-                <a href="#privacy" class="hover:text-kyLight transition-colors">حریم خصوصی</a>
-                <a href="#terms" class="hover:text-kyLight transition-colors">قوانین و مقررات</a>
-                <a href="#contact" class="hover:text-kyLight transition-colors">پشتیبانی</a>
+                <a href="#privacy" class="hover:text-kyMain transition-colors">حریم خصوصی</a>
+                <a href="#terms" class="hover:text-kyMain transition-colors">قوانین و مقررات</a>
+                <a href="#contact" class="hover:text-kyMain transition-colors">پشتیبانی</a>
             </div>
         </div>
     </footer>
 
-
-    <!-- Three.js Optimized Interactive Scene -->
+    <!-- AOS (Animate On Scroll) JS Integration -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // 1. Scene Setup
-        const canvas = document.getElementById('bg-canvas');
-        const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0x071226, 0.035);
-
-        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 10;
-
-        // بهینه‌سازی رندر: غیرفعال کردن antialias و کاهش پیکسل‌ریشیو جهت کاهش سنگینی محاسبات GPU
-        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: false });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(1); // محدود به 1 برای سبک‌تر شدن بارهای گرافیکی سنگین
-
-        const colors = {
-            kyLightest: 0xE3F2FD,
-            kyLight: 0x90CAF9,
-            kyMain: 0x2196F3,
-            kyDark: 0x0D47A1
-        };
-
-        // 2. Lighting Setup
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-        scene.add(ambientLight);
-
-        const light1 = new THREE.PointLight(colors.kyMain, 3.5, 40);
-        light1.position.set(8, 8, 8);
-        scene.add(light1);
-
-        const light2 = new THREE.PointLight(colors.kyDark, 4, 40);
-        light2.position.set(-8, -8, -5);
-        scene.add(light2);
-
-        // 3. 3D Lock
-        const lockGroup = new THREE.Group();
-
-        // استفاده از MeshStandardMaterial به جای MeshPhysicalMaterial سنگین برای مصرف کمتر GPU
-        const bodyGeo = new THREE.BoxGeometry(1.6, 1.3, 0.6);
-        const lockMat = new THREE.MeshStandardMaterial({
-            color: colors.kyMain,
-            metalness: 0.3,
-            roughness: 0.2,
-            transparent: true,
-            opacity: 0.85
+        // Initialize AOS animations
+        AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-out-cubic'
         });
-        const lockBody = new THREE.Mesh(bodyGeo, lockMat);
-        lockGroup.add(lockBody);
-
-        // Lock Shackle (کاهش Segments هندسه از 16x32 به 8x16 جهت سبک‌سازی)
-        const shackleGeo = new THREE.TorusGeometry(0.55, 0.12, 8, 16, Math.PI);
-        const shackleMat = new THREE.MeshStandardMaterial({
-            color: colors.kyLight,
-            metalness: 0.7,
-            roughness: 0.3
-        });
-        const shackle = new THREE.Mesh(shackleGeo, shackleMat);
-        shackle.position.y = 0.65;
-        lockGroup.add(shackle);
-
-        lockGroup.position.set(4.5, 0, 0);
-        scene.add(lockGroup);
-
-
-        // 4. Portal Rings (کاهش هندسه حلقه‌ها)
-        const portalGroup = new THREE.Group();
-
-        const ringMat1 = new THREE.MeshStandardMaterial({
-            color: colors.kyMain,
-            wireframe: true,
-            transparent: true,
-            opacity: 0.4
-        });
-        const ring1 = new THREE.Mesh(new THREE.TorusGeometry(3.2, 0.04, 8, 32), ringMat1);
-        portalGroup.add(ring1);
-
-        const ringMat2 = new THREE.MeshStandardMaterial({
-            color: colors.kyLight,
-            wireframe: true,
-            transparent: true,
-            opacity: 0.3
-        });
-        const ring2 = new THREE.Mesh(new THREE.TorusGeometry(4.2, 0.03, 8, 32), ringMat2);
-        ring2.rotation.x = Math.PI / 4;
-        portalGroup.add(ring2);
-
-        portalGroup.position.set(-4.5, 0, -2);
-        scene.add(portalGroup);
-
-
-        // Particle Stream (کاهش تعداد پارتیکل‌ها به ۶۰ عدد برای بهینه‌سازی CPU)
-        const particleCount = 60;
-        const particlePositions = new Float32Array(particleCount * 3);
-        for (let i = 0; i < particleCount * 3; i += 3) {
-            particlePositions[i] = (Math.random() - 0.5) * 30;
-            particlePositions[i + 1] = (Math.random() - 0.5) * 30;
-            particlePositions[i + 2] = (Math.random() - 0.5) * 15;
-        }
-
-        const particleGeo = new THREE.BufferGeometry();
-        particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
-        const particleMat = new THREE.PointsMaterial({
-            color: colors.kyLight,
-            size: 0.08,
-            transparent: true,
-            opacity: 0.5
-        });
-        const particles = new THREE.Points(particleGeo, particleMat);
-        scene.add(particles);
-
-
-        // 5. Mouse Interaction & Throttle
-        let mouseX = 0, mouseY = 0;
-        let targetX = 0, targetY = 0;
-        let speedMultiplier = 1;
-
-        window.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-            mouseY = -(e.clientY / window.innerHeight - 0.5) * 2;
-        });
-
-        function onInputFocus() { speedMultiplier = 2; }
-        function onPasswordFocus() {
-            speedMultiplier = 2.5;
-            lockGroup.rotation.x = 0.4;
-        }
-        function onInputBlur() {
-            speedMultiplier = 1;
-            lockGroup.rotation.x = 0;
-        }
 
         function handleLogin(e) {
             e.preventDefault();
-            shackle.position.y = 0.95;
-            light1.intensity = 8;
-            setTimeout(() => { alert('ورود با موفقیت انجام شد!'); }, 600);
+            alert('ورود با موفقیت انجام شد!');
         }
-
-        // 6. FPS Cap Engine (محدود کردن فریم‌ریت به ۲۵ فریم بر ثانیه برای کاهش شدید مصرف CPU و GPU)
-        let isPageVisible = true;
-        document.addEventListener("visibilitychange", () => {
-            isPageVisible = !document.hidden;
-        });
-
-        const clock = new THREE.Clock();
-        let delta = 0;
-        const fpsInterval = 1 / 25; // 25 FPS Target for lightweight rendering
-
-        function animate() {
-            requestAnimationFrame(animate);
-
-            if (!isPageVisible) return; // توقف کامل محاسبات و رندر هنگام باز بودن تب‌های دیگر
-
-            delta += clock.getDelta();
-            if (delta < fpsInterval) return;
-
-            const elapsedTime = clock.getElapsedTime();
-
-            // Camera movement
-            targetX += (mouseX - targetX) * 0.05;
-            targetY += (mouseY - targetY) * 0.05;
-            camera.position.x = targetX * 1.2;
-            camera.position.y = targetY * 1.2;
-            camera.lookAt(scene.position);
-
-            // Rotations
-            lockGroup.position.y = Math.sin(elapsedTime * 1.5) * 0.2;
-            lockGroup.rotation.y = elapsedTime * 0.5 * speedMultiplier;
-
-            ring1.rotation.x = elapsedTime * 0.3 * speedMultiplier;
-            ring1.rotation.y = elapsedTime * 0.4 * speedMultiplier;
-            ring2.rotation.y = -elapsedTime * 0.2 * speedMultiplier;
-            ring2.rotation.z = elapsedTime * 0.3 * speedMultiplier;
-
-            particles.rotation.y = elapsedTime * 0.02;
-
-            renderer.render(scene, camera);
-
-            delta = delta % fpsInterval;
-        }
-
-        animate();
-
-        // Window Resize Handler
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
     </script>
 </body>
 
