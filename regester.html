@@ -14,17 +14,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <!-- icon  -->
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
         integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- Alpine.js CDN -->
     <script defer src="./library/apline.min.js"></script>
 
-    <!-- Tailwind CSS CDN (به درخواست شما دست‌نخورده باقی ماند) -->
+    <!-- Tailwind CSS CDN (دست‌نخورده باقی ماند) -->
     <script src="./library/tailwind.js"></script>
     <script>
         tailwind.config = {
@@ -56,65 +61,38 @@
         }
     </script>
 
-    <!-- Three.js (Optimized: Deferred loading to unblock rendering) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background-color: #050b14;
-            color: #E3F2FD;
+            background-color: #E3F2FD;
+            color: #0D47A1;
             overflow-x: hidden;
         }
 
-        /* Fullscreen WebGL Background Canvas */
-        #bg-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-            will-change: transform;
-        }
-
-        /* Highly Optimized Glassmorphism - Removed heavy backdrop-filter blur for GPU relief */
+        /* Glassmorphism Redesigned for Clean & Modern Blue-White Theme */
         .glass-panel {
-            background: rgba(13, 71, 161, 0.65);
-            border: 1px solid rgba(144, 202, 249, 0.25);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            background: rgba(255, 255, 255, 0.90);
+            border: 1px solid #90CAF9;
+            box-shadow: 0 10px 30px rgba(13, 71, 161, 0.08);
         }
 
         .glass-card {
-            background: rgba(15, 25, 45, 0.75);
-            border: 1px solid rgba(144, 202, 249, 0.3);
-            box-shadow: 0 10px 25px rgba(13, 71, 161, 0.2);
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            will-change: transform;
+            background: #ffffff;
+            border: 1px solid #90CAF9;
+            box-shadow: 0 12px 28px rgba(33, 150, 243, 0.12);
         }
 
-        /* 3D Interactive Card Dynamic Elements */
-        .card-inner {
-            transform: translateZ(20px);
-        }
-
-        .glow-effect {
-            box-shadow: 0 0 15px rgba(33, 150, 243, 0.4);
-        }
-
-        /* Input field styling */
+        /* Input Field Styling */
         .input-ky {
-            background: rgba(5, 11, 20, 0.8);
-            border: 1px solid rgba(144, 202, 249, 0.3);
-            color: #E3F2FD;
+            background: #ffffff;
+            border: 1px solid #90CAF9;
+            color: #0D47A1;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .input-ky:focus {
             border-color: #2196F3;
-            box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+            box-shadow: 0 0 10px rgba(33, 150, 243, 0.25);
             outline: none;
         }
 
@@ -124,7 +102,7 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #050b14;
+            background: #E3F2FD;
         }
 
         ::-webkit-scrollbar-thumb {
@@ -136,12 +114,9 @@
 
 <body class="min-h-screen flex flex-col justify-between relative selection:bg-kyMain selection:text-white">
 
-    <!-- 3D Canvas Scene -->
-    <canvas id="bg-canvas"></canvas>
-
     <!-- Header & Navbar Navigation -->
     <header x-data="{ mobileMenuOpen: false, jobsDropdownOpen: false }"
-        class="sticky top-0 z-50 bg-white border-b border-karyar-50 shadow-sm">
+        class="sticky top-0 z-50 bg-white border-b border-karyar-50 shadow-sm animate__animated animate__fadeInDown">
 
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 
@@ -352,22 +327,22 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
             <!-- Left Side: Registration Form -->
-            <section class="lg:col-span-7 w-full">
-                <div class="glass-panel p-8 md:p-10 rounded-3xl relative overflow-hidden">
+            <section class="lg:col-span-7 w-full" data-aos="fade-right" data-aos-duration="1000">
+                <div class="glass-panel p-8 md:p-10 rounded-3xl relative overflow-hidden animate__animated animate__fadeInLeft">
                     <div
-                        class="absolute -top-24 -left-24 w-48 h-48 bg-kyMain/20 rounded-full opacity-50 pointer-events-none">
+                        class="absolute -top-24 -left-24 w-48 h-48 bg-kyMain/10 rounded-full opacity-60 pointer-events-none">
                     </div>
 
                     <!-- SEO Structured Header -->
                     <div class="mb-8">
                         <span
-                            class="text-xs font-bold text-kyMain bg-kyMain/10 px-3 py-1.5 rounded-full border border-kyMain/20 mb-3 inline-block">
+                            class="text-xs font-bold text-kyMain bg-sky-100 px-3 py-1.5 rounded-full border border-kyLight mb-3 inline-block">
                             عضویت در بزرگترین شبکه شغلی
                         </span>
-                        <h1 class="text-3xl md:text-4xl font-extrabold text-white mt-2 leading-tight">
+                        <h1 class="text-3xl md:text-4xl font-extrabold text-kyDark mt-2 leading-tight">
                             حساب کاربری خود را بسازید
                         </h1>
-                        <p class="text-kyLightest/70 text-sm mt-2">
+                        <p class="text-kyDark/70 text-sm mt-2">
                             برای دسترسی به صدها موقعیت شغلی هوشمند و ساخت رزومه استاندارد اقدام کنید.
                         </p>
                     </div>
@@ -378,49 +353,49 @@
 
                         <!-- Full Name Field -->
                         <div>
-                            <label for="fullname" class="block text-xs font-medium text-kyLight mb-2">نام و نام
+                            <label for="fullname" class="block text-xs font-bold text-kyDark mb-2">نام و نام
                                 خانوادگی</label>
                             <input type="text" id="fullname" name="fullname" required autocomplete="name"
                                 placeholder="مثال: علی رضایی"
-                                class="w-full px-4 py-3.5 rounded-xl input-ky text-sm placeholder:text-slate-500"
+                                class="w-full px-4 py-3.5 rounded-xl input-ky text-sm placeholder:text-slate-400"
                                 oninput="updateCardPreview()">
                         </div>
 
                         <!-- Phone Grid -->
-                        <div class="">
+                        <div>
                             <div>
-                                <label for="phone" class="block text-xs font-medium text-kyLight mb-2">شماره
+                                <label for="phone" class="block text-xs font-bold text-kyDark mb-2">شماره
                                     موبایل</label>
                                 <input type="tel" id="phone" name="phone" required autocomplete="tel"
                                     placeholder="09123456789"
-                                    class="w-full px-4 py-3.5 rounded-xl input-ky text-sm placeholder:text-slate-500 text-left dir-ltr">
+                                    class="w-full px-4 py-3.5 rounded-xl input-ky text-sm placeholder:text-slate-400 text-left dir-ltr">
                             </div>
                         </div>
 
                         <!-- Job Title / Specialization Field -->
                         <div>
-                            <label for="jobtitle" class="block text-xs font-medium text-kyLight mb-2"
+                            <label for="jobtitle" class="block text-xs font-bold text-kyDark mb-2"
                                 id="jobtitle-label">تخصص یا عنوان شغلی مد نظر</label>
                             <input type="text" id="jobtitle" name="jobtitle" required
                                 placeholder="مثال: توسعه‌دهنده فرانت‌اند / برنامه‌نویس وب"
-                                class="w-full px-4 py-3.5 rounded-xl input-ky text-sm placeholder:text-slate-500"
+                                class="w-full px-4 py-3.5 rounded-xl input-ky text-sm placeholder:text-slate-400"
                                 oninput="updateCardPreview()">
                         </div>
 
                         <!-- Password Field -->
                         <div>
-                            <label for="password" class="block text-xs font-medium text-kyLight mb-2">رمز عبور</label>
+                            <label for="password" class="block text-xs font-bold text-kyDark mb-2">رمز عبور</label>
                             <input type="password" id="password" name="password" required autocomplete="new-password"
                                 placeholder="حداقل ۸ کاراکتر ترکیبی"
-                                class="w-full px-4 py-3.5 rounded-xl input-ky text-sm placeholder:text-slate-500 text-left dir-ltr">
+                                class="w-full px-4 py-3.5 rounded-xl input-ky text-sm placeholder:text-slate-400 text-left dir-ltr">
                         </div>
 
                         <!-- Terms & Conditions Checkbox -->
                         <div class="flex items-center gap-3 pt-2">
                             <input type="checkbox" id="terms" name="terms" required
-                                class="w-4 h-4 rounded accent-kyMain bg-slate-900 border-kyLight/30 focus:ring-kyMain">
-                            <label for="terms" class="text-xs text-kyLightest/80 leading-relaxed">
-                                تمامی <a href="./rule.html" class="text-kyMain hover:underline">قوانین و شرایط
+                                class="w-4 h-4 rounded accent-kyMain bg-white border-kyLight focus:ring-kyMain">
+                            <label for="terms" class="text-xs text-kyDark/80 leading-relaxed">
+                                تمامی <a href="./rule.html" class="text-kyMain font-bold hover:underline">قوانین و شرایط
                                     استفاده</a> از
                                 سامانه کار یار را می‌پذیرم.
                             </label>
@@ -428,7 +403,7 @@
 
                         <!-- Submit Button -->
                         <button type="submit"
-                            class="w-full py-4 rounded-xl bg-gradient-to-r from-kyMain via-sky-500 to-kyDark hover:from-kyDark hover:to-kyMain text-white font-bold text-base shadow-xl shadow-kyMain/30 hover:shadow-kyMain/50 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 mt-4 flex items-center justify-center gap-2">
+                            class="w-full py-4 rounded-xl bg-gradient-to-r from-kyMain via-sky-500 to-kyDark hover:from-kyDark hover:to-kyMain text-white font-bold text-base shadow-lg shadow-kyMain/30 hover:shadow-kyMain/50 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 mt-4 flex items-center justify-center gap-2">
                             <span>ایجاد حساب کاربری</span>
                             <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -439,20 +414,20 @@
                 </div>
             </section>
 
-            <!-- Right Side: Interactive 3D ID/Badge Card -->
-            <section class="lg:col-span-5 flex flex-col items-center justify-center">
-                <div class="w-full max-w-sm">
+            <!-- Right Side: Interactive ID/Badge Card (Clean 2D Style) -->
+            <section class="lg:col-span-5 flex flex-col items-center justify-center" data-aos="fade-left" data-aos-duration="1000">
+                <div class="w-full max-w-sm animate__animated animate__fadeInRight">
                     <div class="text-center mb-4">
-                        <span class="text-xs font-semibold text-kyLight/60">پیش‌نمایش زنده هویت شغلی شما</span>
+                        <span class="text-xs font-semibold text-kyDark/70">پیش‌نمایش زنده هویت شغلی شما</span>
                     </div>
-                    <!-- 3D Tilt Card Container -->
-                    <div id="card-3d-wrapper" class="w-full cursor-pointer">
-                        <div id="card-3d" class="glass-card rounded-3xl p-6 relative overflow-hidden">
+                    
+                    <!-- ID Card Container -->
+                    <div id="card-3d-wrapper" class="w-full">
+                        <div id="card-3d" class="glass-card rounded-3xl p-6 relative overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
 
                             <!-- Card Background Effect -->
-                            <div class="absolute -right-16 -top-16 w-32 h-32 bg-kyMain/20 rounded-full"></div>
-                            <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-kyDark/30 rounded-full">
-                            </div>
+                            <div class="absolute -right-16 -top-16 w-32 h-32 bg-kyMain/10 rounded-full"></div>
+                            <div class="absolute -left-16 -bottom-16 w-32 h-32 bg-kyLight/20 rounded-full"></div>
 
                             <div class="card-inner flex flex-col justify-between h-80 relative z-10">
 
@@ -460,16 +435,16 @@
                                 <div class="flex justify-between items-start">
                                     <div class="flex items-center gap-2">
                                         <div
-                                            class="w-8 h-8 rounded-lg bg-kyMain/20 border border-kyLight/40 flex items-center justify-center text-kyLight font-black text-sm">
+                                            class="w-8 h-8 rounded-lg bg-kyMain/10 border border-kyLight flex items-center justify-center text-kyMain font-black text-sm">
                                             KY
                                         </div>
                                         <div>
-                                            <p class="text-[10px] text-kyLight/60 leading-none">کارت هویت حرفه‌ای</p>
-                                            <p class="text-xs font-bold text-white mt-1">کار یار PASS</p>
+                                            <p class="text-[10px] text-kyDark/60 leading-none">کارت هویت حرفه‌ای</p>
+                                            <p class="text-xs font-bold text-kyDark mt-1">کار یار PASS</p>
                                         </div>
                                     </div>
                                     <span id="preview-badge"
-                                        class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-kyMain/20 text-kyLight border border-kyMain/30">
+                                        class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-kyLightest text-kyMain border border-kyLight">
                                         جوینده کار
                                     </span>
                                 </div>
@@ -477,40 +452,36 @@
                                 <!-- Card Center Profile Symbol -->
                                 <div class="my-auto text-center flex flex-col items-center">
                                     <div
-                                        class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-kyDark/80 to-kyMain/80 p-0.5 shadow-lg mb-3 glow-effect">
+                                        class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-kyLight to-kyMain p-0.5 shadow-md mb-3">
                                         <div
-                                            class="w-full h-full bg-slate-950/80 rounded-[14px] flex items-center justify-center text-3xl">
+                                            class="w-full h-full bg-white rounded-[14px] flex items-center justify-center text-3xl">
                                             👨‍💻
                                         </div>
                                     </div>
-                                    <h3 id="preview-name" class="text-xl font-black text-white tracking-wide">
+                                    <h3 id="preview-name" class="text-xl font-black text-kyDark tracking-wide">
                                         نام شما
                                     </h3>
-                                    <p id="preview-title" class="text-xs font-medium text-kyLight mt-1">
+                                    <p id="preview-title" class="text-xs font-medium text-kyMain mt-1">
                                         عنوان تخصص شما
                                     </p>
                                 </div>
 
                                 <!-- Card Footer -->
                                 <div
-                                    class="pt-4 border-t border-kyLight/15 flex justify-between items-center text-[10px] text-kyLight/70">
+                                    class="pt-4 border-t border-kyLight/40 flex justify-between items-center text-[10px] text-kyDark/70">
                                     <div>
                                         <span>کد شناسایی:</span>
-                                        <span class="font-mono text-white mr-1">KY-2026-99</span>
+                                        <span class="font-mono text-kyDark font-bold mr-1">KY-2026-99</span>
                                     </div>
                                     <div class="flex items-center gap-1">
-                                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                                        <span class="text-emerald-300 font-medium">آماده به کار</span>
+                                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate__animated animate__pulse animate__infinite"></span>
+                                        <span class="text-emerald-600 font-bold">آماده به کار</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Interactive Hint -->
-                    <p class="text-center text-[11px] text-kyLight/40 mt-4">
-                        💡 ماوس خود را روی کارت حرکت دهید (قابلیت 3D Tilt تعاملی)
-                    </p>
                 </div>
             </section>
 
@@ -518,219 +489,24 @@
     </main>
 
     <!-- Footer -->
-    <footer class="relative flex justify-center z-10 w-full border-t border-kyLight/10 py-6 mt-12 bg-slate-950/40">
+    <footer class="relative flex justify-center z-10 w-full border-t border-kyLight bg-white py-6 mt-12 shadow-inner">
         <div
-            class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-kyLight/60">
+            class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-kyDark/80">
             <p>© ۲۰۲۶ تمامی حقوق برای سامانه هوشمند کاریابی «کار یار» محفوظ است.</p>
-
         </div>
     </footer>
 
-
-    <!-- Optimized Three.js 3D Canvas Scene Script -->
+    <!-- AOS (Animate On Scroll) JS Integration -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            // Ensure Three.js is loaded
-            if (typeof THREE === 'undefined') return;
-
-            // 1. Scene, Camera, Renderer Setup
-            const canvas = document.getElementById('bg-canvas');
-            const scene = new THREE.Scene();
-            scene.fog = new THREE.FogExp2(0x050b14, 0.04);
-
-            const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.z = 12;
-
-            // GPU Optimization: Antialias OFF & Max Pixel Ratio capped at 1.25 for high performance
-            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: false, powerPreference: "high-performance" });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.25));
-
-            // Color Palette
-            const colorPalette = {
-                kyLight: 0x90CAF9,
-                kyMain: 0x2196F3,
-                kyDark: 0x0D47A1
-            };
-
-            // 2. Lighting Setup (Reduced light intensity for speed)
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-            scene.add(ambientLight);
-
-            const pointLight1 = new THREE.PointLight(colorPalette.kyMain, 2, 40);
-            pointLight1.position.set(10, 10, 10);
-            scene.add(pointLight1);
-
-            // 3. Optimized 3D Career Ladder Blocks (Replaced heavy MeshPhysicalMaterial with MeshStandardMaterial)
-            const ladderGroup = new THREE.Group();
-            const blockMaterial = new THREE.MeshStandardMaterial({
-                color: colorPalette.kyMain,
-                metalness: 0.2,
-                roughness: 0.3,
-                transparent: true,
-                opacity: 0.65
-            });
-
-            const stepCount = 5;
-            const stepGeo = new THREE.BoxGeometry(2.5, 0.4, 2.5); // Reused geometry instance
-
-            for (let i = 0; i < stepCount; i++) {
-                const step = new THREE.Mesh(stepGeo, blockMaterial);
-                step.position.set(
-                    (i - stepCount / 2) * 1.2,
-                    (i - stepCount / 2) * 0.8,
-                    -i * 0.5
-                );
-                ladderGroup.add(step);
-            }
-            ladderGroup.position.set(-6, -2, -2);
-            ladderGroup.rotation.y = Math.PI / 6;
-            ladderGroup.rotation.x = Math.PI / 12;
-            scene.add(ladderGroup);
-
-            // 4. Low-Poly Floating 3D Morphic Shapes & Particles
-            // Low polygon Torus (8, 32 segments instead of 16, 100)
-            const torusGeo = new THREE.TorusGeometry(1.8, 0.5, 8, 32);
-            const torusMat = new THREE.MeshStandardMaterial({
-                color: colorPalette.kyLight,
-                wireframe: true,
-                transparent: true,
-                opacity: 0.3
-            });
-            const torus = new THREE.Mesh(torusGeo, torusMat);
-            torus.position.set(7, 3, -4);
-            scene.add(torus);
-
-            // Floating Icosahedron
-            const icoGeo = new THREE.IcosahedronGeometry(1.5, 0);
-            const icoMat = new THREE.MeshStandardMaterial({
-                color: colorPalette.kyMain,
-                roughness: 0.4,
-                wireframe: true
-            });
-            const ico = new THREE.Mesh(icoGeo, icoMat);
-            ico.position.set(-7, 4, -3);
-            scene.add(ico);
-
-            // Background Particle Field (Reduced to 150 count for light GPU processing)
-            const particlesCount = 150;
-            const particlePositions = new Float32Array(particlesCount * 3);
-
-            for (let i = 0; i < particlesCount * 3; i += 3) {
-                particlePositions[i] = (Math.random() - 0.5) * 35;
-                particlePositions[i + 1] = (Math.random() - 0.5) * 35;
-                particlePositions[i + 2] = (Math.random() - 0.5) * 20;
-            }
-
-            const particleGeo = new THREE.BufferGeometry();
-            particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
-
-            const particleMat = new THREE.PointsMaterial({
-                color: colorPalette.kyLight,
-                size: 0.08,
-                transparent: true,
-                opacity: 0.5
-            });
-
-            const particlesMesh = new THREE.Points(particleGeo, particleMat);
-            scene.add(particlesMesh);
-
-            // 5. Throttled Mouse Interactive Controls
-            let mouseX = 0, mouseY = 0;
-            let targetX = 0, targetY = 0;
-
-            window.addEventListener('mousemove', (event) => {
-                mouseX = (event.clientX / window.innerWidth - 0.5) * 2;
-                mouseY = -(event.clientY / window.innerHeight - 0.5) * 2;
-            }, { passive: true });
-
-            // 6. Optimized Animation Loop with FPS Limiter (~30FPS Cap) and Auto-Pause on Unfocus
-            const clock = new THREE.Clock();
-            let isTabActive = true;
-            let fpsInterval = 1000 / 30; // 30 FPS Lock
-            let then = Date.now();
-
-            document.addEventListener("visibilitychange", () => {
-                isTabActive = !document.hidden;
-                if (isTabActive) then = Date.now();
-            });
-
-            function animate() {
-                requestAnimationFrame(animate);
-
-                if (!isTabActive) return; // CPU zero usage when user switches tabs
-
-                const now = Date.now();
-                const delta = now - then;
-
-                if (delta > fpsInterval) {
-                    then = now - (delta % fpsInterval);
-
-                    const elapsedTime = clock.getElapsedTime();
-
-                    targetX += (mouseX - targetX) * 0.05;
-                    targetY += (mouseY - targetY) * 0.05;
-
-                    camera.position.x = targetX * 1.2;
-                    camera.position.y = targetY * 1.2;
-                    camera.lookAt(scene.position);
-
-                    // Animate Objects
-                    ladderGroup.position.y = -2 + Math.sin(elapsedTime * 1.2) * 0.25;
-                    ladderGroup.rotation.y += 0.002;
-
-                    torus.rotation.x = elapsedTime * 0.3;
-                    torus.rotation.y = elapsedTime * 0.2;
-
-                    ico.rotation.x = elapsedTime * 0.4;
-
-                    particlesMesh.rotation.y = elapsedTime * 0.02;
-
-                    renderer.render(scene, camera);
-                }
-            }
-
-            animate();
-
-            // 7. Responsive Resize Listener
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            }, { passive: true });
-        });
-    </script>
-
-
-    <!-- Dynamic Interactive UI & 3D Tilt Script (Optimized) -->
-    <script>
-        const cardWrapper = document.getElementById('card-3d-wrapper');
-        const card = document.getElementById('card-3d');
-        let tiltAnimationFrame = null;
-
-        cardWrapper.addEventListener('mousemove', (e) => {
-            if (tiltAnimationFrame) cancelAnimationFrame(tiltAnimationFrame);
-
-            tiltAnimationFrame = requestAnimationFrame(() => {
-                const rect = cardWrapper.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-
-                const rotateX = ((y - centerY) / centerY) * -12;
-                const rotateY = ((x - centerX) / centerX) * 12;
-
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            });
-        }, { passive: true });
-
-        cardWrapper.addEventListener('mouseleave', () => {
-            if (tiltAnimationFrame) cancelAnimationFrame(tiltAnimationFrame);
-            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+        // Initialize AOS animations
+        AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-out-cubic'
         });
 
+        // Dynamic Interactive Preview Function
         function updateCardPreview() {
             const fullnameInput = document.getElementById('fullname').value;
             const jobtitleInput = document.getElementById('jobtitle').value;
@@ -738,8 +514,6 @@
             document.getElementById('preview-name').innerText = fullnameInput.trim() !== '' ? fullnameInput : 'نام شما';
             document.getElementById('preview-title').innerText = jobtitleInput.trim() !== '' ? jobtitleInput : 'عنوان تخصص شما';
         }
-
-        
     </script>
 </body>
 
