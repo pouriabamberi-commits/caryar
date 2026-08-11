@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- ۱. کتابخانه SweetAlert2 JS (این بخش فراموش شده بود) -->
+    <script src="./library/sweetalert2.js"></script>
+
+    <!-- ۲. کتابخانه Animate.css -->
+    <link rel="stylesheet" href="./library/animate.min.css" />
+
+    <!-- style alert success -->
+    <style>
+        .custom-sweet-alert {
+            background-color: #90CAF9 !important;
+            /* پس‌زمینه آبی بسیار کمرنگ و ملایم */
+            border-radius: 16px !important;
+            box-shadow:
+                0 20px 25px -5px rgba(0, 0, 0, 0.5),
+                0 10px 10px -5px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        /* تنظیم ابعاد و فاصله گیف پس‌زمینه در بالا سمت چپ */
+        .swal2-backdrop-show {
+            background-size: 180px 180px !important;
+            /* اندازه گیف */
+            background-position: center 10px !important;
+            /* فاصله از چپ و بالا */
+        }
+
+        /* تنظیمات مخصوص صفحه گوشی (عرض کمتر از 640 پیکسل) */
+        @media (max-width: 640px) {
+            .custom-sweet-alert {
+                width: 80vw !important;
+                /* اشغال ۸۸ درصد عرض صفحه گوشی */
+                padding: 1.25rem 0.75rem !important;
+                /* کاهش پدینگ داخلی */
+            }
+
+            /* کوچک‌تر کردن عنوان آلرت در موبایل */
+            .custom-sweet-alert .swal2-title {
+                font-size: 1rem !important;
+            }
+
+            /* کوچک‌تر کردن متن آلرت در موبایل */
+            .custom-sweet-alert .swal2-html-container {
+                font-size: 0.8rem !important;
+            }
+
+            /* کوچک‌تر کردن دکمه در موبایل */
+            .custom-sweet-alert .swal2-confirm {
+                font-size: 0.85rem !important;
+                padding: 7px 15px !important;
+            }
+
+            /* کوچک‌تر کردن گیف پس‌زمینه در موبایل */
+            .swal2-backdrop-show {
+                background-size: 150px 150px !important;
+                background-position: center 70px !important;
+            }
+        }
+    </style>
+    <!-- style alert error -->
+    <style>
+        .custom-sweet-alert-error {
+            background-color: #E3F2FD !important;
+            /* پس‌زمینه آبی روشن کاریار */
+            border-radius: 16px !important;
+            border: 2px solid #90CAF9 !important;
+            /* حاشیه آبی ملایم */
+            box-shadow:
+                0 20px 25px -5px rgba(0, 0, 0, 0.5),
+                0 10px 10px -5px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        /* تنظیم رنگ عنوان آلرت خطا */
+        .custom-sweet-alert-error .swal2-title {
+            color: #0D47A1 !important;
+            /* آبی سرمه‌ای تیره کاریار */
+        }
+
+        /* تنظیم رنگ متن توضیحات */
+        .custom-sweet-alert-error .swal2-html-container {
+            color: #1e3a8a !important;
+        }
+
+        /* تنظیم ابعاد و موقعیت گیف پس‌زمینه در بالاشکل */
+        .swal2-backdrop-show {
+            background-size: 180px 180px !important;
+            /* اندازه گیف خطا */
+            background-position: center 10px !important;
+            /* فاصله از بالا */
+        }
+
+        /* تنظیمات مخصوص صفحه گوشی (عرض کمتر از 640 پیکسل) */
+        @media (max-width: 640px) {
+            .custom-sweet-alert-error {
+                width: 80vw !important;
+                /* اشغال ۸۰ درصد عرض صفحه گوشی */
+                padding: 1.25rem 0.75rem !important;
+                /* کاهش پدینگ داخلی */
+            }
+
+            /* کوچک‌تر کردن عنوان آلرت در موبایل */
+            .custom-sweet-alert-error .swal2-title {
+                font-size: 1rem !important;
+            }
+
+            /* کوچک‌تر کردن متن آلرت در موبایل */
+            .custom-sweet-alert-error .swal2-html-container {
+                font-size: 0.8rem !important;
+            }
+
+            /* کوچک‌تر کردن دکمه در موبایل */
+            .custom-sweet-alert-error .swal2-confirm {
+                font-size: 0.85rem !important;
+                padding: 7px 15px !important;
+            }
+
+            /* کوچک‌تر کردن گیف پس‌زمینه در موبایل */
+            .swal2-backdrop-show {
+                background-size: 150px 150px !important;
+                background-position: center 70px !important;
+            }
+        }
+    </style>
+    <!-- style alert confirm -->
+    <style>
+        .custom-sweet-alert-confirm {
+            background-color: #E3F2FD !important;
+            /* پس‌زمینه آبی روشن کاریار */
+            border-radius: 16px !important;
+            border: 2px solid #90CAF9 !important;
+            /* حاشیه آبی ملایم */
+            box-shadow:
+                0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+        }
+
+        /* تنظیم رنگ عنوان آلرت پرسشی */
+        .custom-sweet-alert-confirm .swal2-title {
+            color: #0D47A1 !important;
+            /* آبی سرمه‌ای تیره کاریار */
+        }
+
+        /* تنظیم رنگ متن توضیحات */
+        .custom-sweet-alert-confirm .swal2-html-container {
+            color: #1e3a8a !important;
+        }
+
+        /* استایل دکمه انصراف (نه) */
+        .custom-sweet-alert-confirm .swal2-cancel {
+            background-color: #90CAF9 !important;
+            color: #0D47A1 !important;
+            font-weight: bold !important;
+            border-radius: 8px !important;
+        }
+
+        /* استایل دکمه تأیید (بله) */
+        .custom-sweet-alert-confirm .swal2-confirm {
+            background-color: #2196F3 !important;
+            color: #ffffff !important;
+            font-weight: bold !important;
+            border-radius: 8px !important;
+        }
+
+        /* تنظیم ابعاد و موقعیت گیف پس‌زمینه در بالا */
+        .swal2-backdrop-show {
+            background-size: 180px 180px !important;
+            /* اندازه گیف پرسشی */
+            background-position: center 10px !important;
+            /* فاصله از بالا */
+        }
+
+        /* تنظیمات مخصوص صفحه گوشی (عرض کمتر از 640 پیکسل) */
+        @media (max-width: 640px) {
+            .custom-sweet-alert-confirm {
+                width: 80vw !important;
+                /* اشغال ۸۰ درصد عرض صفحه گوشی */
+                padding: 1.25rem 0.75rem !important;
+                /* کاهش پدینگ داخلی */
+            }
+
+            /* کوچک‌تر کردن عنوان آلرت در موبایل */
+            .custom-sweet-alert-confirm .swal2-title {
+                font-size: 1rem !important;
+            }
+
+            /* کوچک‌تر کردن متن آلرت در موبایل */
+            .custom-sweet-alert-confirm .swal2-html-container {
+                font-size: 0.8rem !important;
+            }
+
+            /* کوچک‌تر کردن دکمه‌ها در موبایل */
+            .custom-sweet-alert-confirm .swal2-confirm,
+            .custom-sweet-alert-confirm .swal2-cancel {
+                font-size: 0.85rem !important;
+                padding: 7px 15px !important;
+            }
+
+            /* کوچک‌تر کردن گیف پس‌زمینه در موبایل */
+            .swal2-backdrop-show {
+                background-size: 150px 150px !important;
+                background-position: center 70px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="showAlert()">success alert</button>
+    <button onclick="showErrorAlert()">error alert</button>
+    <button onclick="showConfirmAlert()">confirm alert</button>
+    <!-- js success alert -->
+    <script>
+        function showAlert() {
+            Swal.fire({
+                title: 'عملیات با موفقیت انجام شد!',
+                text: 'اطلاعات شما در سامانه کاریابی با موفقیت ثبت گردید.',
+                imageUrl: './img/success-alert2.png', // آدرس لینک مستقیم تصویر را اینجا بگذارید
+                imageWidth: 100,  // عرض آیکون به پیکسل (قابل تغییر)
+                imageHeight:100, // ارتفاع آیکون به پیکسل (قابل تغییر)
+                imageAlt: 'آیکون موفقیت',
+                confirmButtonText: 'متوجه شدم',
+                confirmButtonColor: '#2563eb',
+
+                /* انیمیشن‌های ورودی و خروجی */
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown animate__faster'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp animate__faster'
+                },
+
+                /* استایل سفارشی */
+                customClass: {
+                    popup: 'custom-sweet-alert'
+                },
+
+                /* گیف در بالا سمت چپ + بک‌دراپ تاریک */
+                backdrop: `
+                rgba(0, 0, 0, 0.5)
+                url("./img/success-gift.webp")
+                no-repeat
+                `
+            });
+        }
+    </script>
+    <!-- js error alert -->
+    <script>
+        function showErrorAlert() {
+            Swal.fire({
+                title: 'عملیات ناموفق بود!',
+                text: 'خطایی در ثبت اطلاعات رخ داده است. لطفاً مجدداً تلاش کنید.',
+                imageUrl: './img/error-alert.png', // آدرس تصویر آیکون خطا
+                imageWidth: 80,  // عرض آیکون به پیکسل (قابل تغییر)
+                imageHeight: 80, // ارتفاع آیکون به پیکسل (قابل تغییر)
+                imageAlt: 'آیکون خطا',
+                confirmButtonText: 'تلاش مجدد',
+                confirmButtonColor: '#0D47A1', // رنگ آبی سرمه‌ای برند کاریار
+
+                /* انیمیشن‌های ورودی و خروجی (لرزش هنگام ورود برای هشدار) */
+                showClass: {
+                    popup: 'animate__animated animate__shakeX animate__faster'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp animate__faster'
+                },
+
+                /* استایل سفارشی */
+                customClass: {
+                    popup: 'custom-sweet-alert-error'
+                },
+
+                /* گیف خطا در بالا + بک‌دراپ تاریک */
+                backdrop: `
+                rgba(13, 71, 161, 0.4)
+                url("./img/error-gift.webp")
+                no-repeat
+                `
+            });
+        }
+    </script>
+    <!-- js confirm alert -->
+    <script>
+        function showConfirmAlert() {
+            Swal.fire({
+                title: 'آیا مطمئن هستید؟',
+                text: 'آیا از انجام این عملیات در سامانه کاریار اطمینان دارید؟',
+                imageUrl: './img/sure-alert.png', // آیکون علامت سوال ۳ بعدی
+                imageWidth: 80,  // عرض آیکون به پیکسل (قابل تغییر)
+                imageHeight: 80, // ارتفاع آیکون به پیکسل (قابل تغییر)
+                imageAlt: 'آیکون پرسش',
+                
+                /* تنظیمات دو دکمه بله و خیر */
+                showCancelButton: true,
+                confirmButtonText: 'بله، مطمئنم',
+                cancelButtonText: 'خیر، انصراف',
+                reverseButtons: true, // قرارگیری دکمه بله در سمت راست (مخصوص RTL)
+
+                /* انیمیشن‌های ورودی و خروجی */
+                showClass: {
+                    popup: 'animate__animated animate__zoomIn animate__faster'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__zoomOut animate__faster'
+                },
+
+                /* استایل سفارشی */
+                customClass: {
+                    popup: 'custom-sweet-alert-confirm'
+                },
+
+                /* گیف پرسش در بالا + بک‌دراپ تاریک ملایم */
+                backdrop: `
+                rgba(13, 71, 161, 0.35)
+                url("./img/sure-gift.webp")
+                no-repeat
+                `
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // کدهایی که در صورت زدن دکمه «بله» اجرا می‌شوند
+                    console.log('کاربر عملیات را تأیید کرد.');
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    // کدهایی که در صورت زدن دکمه «خیر» یا بستن آلرت اجرا می‌شوند
+                    console.log('کاربر انصراف داد.');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

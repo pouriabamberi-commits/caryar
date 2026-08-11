@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="scroll-smooth antialiased">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کاریار - درباره ما | پلتفرم هوشمند اتصال استعداد به کار</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="با کاریار، مسیر شغلی خود را هوشمندانه و با تکنولوژی روز بسازید. شفافیت، سرعت و دقت در استخدام، ماموریت ماست.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://karyar.ir/about">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="./library/tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#E3F2FD',
+                            200: '#90CAF9',
+                            500: '#2196F3',
+                            900: '#0D47A1',
+                        },
+                        karyar: {
+                            50: '#E3F2FD',
+                            100: '#90CAF9',
+                            500: '#2196F3',
+                            900: '#0D47A1',
+                        },
+                        ky: {
+                            50: '#E3F2FD',  /* زمینه روشن و کارت‌ها */
+                            200: '#90CAF9', /* بوردرها و عناصر ثانویه */
+                            500: '#2196F3', /* رنگ اصلی و دکمه‌ها */
+                            900: '#0D47A1', /* رنگ متن‌ها و پس‌زمینه فوتر */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'Tahoma', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts: Vazirmatn -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Core 3D & Animation Libraries -->
+    <script defer src="./library/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* Custom scrollbar for better visual experience */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #90CAF9;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2196F3;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        #three-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            /* Under the content */
+            pointer-events: none;
+            /* Let clicks pass through */
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 10;
+            /* Above the 3D scene */
+        }
+
+        /* Cinematic text shadow for better readability over 3D */
+        .text-glow {
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8), 0 0 20px rgba(33, 150, 243, 0.2);
+        }
+    </style>
+    <!-- Alpine.js CDN -->
+    <script defer src="./library/apline.min.js"></script>
+
+        <!-- icon  -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
+        integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body class="bg-brand-50 text-slate-900">
+
+    <!-- Header & Navbar Navigation -->
+    <header x-data="{ mobileMenuOpen: false, jobsDropdownOpen: false }"
+        class="sticky top-0 z-50 bg-white border-b border-karyar-50 shadow-sm">
+
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+            <!-- Logo Section -->
+            <a href="" class="flex items-center gap-3 group">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-karyar-900 to-karyar-500 flex items-center justify-center text-white font-black text-2xl shadow-md shadow-karyar-500/20 group-hover:scale-105 transition-transform">
+                    <i class="bi bi-briefcase-fill"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black text-karyar-900 tracking-tight leading-none">کار<span
+                            class="text-karyar-500">یار</span></span>
+                    <span class="text-[10px] text-slate-400 font-medium mt-1">سامانه هوشمند کاریابی</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <ul class="hidden lg:flex items-center gap-7 font-semibold text-slate-600 text-sm">
+                <li>
+                    <a href="./index.html" class="text-karyar-500 hover:text-karyar-900 transition-colors">صفحه اصلی</a>
+                </li>
+
+                <!-- Jobs Dropdown -->
+                <li class="relative" @click.outside="jobsDropdownOpen = false">
+                    <button @click="jobsDropdownOpen = !jobsDropdownOpen"
+                        class="flex items-center gap-1.5 hover:text-karyar-500 transition-colors focus:outline-none">
+                        <span>شغل‌ها</span>
+                        <i class="bi bi-chevron-bar-down text-xs transition-transform duration-200"
+                            :class="jobsDropdownOpen ? 'rotate-180 text-karyar-500' : ''"></i>
+                    </button>
+
+                    <!-- 15 Computer Jobs Dropdown Menu -->
+                    <div x-show="jobsDropdownOpen" x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0 translate-y-2"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-150"
+                        x-transition:leave-start="opacity-100 translate-y-0"
+                        x-transition:leave-end="opacity-0 translate-y-2"
+                        class="absolute right-0 mt-4 w-[600px] bg-white rounded-2xl shadow-xl border border-karyar-50 p-6 grid grid-cols-3 gap-3 z-50">
+
+                        <a href="./front-job.html"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-code text-karyar-500 text-xs"></i>
+                            <span>برنامه‌نویس Frontend</span>
+                        </a>
+                        <a href="/jobs/backend"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-hdd-fill text-karyar-500 text-xs"></i>
+                            <span>برنامه‌نویس Backend</span>
+                        </a>
+                        <a href="/jobs/fullstack"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-stack text-karyar-500 text-xs"></i>
+                            <span>برنامه‌نویس Full-Stack</span>
+                        </a>
+                        <a href="/jobs/ui-ux"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-easel text-karyar-500 text-xs"></i>
+                            <span>طراح UI/UX</span>
+                        </a>
+                        <a href="/jobs/devops"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-infinitytext-karyar-500 text-xs"></i>
+                            <span>مهندس DevOps</span>
+                        </a>
+                        <a href="/jobs/ai"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-anthropic text-karyar-500 text-xs"></i>
+                            <span>متخصص هوش مصنوعی</span>
+                        </a>
+                        <a href="/jobs/data-science"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-bar-chart-line-fill text-karyar-500 text-xs"></i>
+                            <span>دانشمند داده (Data)</span>
+                        </a>
+                        <a href="/jobs/mobile"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-phone-fill text-karyar-500 text-xs"></i>
+                            <span>توسعه‌دهنده موبایل</span>
+                        </a>
+                        <a href="/jobs/seo"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-search text-karyar-500 text-xs"></i>
+                            <span>متخصص سئو (SEO)</span>
+                        </a>
+                        <a href="/jobs/security"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-shield-fill-plus text-karyar-500 text-xs"></i>
+                            <span>امنیت شبکه و سایبر</span>
+                        </a>
+                        <a href="/jobs/qa"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-badge-vr-fill text-karyar-500 text-xs"></i>
+                            <span>تستر نرم‌افزار (QA)</span>
+                        </a>
+                        <a href="/jobs/product-manager"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-box2-fill text-karyar-500 text-xs"></i>
+                            <span>مدیر محصول (Product)</span>
+                        </a>
+                        <a href="/jobs/network"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-hdd-network-fill text-karyar-500 text-xs"></i>
+                            <span>مهندس شبکه</span>
+                        </a>
+                        <a href="/jobs/game-dev"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-controller text-karyar-500 text-xs"></i>
+                            <span>بازیساز (Game Dev)</span>
+                        </a>
+                        <a href="/jobs/database"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-database-fill text-karyar-500 text-xs"></i>
+                            <span>مدیر پایگاه داده</span>
+                        </a>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="./game.html" class="flex items-center gap-1.5 hover:text-karyar-900 transition-colors">
+                        <i class="bi bi-controller"></i>
+                        <span>بازی و سرگرمی</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./creat-job.html" class="hover:text-karyar-500 transition-colors">ثبت آگهی شغلی</a>
+                </li>
+                <li>
+                    <a href="./about.html" class="hover:text-karyar-500 transition-colors">درباره ما</a>
+                </li>
+                <li>
+                    <a href="./contact.html" class="hover:text-karyar-500 transition-colors">تماس با ما</a>
+                </li>
+            </ul>
+
+            <!-- Auth Buttons (Desktop) -->
+            <div class="hidden lg:flex items-center gap-3">
+                <a href="./login.html"
+                    class="bg-karyar-500 hover:bg-karyar-900 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md shadow-karyar-500/20 hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    ورود
+                </a>
+                <a href="./regester.html"
+                    class="bg-karyar-500 hover:bg-karyar-900 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md shadow-karyar-500/20 hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    ثبت نام
+                </a>
+            </div>
+
+            <!-- Hamburger Button (Mobile) -->
+            <button @click="mobileMenuOpen = !mobileMenuOpen"
+                class="lg:hidden text-black text-2xl p-2 focus:outline-none">
+                <i :class="mobileMenuOpen ? 'bi bi-x' : 'bi bi-list'"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Drawer Menu -->
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-4"
+            class="lg:hidden bg-white border-b border-slate-100 px-6 py-6 space-y-4 max-h-[80vh] overflow-y-auto">
+
+            <a href="" class="block text-slate-700 font-bold py-2 border-b border-slate-50">صفحه اصلی</a>
+
+            <!-- Mobile Jobs Accordion -->
+            <div x-data="{ jobsSubOpen: false }" class="border-b border-slate-50 py-2">
+                <button @click="jobsSubOpen = !jobsSubOpen"
+                    class="w-full flex items-center justify-between text-slate-700 font-bold">
+                    <span>شغل‌ها</span>
+                </button>
+                <div x-show="jobsSubOpen" class="mt-3 grid grid-cols-1 gap-2 pr-3 text-sm text-slate-600">
+                    <a href="./front-job-detail.html" class="py-1">برنامه‌نویس Frontend</a>
+                    <a href="/jobs/backend" class="py-1">برنامه‌نویس Backend</a>
+                    <a href="/jobs/fullstack" class="py-1">برنامه‌نویس Full-Stack</a>
+                    <a href="/jobs/ui-ux" class="py-1">طراح UI/UX</a>
+                    <a href="/jobs/devops" class="py-1">مهندس DevOps</a>
+                    <a href="/jobs/ai" class="py-1">متخصص هوش مصنوعی</a>
+                    <a href="/jobs/data-science" class="py-1">دانشمند داده</a>
+                    <a href="/jobs/mobile" class="py-1">توسعه‌دهنده موبایل</a>
+                    <a href="/jobs/seo" class="py-1">متخصص سئو</a>
+                    <a href="/jobs/security" class="py-1">امنیت شبکه</a>
+                    <a href="/jobs/qa" class="py-1">تستر نرم‌افزار</a>
+                    <a href="/jobs/product-manager" class="py-1">مدیر محصول</a>
+                    <a href="/jobs/network" class="py-1">مهندس شبکه</a>
+                    <a href="/jobs/game-dev" class="py-1">بازیساز</a>
+                    <a href="/jobs/database" class="py-1">مدیر پایگاه داده</a>
+                </div>
+            </div>
+            <a href="./game.html" class="block text-karyar-500 font-bold py-2 border-b border-slate-50">🎮 بازی و
+                سرگرمی</a>
+            <a href="./creat-job.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">ثبت آگهی
+                شغلی</a>
+            <a href="./about.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">درباره ما</a>
+            <a href="./contact.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">تماس با ما</a>
+
+            <div class="pt-4 flex flex-col gap-3">
+                <a href="./login.html"
+                    class="text-center bg-karyar-500 text-white font-bold py-2.5 rounded-xl shadow-md"> ورود
+                </a>
+                <a href="./regester.html"
+                    class="text-center bg-karyar-500 text-white font-bold py-2.5 rounded-xl shadow-md">ثبت‌نام
+                </a>
+            </div>
+        </div>
+    </header>
+    <!-- Experience Layer (The 3D Scene) -->
+    <div id="three-container"></div>
+
+    <!-- UI Layer (Content & User Interface) -->
+    <div class="main-content">
+
+        <main class="relative z-10 pt-28">
+
+            <!-- Hero Section: Dynamic Entry -->
+            <section id="hero" class="min-h-screen flex items-center justify-center px-6">
+                <div class="max-w-4xl text-center space-y-6">
+                    <span
+                        class="hero-fade inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-white/80 text-brand-900 border border-brand-200 shadow-sm backdrop-blur-md">
+                        نسل سوم پلتفرم‌های کاریابی (3D Web)
+                    </span>
+                    <h1 class="hero-fade text-5xl md:text-7xl font-black text-brand-900 leading-tight text-glow">
+                        شفاف، سریع، <span class="text-brand-500">کاریار</span>
+                    </h1>
+                    <p
+                        class="hero-fade text-lg md:text-xl text-slate-700 font-normal max-w-2xl mx-auto leading-relaxed text-glow">
+                        کاریار، پل ارتباطی هوشمند و شفاف میان استعدادهای برتر و سازمان‌های پیشرو است که با تکیه بر
+                        فناوری، مسیر استخدام را متحول کرده است.
+                    </p>
+                    <div class="hero-fade pt-4 flex justify-center gap-4">
+                        <a href="#vision"
+                            class="bg-brand-500 hover:bg-brand-900 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-brand-500/30 transition duration-300 transform hover:scale-105">
+                            کشف داستان ما
+                        </a>
+                        <a href="#jobs"
+                            class="bg-white/80 hover:bg-white text-brand-900 px-8 py-3.5 rounded-xl font-bold border border-brand-200 transition duration-300 shadow">
+                            ثبت نام کارجو
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vision Section: Interaction Focus -->
+            <section id="vision" class="min-h-[80vh] flex items-center px-6 py-20">
+                <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+                    <div
+                        class="bg-white/70 backdrop-blur-xl p-10 md:p-14 rounded-[32px] border border-white/80 shadow-2xl space-y-6 transform hover:shadow-brand-200/50 transition-shadow duration-500">
+                        <h2 class="text-4xl font-black text-brand-900 leading-snug">
+                            چشم‌انداز ما: حذف ابهام از استخدام
+                        </h2>
+                        <p class="text-slate-700 leading-relaxed text-base font-normal">
+                            ما معتقدیم که بزرگترین مانع در رشد حرفه‌ای، عدم شفافیت است. کاریار با هدف ایجاد یک زیست‌بوم
+                            استخدام مدرن متولد شد؛ جایی که داده‌های دقیق، الگوریتم‌های هوشمند تطبیق و رابط کاربری روان،
+                            ابهام را از میان برمی‌دارند و کارفرمایان و کارجویان را در کوتاه‌ترین زمان به هم می‌رسانند.
+                        </p>
+                        <ul class="space-y-3 font-medium text-slate-800 text-sm">
+                            <li class="flex items-center gap-3">
+                                <span class="w-2 h-2 rounded-full bg-brand-500"></span>
+                                تمرکز بر مهارت‌های واقعی به جای رزومه‌های کاغذی
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="w-2 h-2 rounded-full bg-brand-900"></span>
+                                بازخورد سریع و متقابل در تمام مراحل
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Empty column to let 3D element shine on the left (RTL) -->
+                    <div class="order-first md:order-last"></div>
+                </div>
+            </section>
+
+            <!-- Metrics Section -->
+            <section id="metrics" class="py-24 px-6 relative">
+                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div
+                        class="bg-white/40 backdrop-blur-lg border border-white p-10 rounded-3xl text-center shadow-xl">
+                        <span class="block text-5xl font-black text-brand-900 mb-2">+۲۰,۰۰۰</span>
+                        <span class="text-sm font-bold text-slate-700">تطبیق هوشمند موفق</span>
+                    </div>
+                    <div
+                        class="bg-white/40 backdrop-blur-lg border border-white p-10 rounded-3xl text-center shadow-xl">
+                        <span class="block text-5xl font-black text-brand-500 mb-2">۴۸ ساعت</span>
+                        <span class="text-sm font-bold text-slate-700">میانگین زمان اولین مصاحبه</span>
+                    </div>
+                    <div
+                        class="bg-white/40 backdrop-blur-lg border border-white p-10 rounded-3xl text-center shadow-xl">
+                        <span class="block text-5xl font-black text-brand-900 mb-2">+۱,۵۰۰</span>
+                        <span class="text-sm font-bold text-slate-700">شرکت معتبر همکار</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+
+    </div>
+
+        <!-- ================= FOOTER START ================= -->
+    <footer class="bg-ky-900 text-white relative overflow-hidden pt-16 pb-8 border-t-4 border-ky-500"
+        role="contentinfo">
+
+        <!-- کانواس المان ۳ بعدی تعاملی -->
+        <canvas id="3d-globe" class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none z-0"></canvas>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <!-- بخش بالایی: خبرنامه + معرفی -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b border-ky-200/20">
+
+                <!-- اطلاعات برند -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-ky-500 flex items-center justify-center font-bold text-white text-xl shadow-lg shadow-ky-500/30 animate-float">
+                            کـ
+                        </div>
+                        <span class="text-2xl font-black text-ky-50 tracking-wide">کار‌یار</span>
+                    </div>
+                    <p class="text-ky-200 text-sm leading-relaxed max-w-sm">
+                        کاریار پل ارتباطی هوشمند بین کارجویان متخصص و برترین سازمان‌ها است. ساخت آینده شغلی شما از اینجا
+                        شروع می‌شود.
+                    </p>
+                </div>
+
+                <!-- فرم خبرنامه بهینه با AJAX/Alpine -->
+                <div class="lg:col-span-7 flex flex-col justify-center" x-data="{ subscribed: false }">
+                    <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-ky-200/10">
+                        <h3 class="text-lg font-bold text-ky-50 mb-2">عضویت در خبرنامه فرصت‌های شغلی</h3>
+                        <p class="text-xs text-ky-200 mb-4">جدیدترین آگهی‌های مرتبط با تخصص خود را هفتگی در ایمیل دریافت
+                            کنید.</p>
+
+                        <form @submit.prevent="subscribed = true" class="flex flex-col sm:flex-row gap-3">
+                            <input type="email" required placeholder="ایمیل خود را وارد کنید..."
+                                class="bg-ky-900/60 text-white placeholder-ky-200/60 px-4 py-3 rounded-xl border border-ky-200/30 focus:outline-none focus:border-ky-500 flex-1 transition-all text-sm" />
+                            <button type="submit"
+                                class="bg-ky-500 hover:bg-ky-200 hover:text-ky-900 text-white font-bold px-6 py-3 rounded-xl transition-all duration-300 text-sm shadow-md flex items-center justify-center gap-2">
+                                <span>عضویت سریع</span>
+                            </button>
+                        </form>
+
+                        <p x-show="subscribed" x-transition class="text-emerald-400 text-xs mt-3">✓ با موفقیت ثبت شد!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- بخش میان: لینک‌ها (بهینه‌شده برای خزنده گوگل) -->
+            <nav aria-label="لینک‌های فوتر" class="grid grid-cols-2 md:grid-cols-4 gap-8 py-12">
+
+                <!-- ستون ۱ -->
+                <div>
+                    <h4 class="text-ky-200 font-bold text-sm mb-4 border-r-2 border-ky-500 pr-2">برای کارجویان</h4>
+                    <ul class="space-y-2.5 text-xs text-gray-300">
+                        <li><a href="#header" class="hover:text-ky-200 transition-colors duration-200 block py-1">جستجوی
+                                فرصت‌های شغلی</a></li>
+                        <li><a href="/salaries"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">استعلام حقوق بازار
+                                کار</a></li>
+                    </ul>
+                </div>
+
+                <!-- ستون ۲ -->
+                <div>
+                    <h4 class="text-ky-200 font-bold text-sm mb-4 border-r-2 border-ky-500 pr-2">برای کارفرمایان</h4>
+                    <ul class="space-y-2.5 text-xs text-gray-300">
+                        <li><a href="./creat-job.html" class="hover:text-ky-200 transition-colors duration-200 block py-1">ثبت
+                                آگهی استخدام</a></li>
+                        <li><a href="./price.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">تعرفه‌ها و
+                                بسته‌ها</a></li>
+                    </ul>
+                </div>
+
+                <!-- ستون ۳ -->
+                <div>
+                    <h4 class="text-ky-200 font-bold text-sm mb-4 border-r-2 border-ky-500 pr-2">کاریار</h4>
+                    <ul class="space-y-2.5 text-xs text-gray-300">
+                        <li><a href="./about.html" class="hover:text-ky-200 transition-colors duration-200 block py-1">درباره
+                                ما</a></li>
+                        <li><a href="/blog" class="hover:text-ky-200 transition-colors duration-200 block py-1">مجله
+                                آموزشی و مقالات</a></li>
+                        <li><a href="./contact.html" class="hover:text-ky-200 transition-colors duration-200 block py-1">تماس
+                                با پشتیبانی</a></li>
+                    </ul>
+                </div>
+
+                <!-- ستون ۴ -->
+                <div>
+                    <h4 class="text-ky-200 font-bold text-sm mb-4 border-r-2 border-ky-500 pr-2">قوانین و امنیت</h4>
+                    <ul class="space-y-2.5 text-xs text-gray-300">
+                        <li><a href="./rule.html" class="hover:text-ky-200 transition-colors duration-200 block py-1">قوانین 
+                                </a></li>
+                    </ul>
+                </div>
+
+            </nav>
+
+            <!-- بخش پایینی: کپی‌رایت + شبکه اجتماعی -->
+            <div
+                class="pt-8 border-t border-ky-200/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-ky-200">
+                <p>© ۱۴۰۵ تمامی حقوق برای سامانه کاریابی کاریار محفوظ است.</p>
+
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <a href="https://linkedin.com" aria-label="لینکدین"
+                        class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center hover:bg-ky-500 hover:text-white transition-all">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.72a1.47 1.47 0 1 0 0 2.94 1.47 1.47 0 0 0 0-2.94Z" />
+                        </svg>
+                    </a>
+                    <a href="https://telegram.org" aria-label="تلگرام"
+                        class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center hover:bg-ky-500 hover:text-white transition-all">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <!-- ================= FOOTER END ================= -->
+
+    <!-- The Custom 3D Experience (Three.js & GSAP) -->
+    <script>
+        // 1. Initial State & SEO Handling
+        // Although the content is transparently in HTML, we ensure everything is ready before interactions start.
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+            // GSAP Entrance Animation for content
+            gsap.from(".hero-fade", { opacity: 0, y: 30, duration: 1, stagger: 0.2, ease: "power3.out" });
+        });
+
+        // 2. Scene Setup
+        const container = document.getElementById('three-container');
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0xE3F2FD, 0.1); // Add atmospheric depth
+
+        const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.set(0, 0, 8); // Move camera slightly further back
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for speed
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        container.appendChild(renderer.domElement);
+
+        // 3. Custom Geometric Composition (The "Career Planes")
+        const careerGroup = new THREE.Group();
+        scene.add(careerGroup);
+
+        const planeGeometry = new THREE.BoxGeometry(2.5, 1.5, 0.05);
+        // Use MeshPhysicalMaterial for world-class glass/crystal effect (Transmission, Roughness)
+        const planeMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0xffffff,
+            metalness: 0.0,
+            roughness: 0.05,
+            transmission: 0.95, // Glass transparency
+            thickness: 0.5,
+            ior: 1.45,
+            reflectivity: 0.5,
+            clearcoat: 1.0,
+            transparent: true,
+            opacity: 0.8,
+            envMapIntensity: 1.0
+        });
+
+        const planes = [];
+        const numPlanes = 5;
+
+        for (let i = 0; i < numPlanes; i++) {
+            const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+            // Random initial placement within a tight range
+            plane.position.set(
+                (Math.random() - 0.5) * 1,
+                (Math.random() - 0.5) * 1,
+                (Math.random() - 0.5) * 1
+            );
+            // Unique initial rotation
+            plane.rotation.set(
+                Math.random() * Math.PI,
+                Math.random() * Math.PI,
+                Math.random() * Math.PI
+            );
+            careerGroup.add(plane);
+            planes.push(plane);
+        }
+
+        // Add a central, glowing "Core" (The Talent)
+        const coreGeo = new THREE.IcosahedronGeometry(0.6, 1);
+        const coreMat = new MeshStandardMaterial({
+            color: 0x2196F3,
+            emissive: 0x0D47A1,
+            emissiveIntensity: 0.5,
+            metalness: 1.0,
+            roughness: 0.1
+        });
+        const coreNode = new THREE.Mesh(coreGeo, coreMat);
+        careerGroup.add(coreNode);
+
+        // 4. Advanced Cinematic Lighting
+        scene.add(new THREE.AmbientLight(0xffffff, 1.5)); // Base fill light
+
+        const lightTop = new THREE.PointLight(0x90CAF9, 3, 20); // Brand Light 1
+        lightTop.position.set(5, 5, 5);
+        scene.add(lightTop);
+
+        const lightBottom = new THREE.PointLight(0x0D47A1, 4, 15); // Brand Light 2 (Deep Blue)
+        lightBottom.position.set(-5, -5, -5);
+        scene.add(lightBottom);
+
+        const centralGlow = new THREE.PointLight(0x2196F3, 2, 8); // Core light
+        centralGlow.position.set(0, 0, 0);
+        scene.add(centralGlow);
+
+        // 5. User Interaction (Scroll & Mouse)
+        // Global mouse storage
+        let mouseX = 0, mouseY = 0;
+        let targetX = 0, targetY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5);
+            mouseY = (e.clientY / window.innerHeight - 0.5);
+        });
+
+        // GSAP ScrollTrigger for 3D Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Timeline for coordinated animations
+        const scrollTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1.5, // Smooth animation follow the scroll
+            }
+        });
+
+        // Animation 1: The group shifts position for the content grid
+        scrollTl.to(careerGroup.position, {
+            x: -3, // Shifts to the left in RTL (appears right to the user)
+            z: 2,
+            duration: 2
+        });
+
+        // Animation 2: Individual Planes open up like opportunities
+        planes.forEach((plane, index) => {
+            // Expand their range
+            scrollTl.to(plane.position, {
+                x: (Math.random() - 0.5) * 6,
+                y: (Math.random() - 0.5) * 5,
+                z: (Math.random() - 0.5) * 4,
+                duration: 2
+            }, 0); // Start all at time 0
+
+            // Align their rotations slightly toward the camera for transparency effect
+            scrollTl.to(plane.rotation, {
+                x: Math.PI / 2 * (index % 2 ? 1 : -1),
+                y: Math.PI / 4,
+                duration: 2
+            }, 0);
+        });
+
+        // Animation 3: The Core pulses faster as we scroll down
+        scrollTl.to(coreMat, { emissiveIntensity: 2.0, duration: 1 }, 1);
+
+
+        // 6. Animation Loop (Smooth Rendering)
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const delta = clock.getDelta();
+            const elapsedTime = clock.getElapsedTime();
+
+            // Constant, slow ambient rotation of the whole composition
+            careerGroup.rotation.y += delta * 0.05;
+
+            // Core Pulse Animation
+            const pulse = Math.sin(elapsedTime * 2) * 0.2 + 0.8;
+            coreMat.emissiveIntensity = 0.5 + pulse * 0.5;
+            centralGlow.intensity = 1.0 + pulse * 1.0;
+
+            // Mouse Interaction: Smooth interpolation (easing)
+            targetX += (mouseX - targetX) * 0.05;
+            targetY += (mouseY - targetY) * 0.05;
+
+            // Subtle rotation based on mouse
+            careerGroup.rotation.x = -targetY * 0.2;
+            careerGroup.rotation.y = targetX * 0.3 + elapsedTime * 0.05;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Handle Responsive Resizing efficiently
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+
+</html>

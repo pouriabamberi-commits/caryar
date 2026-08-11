@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رزومه‌ساز هوشمند | کار یار - کاریابی و استخدام</title>
+
+    <!-- SEO & Crawlability Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="با رزومه‌ساز آنلاین کار یار، رزومه حرفه‌ای و استاندارد خود را در چند دقیقه بسازید و فرصت‌های شغلی برتر را جذب کنید.">
+    <meta name="keywords" content="کاریابی, کار یار, رزومه ساز, استخدام, ساخت رزومه, برنامه نویسی">
+    <link rel="canonical" href="https://karyar.ir/resume-builder">
+
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="رزومه‌ساز آنلاین کار یار">
+    <meta property="og:description" content="رزومه حرفه‌ای خود را بسازید و به هزاران کارفرما متصل شوید.">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="./library/tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#E3F2FD',
+                            200: '#90CAF9',
+                            500: '#2196F3',
+                            900: '#0D47A1',
+                        },
+                        karyar: {
+                            50: '#E3F2FD',
+                            100: '#90CAF9',
+                            500: '#2196F3',
+                            900: '#0D47A1',
+                        },
+                        ky: {
+                            50: '#E3F2FD',  /* زمینه روشن و کارت‌ها */
+                            200: '#90CAF9', /* بوردرها و عناصر ثانویه */
+                            500: '#2196F3', /* رنگ اصلی و دکمه‌ها */
+                            900: '#0D47A1', /* رنگ متن‌ها و پس‌زمینه فوتر */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'Tahoma', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- AOS Animation Library CDN -->
+    <link href="./library/aos.css" rel="stylesheet">
+    <script src="./library/aos.js"></script>
+
+    <!-- icon -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
+        integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- Alpine.js CDN -->
+    <script defer src="./library/apline.min.js"></script>
+
+    <!-- Web Font -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .custom-glass {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+
+<body
+    class="text-slate-800 antialiased selection:bg-brand-200 selection:text-brand-900 min-h-screen flex flex-col justify-between">
+
+    <!-- Header & Navbar Navigation -->
+    <header x-data="{ mobileMenuOpen: false, jobsDropdownOpen: false }"
+        class="sticky top-0 z-50 bg-white border-b border-karyar-50 shadow-sm">
+
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+            <!-- Logo Section -->
+            <a href="" class="flex items-center gap-3 group">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-karyar-900 to-karyar-500 flex items-center justify-center text-white font-black text-2xl shadow-md shadow-karyar-500/20 group-hover:scale-105 transition-transform">
+                    <i class="bi bi-briefcase-fill"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black text-karyar-900 tracking-tight leading-none">کار<span
+                            class="text-karyar-500">یار</span></span>
+                    <span class="text-[10px] text-slate-400 font-medium mt-1">سامانه هوشمند کاریابی</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <ul class="hidden lg:flex items-center gap-7 font-semibold text-slate-600 text-sm">
+                <li>
+                    <a href="" class="text-karyar-500 hover:text-karyar-900 transition-colors">صفحه اصلی</a>
+                </li>
+
+                <!-- Jobs Dropdown -->
+                <li class="relative" @click.outside="jobsDropdownOpen = false">
+                    <button @click="jobsDropdownOpen = !jobsDropdownOpen"
+                        class="flex items-center gap-1.5 hover:text-karyar-500 transition-colors focus:outline-none">
+                        <span>شغل‌ها</span>
+                        <i class="bi bi-chevron-bar-down text-xs transition-transform duration-200"
+                            :class="jobsDropdownOpen ? 'rotate-180 text-karyar-500' : ''"></i>
+                    </button>
+
+                    <!-- 15 Computer Jobs Dropdown Menu -->
+                    <div x-show="jobsDropdownOpen" x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0 translate-y-2"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-150"
+                        x-transition:leave-start="opacity-100 translate-y-0"
+                        x-transition:leave-end="opacity-0 translate-y-2"
+                        class="absolute right-0 mt-4 w-[600px] bg-white rounded-2xl shadow-xl border border-karyar-50 p-6 grid grid-cols-3 gap-3 z-50">
+
+                        <a href="./front-job.html"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-code text-karyar-500 text-xs"></i>
+                            <span>برنامه‌نویس Frontend</span>
+                        </a>
+                        <a href="/jobs/backend"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-hdd-fill text-karyar-500 text-xs"></i>
+                            <span>برنامه‌نویس Backend</span>
+                        </a>
+                        <a href="/jobs/fullstack"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-stack text-karyar-500 text-xs"></i>
+                            <span>برنامه‌نویس Full-Stack</span>
+                        </a>
+                        <a href="/jobs/ui-ux"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-easel text-karyar-500 text-xs"></i>
+                            <span>طراح UI/UX</span>
+                        </a>
+                        <a href="/jobs/devops"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-infinitytext-karyar-500 text-xs"></i>
+                            <span>مهندس DevOps</span>
+                        </a>
+                        <a href="/jobs/ai"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-anthropic text-karyar-500 text-xs"></i>
+                            <span>متخصص هوش مصنوعی</span>
+                        </a>
+                        <a href="/jobs/data-science"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-bar-chart-line-fill text-karyar-500 text-xs"></i>
+                            <span>دانشمند داده (Data)</span>
+                        </a>
+                        <a href="/jobs/mobile"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-phone-fill text-karyar-500 text-xs"></i>
+                            <span>توسعه‌دهنده موبایل</span>
+                        </a>
+                        <a href="/jobs/seo"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-search text-karyar-500 text-xs"></i>
+                            <span>متخصص سئو (SEO)</span>
+                        </a>
+                        <a href="/jobs/security"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-shield-fill-plus text-karyar-500 text-xs"></i>
+                            <span>امنیت شبکه و سایبر</span>
+                        </a>
+                        <a href="/jobs/qa"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-badge-vr-fill text-karyar-500 text-xs"></i>
+                            <span>تستر نرم‌افزار (QA)</span>
+                        </a>
+                        <a href="/jobs/product-manager"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-box2-fill text-karyar-500 text-xs"></i>
+                            <span>مدیر محصول (Product)</span>
+                        </a>
+                        <a href="/jobs/network"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-hdd-network-fill text-karyar-500 text-xs"></i>
+                            <span>مهندس شبکه</span>
+                        </a>
+                        <a href="/jobs/game-dev"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-controller text-karyar-500 text-xs"></i>
+                            <span>بازیساز (Game Dev)</span>
+                        </a>
+                        <a href="/jobs/database"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-database-fill text-karyar-500 text-xs"></i>
+                            <span>مدیر پایگاه داده</span>
+                        </a>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="./game.html" class="flex items-center gap-1.5 hover:text-karyar-900 transition-colors">
+                        <i class="bi bi-controller"></i>
+                        <span>بازی و سرگرمی</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./creat-job.html" class="hover:text-karyar-500 transition-colors">ثبت آگهی شغلی</a>
+                </li>
+                <li>
+                    <a href="./about.html" class="hover:text-karyar-500 transition-colors">درباره ما</a>
+                </li>
+                <li>
+                    <a href="./contact.html" class="hover:text-karyar-500 transition-colors">تماس با ما</a>
+                </li>
+            </ul>
+
+            <!-- Auth Buttons (Desktop) -->
+            <div class="hidden lg:flex items-center gap-3">
+                <a href="./login.html"
+                    class="bg-karyar-500 hover:bg-karyar-900 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md shadow-karyar-500/20 hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    ورود
+                </a>
+                <a href="./regester.html"
+                    class="bg-karyar-500 hover:bg-karyar-900 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md shadow-karyar-500/20 hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    ثبت نام
+                </a>
+            </div>
+
+            <!-- Hamburger Button (Mobile) -->
+            <button @click="mobileMenuOpen = !mobileMenuOpen"
+                class="lg:hidden text-black text-2xl p-2 focus:outline-none">
+                <i :class="mobileMenuOpen ? 'bi bi-x' : 'bi bi-list'"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Drawer Menu -->
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-4"
+            class="lg:hidden bg-white border-b border-slate-100 px-6 py-6 space-y-4 max-h-[80vh] overflow-y-auto">
+
+            <a href="" class="block text-slate-700 font-bold py-2 border-b border-slate-50">صفحه اصلی</a>
+
+            <!-- Mobile Jobs Accordion -->
+            <div x-data="{ jobsSubOpen: false }" class="border-b border-slate-50 py-2">
+                <button @click="jobsSubOpen = !jobsSubOpen"
+                    class="w-full flex items-center justify-between text-slate-700 font-bold">
+                    <span>شغل‌ها</span>
+                </button>
+                <div x-show="jobsSubOpen" class="mt-3 grid grid-cols-1 gap-2 pr-3 text-sm text-slate-600">
+                    <a href="./front-job-detail.html" class="py-1">برنامه‌نویس Frontend</a>
+                    <a href="/jobs/backend" class="py-1">برنامه‌نویس Backend</a>
+                    <a href="/jobs/fullstack" class="py-1">برنامه‌نویس Full-Stack</a>
+                    <a href="/jobs/ui-ux" class="py-1">طراح UI/UX</a>
+                    <a href="/jobs/devops" class="py-1">مهندس DevOps</a>
+                    <a href="/jobs/ai" class="py-1">متخصص هوش مصنوعی</a>
+                    <a href="/jobs/data-science" class="py-1">دانشمند داده</a>
+                    <a href="/jobs/mobile" class="py-1">توسعه‌دهنده موبایل</a>
+                    <a href="/jobs/seo" class="py-1">متخصص سئو</a>
+                    <a href="/jobs/security" class="py-1">امنیت شبکه</a>
+                    <a href="/jobs/qa" class="py-1">تستر نرم‌افزار</a>
+                    <a href="/jobs/product-manager" class="py-1">مدیر محصول</a>
+                    <a href="/jobs/network" class="py-1">مهندس شبکه</a>
+                    <a href="/jobs/game-dev" class="py-1">بازیساز</a>
+                    <a href="/jobs/database" class="py-1">مدیر پایگاه داده</a>
+                </div>
+            </div>
+            <a href="./game.html" class="block text-karyar-500 font-bold py-2 border-b border-slate-50">🎮 بازی و
+                سرگرمی</a>
+            <a href="./creat-job.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">ثبت آگهی
+                شغلی</a>
+            <a href="./about.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">درباره ما</a>
+            <a href="./contact.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">تماس با ما</a>
+
+            <div class="pt-4 flex flex-col gap-3">
+                <a href="./login.html"
+                    class="text-center bg-karyar-500 text-white font-bold py-2.5 rounded-xl shadow-md"> ورود
+                </a>
+                <a href="./regester.html"
+                    class="text-center bg-karyar-500 text-white font-bold py-2.5 rounded-xl shadow-md">ثبت‌نام
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="py-10 lg:py-14">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Page Title Header -->
+            <header class="text-center mb-10" data-aos="fade-down" data-aos-duration="800">
+                <span
+                    class="inline-block px-3 py-1 text-xs font-semibold bg-brand-50 text-brand-900 rounded-full mb-3 border border-brand-200">
+                    گام به گام تا شغل رویایی
+                </span>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-brand-900 leading-tight">
+                    رزومه حرفه‌ای خود را بپیرایید
+                </h1>
+                <p class="mt-2 text-slate-600 text-sm sm:text-base max-w-xl mx-auto">
+                    اطلاعات زیر را با دقت وارد کنید تا رزومه شما به بهترین شکل برای کارفرمایان نمایش داده شود.
+                </p>
+            </header>
+
+            <!-- Resume Form -->
+            <form id="resumeForm" class="space-y-8" action="#" method="POST" enctype="multipart/form-data">
+
+                <!-- Section 1: Profile Image & Personal Info -->
+                <section
+                    class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-100 relative overflow-hidden"
+                    data-aos="fade-up" data-aos-duration="800">
+                    <div class="absolute top-0 right-0 w-2 h-full bg-brand-500"></div>
+                    <h2 class="text-xl font-bold text-brand-900 mb-6 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        اطلاعات فردی و عکس
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                        <!-- Profile Image Upload -->
+                        <div
+                            class="flex flex-col items-center justify-center border-2 border-dashed border-brand-200 rounded-xl p-4 bg-brand-50/30 hover:bg-brand-50 transition-colors">
+                            <div class="relative w-28 h-28 mb-3">
+                                <img id="avatarPreview"
+                                    src="https://via.placeholder.com/150/E3F2FD/0D47A1?text=تصویر+شما"
+                                    alt="پیش‌نمایش عکس پروفایل"
+                                    class="w-full h-full object-cover rounded-full shadow-inner border-2 border-white">
+                                <label for="profile_image"
+                                    class="absolute bottom-0 right-0 bg-brand-500 text-white p-2 rounded-full cursor-pointer hover:bg-brand-900 transition-colors shadow-md">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 9a2 2 0 012-2h0.93a2 2 0 001.664-.89l0.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l0.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
+                                        </path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                </label>
+                                <input type="file" id="profile_image" name="profile_image" accept="image/*"
+                                    class="hidden" onchange="previewImage(event)">
+                            </div>
+                            <span class="text-xs text-slate-500 text-center">فرمت‌های مجاز: JPG, PNG (حداکثر ۲
+                                مگابایت)</span>
+                        </div>
+
+                        <!-- Full Name & Phone -->
+                        <div class="md:col-span-2 space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="first_name" class="block text-xs font-semibold text-slate-700 mb-2">نام
+                                        *</label>
+                                    <input type="text" id="first_name" name="first_name" required
+                                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm"
+                                        placeholder="مثال: علی">
+                                </div>
+                                <div>
+                                    <label for="last_name" class="block text-xs font-semibold text-slate-700 mb-2">نام
+                                        خانوادگی *</label>
+                                    <input type="text" id="last_name" name="last_name" required
+                                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm"
+                                        placeholder="مثال: محمدی">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-xs font-semibold text-slate-700 mb-2">شماره تلفن
+                                    همراه *</label>
+                                <input type="tel" id="phone" name="phone" dir="ltr" required
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm text-right"
+                                    placeholder="09123456789">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Contact Channels & Links -->
+                <section
+                    class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-100 relative overflow-hidden"
+                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="absolute top-0 right-0 w-2 h-full bg-brand-500"></div>
+                    <h2 class="text-xl font-bold text-brand-900 mb-6 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1">
+                            </path>
+                        </svg>
+                        راه‌های ارتباطی و شبکه‌های حرفه‌ای
+                    </h2>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="linkedin" class="block text-xs font-semibold text-slate-700 mb-2">لینک پروفایل
+                                لینکدین</label>
+                            <input type="url" id="linkedin" name="linkedin" dir="ltr"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm"
+                                placeholder="https://linkedin.com/in/username">
+                        </div>
+                        <div>
+                            <label for="github" class="block text-xs font-semibold text-slate-700 mb-2">لینک پروفایل
+                                گیت‌هاب</label>
+                            <input type="url" id="github" name="github" dir="ltr"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm"
+                                placeholder="https://github.com/username">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Technical Skills -->
+                <section
+                    class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-100 relative overflow-hidden"
+                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <div class="absolute top-0 right-0 w-2 h-full bg-brand-500"></div>
+                    <h2 class="text-xl font-bold text-brand-900 mb-6 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                        مهارت‌ها و تخصص‌ها
+                    </h2>
+
+                    <div class="space-y-5">
+                        <!-- Frameworks & Libraries -->
+                        <div>
+                            <label for="frameworks" class="block text-xs font-semibold text-slate-700 mb-2">کتابخانه‌ها
+                                و فریم‌ورک‌ها</label>
+                            <input type="text" id="frameworks" name="frameworks"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm"
+                                placeholder="مثال: React.js, Tailwind CSS, Django, Vue.js (با کاما جدا کنید)">
+                        </div>
+
+                        <!-- Programming Languages -->
+                        <div>
+                            <label for="languages" class="block text-xs font-semibold text-slate-700 mb-2">زبان‌های
+                                برنامه‌نویسی</label>
+                            <input type="text" id="languages" name="languages"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm"
+                                placeholder="مثال: JavaScript, Python, TypeScript, HTML/CSS">
+                        </div>
+
+                        <!-- Additional Skills -->
+                        <div>
+                            <label for="extra_skills" class="block text-xs font-semibold text-slate-700 mb-2">مهارت‌های
+                                تکمیلی و ابزارها</label>
+                            <input type="text" id="extra_skills" name="extra_skills"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm"
+                                placeholder="مثال: Git, Docker, Figma, حل مسئله, کار تیمی">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4: About & Work Experience -->
+                <section
+                    class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-100 relative overflow-hidden"
+                    data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                    <div class="absolute top-0 right-0 w-2 h-full bg-brand-500"></div>
+                    <h2 class="text-xl font-bold text-brand-900 mb-6 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 1321 13.255A2.36 2.36 0 0019 9.873V6a2 2 0 00-2-2H7a2 2 0 00-2 2v3.873a2.36 2.36 0 00-2 3.127L5 21">
+                            </path>
+                        </svg>
+                        درباره من و سوابق شغلی
+                    </h2>
+
+                    <div class="space-y-6">
+                        <!-- About Me Summary -->
+                        <div>
+                            <label for="about_me" class="block text-xs font-semibold text-slate-700 mb-2">توضیح کوتاه
+                                درباره خود (خلاصه رزومه)</label>
+                            <textarea id="about_me" name="about_me" rows="3"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none transition-all text-sm resize-none"
+                                placeholder="علاقه‌مندی‌ها، اهداف شغلی و دستاوردهای اصلی خود را در چند جمله بیان کنید..."></textarea>
+                        </div>
+
+                        <!-- Dynamic Work Experience -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-2">سوابق کاری</label>
+                            <div id="experienceContainer" class="space-y-4">
+                                <div
+                                    class="p-4 rounded-xl bg-brand-50/50 border border-brand-200/60 relative space-y-3">
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <input type="text" name="job_title[]"
+                                            placeholder="عنوان شغلی (مثال: توسعه‌دهنده فرانت‌اند)"
+                                            class="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-brand-500">
+                                        <input type="text" name="company[]" placeholder="نام شرکت"
+                                            class="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-brand-500">
+                                    </div>
+                                    <textarea name="job_desc[]" rows="2"
+                                        placeholder="توضیحات مختصر مسئولیت‌ها و دستاوردها..."
+                                        class="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-brand-500 resize-none"></textarea>
+                                </div>
+                            </div>
+
+                            <button type="button" onclick="addExperience()"
+                                class="mt-3 inline-flex items-center gap-2 text-xs font-bold text-brand-900 bg-brand-50 hover:bg-brand-200 px-4 py-2.5 rounded-lg transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 4v16m8-8H4"></path>
+                                </svg>
+                                افزودن سابقه کاری جدید
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Submit Button -->
+                <div class="pt-4" data-aos="zoom-in" data-aos-duration="600">
+                    <button type="submit"
+                        class="w-full py-4 px-8 bg-brand-900 hover:bg-brand-500 text-white font-bold text-base rounded-xl shadow-lg shadow-brand-900/20 hover:shadow-brand-500/30 transition-all duration-300 flex items-center justify-center gap-2">
+                        <span>ذخیره و ثبت رزومه</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-white border-t border-slate-100 py-8 mt-12 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© ۱۴۰۵ تمامی حقوق برای سامانه کاریابی <span class="font-bold text-brand-900">کار یار</span> محفوظ است.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize AOS Animation
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-in-out'
+        });
+
+        // Profile Image Preview Function
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                const output = document.getElementById('avatarPreview');
+                output.src = reader.result;
+            };
+            if (event.target.files[0]) {
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        }
+
+        // Dynamic Experience Adding Function
+        function addExperience() {
+            const container = document.getElementById('experienceContainer');
+            const newExp = document.createElement('div');
+            newExp.className = "p-4 rounded-xl bg-brand-50/50 border border-brand-200/60 relative space-y-3 animate-fade-in";
+            newExp.innerHTML = `
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input type="text" name="job_title[]" placeholder="عنوان شغلی" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-brand-500">
+                    <input type="text" name="company[]" placeholder="نام شرکت" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-brand-500">
+                </div>
+                <textarea name="job_desc[]" rows="2" placeholder="توضیحات مختصر..." class="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-brand-500 resize-none"></textarea>
+                <button type="button" onclick="this.parentElement.remove()" class="text-xs text-red-500 hover:text-red-700 font-semibold inline-flex items-center gap-1">
+                    حذف این سابقه
+                </button>
+            `;
+            container.appendChild(newExp);
+        }
+    </script>
+</body>
+
+</html>

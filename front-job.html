@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- سئو و متاتگ‌های پایه -->
+    <title>آگهی‌های استخدام فرانت اند (Frontend) | کاریار</title>
+    <meta name="description"
+        content="جدیدترین فرصت‌های شغلی و آگهی‌های استخدام برنامه‌نویس فرانت‌اند در کاریار. فرصت‌های شغلی مدرن را بررسی کنید و رزومه بفرستید.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://karyar.ir/jobs/frontend">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="./library/tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#E3F2FD',
+                            200: '#90CAF9',
+                            500: '#2196F3',
+                            900: '#0D47A1',
+                        },
+                        karyar: {
+                            50: '#E3F2FD',
+                            100: '#90CAF9',
+                            500: '#2196F3',
+                            900: '#0D47A1',
+                        },
+                        ky: {
+                            50: '#E3F2FD',  /* زمینه روشن و کارت‌ها */
+                            200: '#90CAF9', /* بوردرها و عناصر ثانویه */
+                            500: '#2196F3', /* رنگ اصلی و دکمه‌ها */
+                            900: '#0D47A1', /* رنگ متن‌ها و پس‌زمینه فوتر */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- icon  -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
+        integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Alpine.js جهت سوئیچ بین آگهی‌ها -->
+    <script defer src="./library/apline.min.js"></script>
+
+    <!-- فونت وزیرمتن -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet"
+        type="text/css" />
+
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        /* اسکرول‌بار مدرن و روان مخصوص بخش‌های داخلی */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background: rgba(227, 242, 253, 0.6);
+            border-radius: 8px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #90CAF9;
+            border-radius: 8px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #2196F3;
+        }
+
+        /* مخفی‌سازی کامل اسکرول‌بار در مرورگرهای مختلف برای بخش فیلترها */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+    </style>
+</head>
+
+<!-- قفل کردن ارتفاع کل صفحه و غیرفعال کردن اسکرول اصلی کل سایت -->
+
+<body class="bg-[#E3F2FD] text-[#0D47A1] h-screen overflow-hidden flex flex-col antialiased" x-data="{ 
+           /* Stateهای فیلترها */
+            remoteOnly: false,
+            internshipOnly: false,
+            publishedTime: 'all',
+            cooperationType: 'all',
+            salary: 'all',
+            experience: 'all',
+            
+            /* Stateهای صفحه اصلی */
+            activeJob: 1, 
+            isMobile: window.innerWidth < 1024 
+        }">
+
+    <!-- هدر سایت (ثابت در بالا) -->
+    <header class="bg-white/90 backdrop-blur-md border-b border-[#90CAF9] shrink-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Logo Section -->
+            <a href="" class="flex items-center gap-3 group w-60">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-karyar-900 to-karyar-500 flex items-center justify-center text-white font-black text-2xl shadow-md shadow-karyar-500/20 group-hover:scale-105 transition-transform">
+                    <i class="bi bi-briefcase-fill"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black text-karyar-900 tracking-tight leading-none">کار<span
+                            class="text-karyar-500">یار</span></span>
+                    <span class="text-[10px] text-slate-400 font-medium mt-1">سامانه هوشمند کاریابی</span>
+                </div>
+            </a>
+            <!-- خط جداکننده کوچک -->
+            <div class="h-7 w-px bg-slate-200 shrink-0 hidden sm:block"></div>
+
+            <!-- Horizontal Filters Section (اسکرول افقی بدون اسکرول‌بار) -->
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-2 w-full">
+
+                <!-- دکمه تک‌کلیکه: دورکاری -->
+                <button @click="remoteOnly = !remoteOnly"
+                    :class="remoteOnly ? 'bg-karyar-500 text-white border-karyar-500 shadow-sm' : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'"
+                    class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold whitespace-nowrap transition-all shrink-0">
+                    <i class="bi bi-laptop text-sm"></i>
+                    <span>دورکاری</span>
+                </button>
+
+                <!-- دکمه تک‌کلیکه: کارآموزی -->
+                <button @click="internshipOnly = !internshipOnly"
+                    :class="internshipOnly ? 'bg-karyar-500 text-white border-karyar-500 shadow-sm' : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'"
+                    class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold whitespace-nowrap transition-all shrink-0">
+                    <i class="bi bi-mortarboard text-sm"></i>
+                    <span>کارآموزی</span>
+                </button>
+
+                <!-- فیلتر: زمان انتشار -->
+                <div class="relative shrink-0">
+                    <select x-model="publishedTime"
+                        :class="publishedTime !== 'all' ? 'border-karyar-500 text-karyar-900 bg-karyar-50 font-bold' : 'border-slate-200 text-slate-700 bg-slate-50'"
+                        class="appearance-none pl-7 pr-3 py-1.5 rounded-xl border text-xs font-medium cursor-pointer focus:outline-none transition-all">
+                        <option value="all">زمان انتشار (همه)</option>
+                        <option value="24h">۲۴ ساعت گذشته</option>
+                        <option value="3d">۳ روز گذشته</option>
+                        <option value="7d">یک هفته گذشته</option>
+                    </select>
+                    <i
+                        class="bi bi-chevron-down absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[10px] pointer-events-none"></i>
+                </div>
+
+                <!-- فیلتر: نوع همکاری -->
+                <div class="relative shrink-0">
+                    <select x-model="cooperationType"
+                        :class="cooperationType !== 'all' ? 'border-karyar-500 text-karyar-900 bg-karyar-50 font-bold' : 'border-slate-200 text-slate-700 bg-slate-50'"
+                        class="appearance-none pl-7 pr-3 py-1.5 rounded-xl border text-xs font-medium cursor-pointer focus:outline-none transition-all">
+                        <option value="all">نوع همکاری (همه)</option>
+                        <option value="fulltime">تمام وقت</option>
+                        <option value="parttime">پاره وقت</option>
+                        <option value="project">پروژه‌ای</option>
+                    </select>
+                    <i
+                        class="bi bi-chevron-down absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[10px] pointer-events-none"></i>
+                </div>
+
+                <!-- فیلتر: میزان حقوق -->
+                <div class="relative shrink-0">
+                    <select x-model="salary"
+                        :class="salary !== 'all' ? 'border-karyar-500 text-karyar-900 bg-karyar-50 font-bold' : 'border-slate-200 text-slate-700 bg-slate-50'"
+                        class="appearance-none pl-7 pr-3 py-1.5 rounded-xl border text-xs font-medium cursor-pointer focus:outline-none transition-all">
+                        <option value="all">حقوق مدنظر (همه)</option>
+                        <option value="15-25">۱۵ تا ۲۵ میلیون</option>
+                        <option value="25-40">۲۵ تا ۴۰ میلیون</option>
+                        <option value="40+">بالای ۴۰ میلیون</option>
+                    </select>
+                    <i
+                        class="bi bi-chevron-down absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[10px] pointer-events-none"></i>
+                </div>
+
+                <!-- فیلتر: سابقه کاری -->
+                <div class="relative shrink-0">
+                    <select x-model="experience"
+                        :class="experience !== 'all' ? 'border-karyar-500 text-karyar-900 bg-karyar-50 font-bold' : 'border-slate-200 text-slate-700 bg-slate-50'"
+                        class="appearance-none pl-7 pr-3 py-1.5 rounded-xl border text-xs font-medium cursor-pointer focus:outline-none transition-all">
+                        <option value="all">سابقه کاری (همه)</option>
+                        <option value="junior">کمتر از ۲ سال (Junior)</option>
+                        <option value="mid">۲ تا ۵ سال (Mid-Level)</option>
+                        <option value="senior">بیش از ۵ سال (Senior)</option>
+                    </select>
+                    <i
+                        class="bi bi-chevron-down absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[10px] pointer-events-none"></i>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- محتوای اصلی (پرکننده کل ارتفاع باقی‌مانده) -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2 flex-1 w-full flex flex-col overflow-hidden" x-data="{ 
+              activeJob: 1, 
+              isMobile: window.innerWidth < 1024 
+          }" @resize.window="isMobile = window.innerWidth < 1024">
+
+        <!-- تیتر کوتاه -->
+        <section class="mb-3 shrink-0">
+            <h1 class="text-xl font-extrabold text-[#0D47A1]">فرصت‌های شغلی توسعه‌دهنده فرانت‌اند (Frontend)</h1>
+        </section>
+
+        <!-- ساختار شبکه با قابلیت پرکردن کل ارتفاع (flex-1) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch flex-1 overflow-hidden pb-2">
+
+            <!-- ==================== سمت راست: لیست آگهی‌ها (اسکرول مستقل) ==================== -->
+            <section class="lg:col-span-5 space-y-3 h-full overflow-y-auto pl-1 pr-1 custom-scroll">
+
+                <!-- آگهی ۱ -->
+                <article
+                    @click="if(isMobile) { window.location.href = './front-job-detail.html' } else { activeJob = 1 }"
+                    :class="activeJob === 1 ? 'border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white' : 'border-[#90CAF9]/60 bg-white/80 hover:bg-white'"
+                    class="p-4 rounded-2xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md relative">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 class="font-bold text-base text-[#0D47A1]">توسعه‌دهنده ارشد React.js</h2>
+                            <p class="text-xs text-gray-600 mt-1 font-medium">دیجی‌کالا</p>
+                        </div>
+                        <span class="text-[11px] px-2 py-0.5 bg-[#E3F2FD] text-[#0D47A1] font-semibold rounded-lg">۲
+                            ساعت پیش</span>
+                    </div>
+                    <div class="mt-3 flex flex-wrap gap-2 text-xs text-gray-600">
+                        <span>📍 تهران (دورکاری)</span>
+                        <span>•</span>
+                        <span class="text-emerald-700 font-medium">💰 ۴۰ تا ۵۰ میلیون</span>
+                    </div>
+                    <a href="/jobs/frontend/1" class="sr-only">مشاهده آگهی توسعه‌دهنده ارشد React.js در دیجی‌کالا</a>
+                </article>
+
+                <!-- آگهی 2 -->
+                <article
+                    @click="if(isMobile) { window.location.href = './front-job-detail.html' } else { activeJob = 2 }"
+                    :class="activeJob === 2 ? 'border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white' : 'border-[#90CAF9]/60 bg-white/80 hover:bg-white'"
+                    class="p-4 rounded-2xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md relative">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 class="font-bold text-base text-[#0D47A1]"> ارشد React.js</h2>
+                            <p class="text-xs text-gray-600 mt-1 font-medium">دیجی‌کالا</p>
+                        </div>
+                        <span class="text-[11px] px-2 py-0.5 bg-[#E3F2FD] text-[#0D47A1] font-semibold rounded-lg">۲
+                            ساعت پیش</span>
+                    </div>
+                    <div class="mt-3 flex flex-wrap gap-2 text-xs text-gray-600">
+                        <span>📍 تهران (دورکاری)</span>
+                        <span>•</span>
+                        <span class="text-emerald-700 font-medium">💰 ۴۰ تا ۵۰ میلیون</span>
+                    </div>
+                    <a href="/jobs/frontend/2" class="sr-only">مشاهده آگهی توسعه‌دهنده ارشد React.js در دیجی‌کالا</a>
+                </article>
+
+                <!-- آگهی 3 -->
+                <article
+                    @click="if(isMobile) { window.location.href = './front-job-detail.html' } else { activeJob = 1 }"
+                    :class="activeJob === 3 ? 'border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white' : 'border-[#90CAF9]/60 bg-white/80 hover:bg-white'"
+                    class="p-4 rounded-2xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md relative">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 class="font-bold text-base text-[#0D47A1]">توسعه‌دهنده React.js</h2>
+                            <p class="text-xs text-gray-600 mt-1 font-medium">دیجی‌کالا</p>
+                        </div>
+                        <span class="text-[11px] px-2 py-0.5 bg-[#E3F2FD] text-[#0D47A1] font-semibold rounded-lg">۲
+                            ساعت پیش</span>
+                    </div>
+                    <div class="mt-3 flex flex-wrap gap-2 text-xs text-gray-600">
+                        <span>📍 تهران (دورکاری)</span>
+                        <span>•</span>
+                        <span class="text-emerald-700 font-medium">💰 ۴۰ تا ۵۰ میلیون</span>
+                    </div>
+                    <a href="/jobs/frontend/3" class="sr-only">مشاهده آگهی توسعه‌دهنده ارشد React.js در دیجی‌کالا</a>
+                </article>
+            </section>
+
+
+            <!-- ==================== سمت چپ: جزئیات آگهی‌ها (اسکرول مستقل) ==================== -->
+            <section
+                class="hidden lg:block lg:col-span-7 bg-white rounded-2xl border border-[#90CAF9] p-6 shadow-sm h-full overflow-y-auto custom-scroll">
+
+                <!-- =============== جزئیات آگهی ۱ =============== -->
+                <div x-show="activeJob === 1" class="space-y-6">
+                    <div class="border-b border-[#E3F2FD] pb-4">
+                        <div class="flex justify-between items-center mb-3">
+                            <h2 class="text-xl font-bold text-[#0D47A1]">توسعه‌دهنده ارشد React.js</h2>
+                            <button
+                                class="px-5 py-2.5 bg-[#2196F3] hover:bg-[#0D47A1] text-white font-medium text-sm rounded-xl shadow-md transition-all">
+                                ارسال رزومه
+                            </button>
+                        </div>
+                        <div class="flex gap-4 text-xs text-gray-600 font-medium">
+                            <span>شرکت: <strong>دیجی‌کالا</strong></span>
+                            <span>|</span>
+                            <span>موقعیت: <strong>تهران (دورکاری)</strong></span>
+                            <span>|</span>
+                            <span class="text-emerald-700 font-bold">حقوق: ۴۰ تا ۵۰ میلیون</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm font-bold text-[#0D47A1] mb-2">توضیحات موقعیت شغلی:</h3>
+                        <p class="text-gray-700 text-xs leading-relaxed">
+                            ما در تیم زیرساخت وب دیجی‌کالا به دنبال یک برنامه‌نویس ارشد و باانگیزه React هستیم. شما در
+                            این موقعیت مسئولیت توسعه کامپوننت‌های با بازدهی بالا، بهینه‌سازی سرعت بارگذاری (Core Web
+                            Vitals) و بهبود معماری Front-end پلتفرم اصلی را بر عهده خواهید داشت.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm font-bold text-[#0D47A1] mb-3">مهارت‌های اصلی و میزان تسلط مورد نیاز:</h3>
+                        <div class="space-y-2">
+                            <div
+                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
+                                <div>
+                                    <strong class="text-[#0D47A1] block">React.js & Next.js (App Router)</strong>
+                                    <span class="text-gray-600">تسلط کامل بر SSR، SSG و مدیریت State های پیچیده</span>
+                                </div>
+                                <span
+                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">سطح
+                                    ارشد</span>
+                            </div>
+
+                            <div
+                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
+                                <div>
+                                    <strong class="text-[#0D47A1] block">TypeScript</strong>
+                                    <span class="text-gray-600">کدنویسی Strict، تایپ‌های سفارشی و Generics</span>
+                                </div>
+                                <span
+                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">تسلط
+                                    کامل</span>
+                            </div>
+
+                            <div
+                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
+                                <div>
+                                    <strong class="text-[#0D47A1] block">Tailwind CSS & CSS Architecture</strong>
+                                    <span class="text-gray-600">پیاده‌سازی دقیقا طبق Figma و رعایت استانداردهای
+                                        Responsive</span>
+                                </div>
+                                <span
+                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">تسلط
+                                    کامل</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm font-bold text-[#0D47A1] mb-2">مهارت‌هایی که امتیاز محسوب می‌شوند (Plus
+                            Points):</h3>
+                        <ul class="list-disc list-inside text-xs text-gray-700 space-y-1">
+                            <li>تجربه بهینه‌سازی عملکرد وب‌سایت‌های پرترافیک (Performance Tuning).</li>
+                            <li>تسلط بر تست‌نویسی فرانت‌اند با Jest و React Testing Library.</li>
+                            <li>آشنایی با ابزارهای CI/CD و فرایندهای Dockerize کردن پروژه‌های Next.js.</li>
+                        </ul>
+                    </div>
+
+                    <div
+                        class="bg-[#E3F2FD] p-4 rounded-xl border border-[#90CAF9]/50 flex items-center justify-between text-xs">
+                        <span class="font-medium text-[#0D47A1]">تعداد رزومه‌های ارسالی: <strong
+                                class="text-[#2196F3] font-extrabold text-sm">۴۲</strong> نفر</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-gray-500">آخرین متقاضیان:</span>
+                            <div class="flex -space-x-2 space-x-reverse">
+                                <span
+                                    class="h-6 w-6 rounded-full bg-[#90CAF9] text-[#0D47A1] text-[10px] font-bold flex items-center justify-center ring-2 ring-white">ع</span>
+                                <span
+                                    class="h-6 w-6 rounded-full bg-[#2196F3] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">س</span>
+                                <span
+                                    class="h-6 w-6 rounded-full bg-[#0D47A1] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">ر</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =============== جزئیات آگهی 2 =============== -->
+                <div x-show="activeJob === 2" class="space-y-6">
+                    <div class="border-b border-[#E3F2FD] pb-4">
+                        <div class="flex justify-between items-center mb-3">
+                            <h2 class="text-xl font-bold text-[#0D47A1]"> ارشد React.js</h2>
+                            <button
+                                class="px-5 py-2.5 bg-[#2196F3] hover:bg-[#0D47A1] text-white font-medium text-sm rounded-xl shadow-md transition-all">
+                                ارسال رزومه
+                            </button>
+                        </div>
+                        <div class="flex gap-4 text-xs text-gray-600 font-medium">
+                            <span>شرکت: <strong>دیجی‌کالا</strong></span>
+                            <span>|</span>
+                            <span>موقعیت: <strong>تهران (دورکاری)</strong></span>
+                            <span>|</span>
+                            <span class="text-emerald-700 font-bold">حقوق: ۴۰ تا ۵۰ میلیون</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm font-bold text-[#0D47A1] mb-2">توضیحات موقعیت شغلی:</h3>
+                        <p class="text-gray-700 text-xs leading-relaxed">
+                            ما در تیم زیرساخت وب دیجی‌کالا به دنبال یک برنامه‌نویس ارشد و باانگیزه React هستیم. شما در
+                            این موقعیت مسئولیت توسعه کامپوننت‌های با بازدهی بالا، بهینه‌سازی سرعت بارگذاری (Core Web
+                            Vitals) و بهبود معماری Front-end پلتفرم اصلی را بر عهده خواهید داشت.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm font-bold text-[#0D47A1] mb-3">مهارت‌های اصلی و میزان تسلط مورد نیاز:</h3>
+                        <div class="space-y-2">
+                            <div
+                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
+                                <div>
+                                    <strong class="text-[#0D47A1] block">React.js & Next.js (App Router)</strong>
+                                    <span class="text-gray-600">تسلط کامل بر SSR، SSG و مدیریت State های پیچیده</span>
+                                </div>
+                                <span
+                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">سطح
+                                    ارشد</span>
+                            </div>
+
+                            <div
+                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
+                                <div>
+                                    <strong class="text-[#0D47A1] block">TypeScript</strong>
+                                    <span class="text-gray-600">کدنویسی Strict، تایپ‌های سفارشی و Generics</span>
+                                </div>
+                                <span
+                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">تسلط
+                                    کامل</span>
+                            </div>
+
+                            <div
+                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
+                                <div>
+                                    <strong class="text-[#0D47A1] block">Tailwind CSS & CSS Architecture</strong>
+                                    <span class="text-gray-600">پیاده‌سازی دقیقا طبق Figma و رعایت استانداردهای
+                                        Responsive</span>
+                                </div>
+                                <span
+                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">تسلط
+                                    کامل</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm font-bold text-[#0D47A1] mb-2">مهارت‌هایی که امتیاز محسوب می‌شوند (Plus
+                            Points):</h3>
+                        <ul class="list-disc list-inside text-xs text-gray-700 space-y-1">
+                            <li>تجربه بهینه‌سازی عملکرد وب‌سایت‌های پرترافیک (Performance Tuning).</li>
+                            <li>تسلط بر تست‌نویسی فرانت‌اند با Jest و React Testing Library.</li>
+                            <li>آشنایی با ابزارهای CI/CD و فرایندهای Dockerize کردن پروژه‌های Next.js.</li>
+                        </ul>
+                    </div>
+
+                    <div
+                        class="bg-[#E3F2FD] p-4 rounded-xl border border-[#90CAF9]/50 flex items-center justify-between text-xs">
+                        <span class="font-medium text-[#0D47A1]">تعداد رزومه‌های ارسالی: <strong
+                                class="text-[#2196F3] font-extrabold text-sm">۴۲</strong> نفر</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-gray-500">آخرین متقاضیان:</span>
+                            <div class="flex -space-x-2 space-x-reverse">
+                                <span
+                                    class="h-6 w-6 rounded-full bg-[#90CAF9] text-[#0D47A1] text-[10px] font-bold flex items-center justify-center ring-2 ring-white">ع</span>
+                                <span
+                                    class="h-6 w-6 rounded-full bg-[#2196F3] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">س</span>
+                                <span
+                                    class="h-6 w-6 rounded-full bg-[#0D47A1] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">ر</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =============== جزئیات آگهی 3 =============== -->
+                <div x-show="activeJob === 3" class="space-y-6">
+                    <div class="border-b border-[#E3F2FD] pb-4">
+                        <div class="flex justify-between items-center mb-3">
+                            <h2 class="text-xl font-bold text-[#0D47A1]">توسعه‌دهنده React.js</h2>
+                            <button
+                                class="px-5 py-2.5 bg-[#2196F3] hover:bg-[#0D47A1] text-white font-medium text-sm rounded-xl shadow-md transition-all">
+                                ارسال رزومه
+                            </button>
+                        </div>
+                        <div class="flex gap-4 text-xs text-gray-600 font-medium">
+                            <span>شرکت: <strong>دیجی‌کالا</strong></span>
+                            <span>|</span>
+                            <span>موقعیت: <strong>تهران (دورکاری)</strong></span>
+                            <span>|</span>
+                            <span class="text-emerald-700 font-bold">حقوق: ۴۰ تا ۵۰ میلیون</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm font-bold text-[#0D47A1] mb-2">توضیحات موقعیت شغلی:</h3>
+                        <p class="text-gray-700 text-xs leading-relaxed">
+                            ما در تیم زیرساخت وب دیجی‌کالا به دنبال یک برنامه‌نویس ارشد و باانگیزه React هستیم. شما در
+                            این موقعیت مسئولیت توسعه کامپوننت‌های با بازدهی بالا، بهینه‌سازی سرعت بارگذاری (Core Web
+                            Vitals) و بهبود معماری Front-end پلتفرم اصلی را بر عهده خواهید داشت.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm font-bold text-[#0D47A1] mb-3">مهارت‌های اصلی و میزان تسلط مورد نیاز:</h3>
+                        <div class="space-y-2">
+                            <div
+                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
+                                <div>
+                                    <strong class="text-[#0D47A1] block">React.js & Next.js (App Router)</strong>
+                                    <span class="text-gray-600">تسلط کامل بر SSR، SSG و مدیریت State های پیچیده</span>
+                                </div>
+                                <span
+                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">سطح
+                                    ارشد</span>
+                            </div>
+
+                            <div
+                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
+                                <div>
+                                    <strong class="text-[#0D47A1] block">TypeScript</strong>
+                                    <span class="text-gray-600">کدنویسی Strict، تایپ‌های سفارشی و Generics</span>
+                                </div>
+                                <span
+                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">تسلط
+                                    کامل</span>
+                            </div>
+
+                            <div
+                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
+                                <div>
+                                    <strong class="text-[#0D47A1] block">Tailwind CSS & CSS Architecture</strong>
+                                    <span class="text-gray-600">پیاده‌سازی دقیقا طبق Figma و رعایت استانداردهای
+                                        Responsive</span>
+                                </div>
+                                <span
+                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">تسلط
+                                    کامل</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm font-bold text-[#0D47A1] mb-2">مهارت‌هایی که امتیاز محسوب می‌شوند (Plus
+                            Points):</h3>
+                        <ul class="list-disc list-inside text-xs text-gray-700 space-y-1">
+                            <li>تجربه بهینه‌سازی عملکرد وب‌سایت‌های پرترافیک (Performance Tuning).</li>
+                            <li>تسلط بر تست‌نویسی فرانت‌اند با Jest و React Testing Library.</li>
+                            <li>آشنایی با ابزارهای CI/CD و فرایندهای Dockerize کردن پروژه‌های Next.js.</li>
+                        </ul>
+                    </div>
+
+                    <div
+                        class="bg-[#E3F2FD] p-4 rounded-xl border border-[#90CAF9]/50 flex items-center justify-between text-xs">
+                        <span class="font-medium text-[#0D47A1]">تعداد رزومه‌های ارسالی: <strong
+                                class="text-[#2196F3] font-extrabold text-sm">۴۲</strong> نفر</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-gray-500">آخرین متقاضیان:</span>
+                            <div class="flex -space-x-2 space-x-reverse">
+                                <span
+                                    class="h-6 w-6 rounded-full bg-[#90CAF9] text-[#0D47A1] text-[10px] font-bold flex items-center justify-center ring-2 ring-white">ع</span>
+                                <span
+                                    class="h-6 w-6 rounded-full bg-[#2196F3] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">س</span>
+                                <span
+                                    class="h-6 w-6 rounded-full bg-[#0D47A1] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">ر</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- فوتر کوچک و ثابت در انتهای صفحه -->
+    <footer class="bg-white border-t border-[#90CAF9] py-2 shrink-0">
+        <div class="max-w-7xl mx-auto px-4 text-center text-[11px] text-[#0D47A1]/80">
+            <p>© ۲۰۲۶ کاریار - تمامی حقوق برای کاریابی کاریار محفوظ است.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

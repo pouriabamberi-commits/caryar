@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قوانین و مقررات | کاریابی آنلاین کار یار</title>
+    <meta name="description"
+        content="قوانین، مقررات و شرایط استفاده از خدمات سامانه هوشمند کاریابی کار یار. شفافیت در خدمات‌رسانی و حفظ حریم خصوصی کاربران.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://karyar.ir/terms">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="قوانین و مقررات | کار یار">
+    <meta property="og:description" content="شرایط و قوانین استفاده از پلتفرم کاریابی کار یار">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="./library/tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#E3F2FD',
+                            100: '#90CAF9',
+                            500: '#2196F3',
+                            900: '#0D47A1',
+                        },
+                        karyar: {
+                            50: '#E3F2FD',
+                            100: '#90CAF9',
+                            500: '#2196F3',
+                            900: '#0D47A1',
+                        },
+                        ky: {
+                            50: '#E3F2FD',  /* زمینه روشن و کارت‌ها */
+                            200: '#90CAF9', /* بوردرها و عناصر ثانویه */
+                            500: '#2196F3', /* رنگ اصلی و دکمه‌ها */
+                            900: '#0D47A1', /* رنگ متن‌ها و پس‌زمینه فوتر */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'Tahoma', 'sans-serif'],
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        floatSlow: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'float': 'floatSlow 4s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Alpine.js CDN -->
+    <script src="./library/apline.min.js"></script>
+    <!-- Font -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet"
+        type="text/css" />
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
+        integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Structured Data (SEO Schema) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "قوانین و مقررات کار یار",
+      "description": "قوانین و شرایط استفاده از خدمات پلتفرم کاریابی کار یار",
+      "publisher": {
+        "@type": "Organization",
+        "name": "کار یار"
+      }
+    }
+    </script>
+</head>
+
+<body
+    class="bg-brand-50/60 text-slate-800 font-sans leading-relaxed antialiased min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-white">
+
+    <!-- Header & Navbar Navigation -->
+    <header x-data="{ mobileMenuOpen: false, jobsDropdownOpen: false }"
+        class="text-nowrap sticky top-0 z-50 bg-white border-b border-karyar-50 shadow-sm">
+
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+            <!-- Logo Section -->
+            <a href="" class="flex items-center gap-3 group">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-karyar-900 to-karyar-500 flex items-center justify-center text-white font-black text-2xl shadow-md shadow-karyar-500/20 group-hover:scale-105 transition-transform">
+                    <i class="bi bi-briefcase-fill"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black text-karyar-900 tracking-tight leading-none">کار<span
+                            class="text-karyar-500">یار</span></span>
+                    <span class="text-[10px] text-slate-400 font-medium mt-1">سامانه هوشمند کاریابی</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <ul class="hidden lg:flex items-center gap-7 font-semibold text-slate-600 text-sm">
+                <li>
+                    <a href="" class="text-karyar-500 hover:text-karyar-900 transition-colors">صفحه اصلی</a>
+                </li>
+
+                <!-- Jobs Dropdown -->
+                <li class="relative" @click.outside="jobsDropdownOpen = false">
+                    <button @click="jobsDropdownOpen = !jobsDropdownOpen"
+                        class="flex items-center gap-1.5 hover:text-karyar-500 transition-colors focus:outline-none">
+                        <span>شغل‌ها</span>
+                        <i class="bi bi-chevron-bar-down text-xs transition-transform duration-200"
+                            :class="jobsDropdownOpen ? 'rotate-180 text-karyar-500' : ''"></i>
+                    </button>
+
+                    <!-- 15 Computer Jobs Dropdown Menu -->
+                    <div x-show="jobsDropdownOpen" x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0 translate-y-2"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-150"
+                        x-transition:leave-start="opacity-100 translate-y-0"
+                        x-transition:leave-end="opacity-0 translate-y-2"
+                        class="absolute right-0 mt-4 w-[600px] bg-white rounded-2xl shadow-xl border border-karyar-50 p-6 grid grid-cols-3 gap-3 z-50">
+
+                        <a href="./front-job.html"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-code text-karyar-500 text-xs"></i>
+                            <span>برنامه‌نویس Frontend</span>
+                        </a>
+                        <a href="/jobs/backend"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-hdd-fill text-karyar-500 text-xs"></i>
+                            <span>برنامه‌نویس Backend</span>
+                        </a>
+                        <a href="/jobs/fullstack"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-stack text-karyar-500 text-xs"></i>
+                            <span>برنامه‌نویس Full-Stack</span>
+                        </a>
+                        <a href="/jobs/ui-ux"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-easel text-karyar-500 text-xs"></i>
+                            <span>طراح UI/UX</span>
+                        </a>
+                        <a href="/jobs/devops"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-infinitytext-karyar-500 text-xs"></i>
+                            <span>مهندس DevOps</span>
+                        </a>
+                        <a href="/jobs/ai"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-anthropic text-karyar-500 text-xs"></i>
+                            <span>متخصص هوش مصنوعی</span>
+                        </a>
+                        <a href="/jobs/data-science"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-bar-chart-line-fill text-karyar-500 text-xs"></i>
+                            <span>دانشمند داده (Data)</span>
+                        </a>
+                        <a href="/jobs/mobile"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-phone-fill text-karyar-500 text-xs"></i>
+                            <span>توسعه‌دهنده موبایل</span>
+                        </a>
+                        <a href="/jobs/seo"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-search text-karyar-500 text-xs"></i>
+                            <span>متخصص سئو (SEO)</span>
+                        </a>
+                        <a href="/jobs/security"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-shield-fill-plus text-karyar-500 text-xs"></i>
+                            <span>امنیت شبکه و سایبر</span>
+                        </a>
+                        <a href="/jobs/qa"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-badge-vr-fill text-karyar-500 text-xs"></i>
+                            <span>تستر نرم‌افزار (QA)</span>
+                        </a>
+                        <a href="/jobs/product-manager"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-box2-fill text-karyar-500 text-xs"></i>
+                            <span>مدیر محصول (Product)</span>
+                        </a>
+                        <a href="/jobs/network"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-hdd-network-fill text-karyar-500 text-xs"></i>
+                            <span>مهندس شبکه</span>
+                        </a>
+                        <a href="/jobs/game-dev"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-controller text-karyar-500 text-xs"></i>
+                            <span>بازیساز (Game Dev)</span>
+                        </a>
+                        <a href="/jobs/database"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900">
+                            <i class="bi bi-database-fill text-karyar-500 text-xs"></i>
+                            <span>مدیر پایگاه داده</span>
+                        </a>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="./game.html" class="flex items-center gap-1.5 hover:text-karyar-900 transition-colors">
+                        <i class="bi bi-controller"></i>
+                        <span>بازی و سرگرمی</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./creat-job.html" class="hover:text-karyar-500 transition-colors">ثبت آگهی شغلی</a>
+                </li>
+                <li>
+                    <a href="./about.html" class="hover:text-karyar-500 transition-colors">درباره ما</a>
+                </li>
+                <li>
+                    <a href="./contact.html" class="hover:text-karyar-500 transition-colors">تماس با ما</a>
+                </li>
+            </ul>
+
+            <!-- Auth Buttons (Desktop) -->
+            <div class="hidden lg:flex items-center gap-3">
+                <a href="./login.html"
+                    class="bg-karyar-500 hover:bg-karyar-900 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md shadow-karyar-500/20 hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    ورود
+                </a>
+                <a href="./regester.html"
+                    class="bg-karyar-500 hover:bg-karyar-900 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md shadow-karyar-500/20 hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    ثبت نام
+                </a>
+                <a href="./employer-dashbord.html"
+                    class="bg-karyar-500 hover:bg-karyar-900 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md shadow-karyar-500/20 hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    داشبورد کارفرما
+                </a>
+                <a href="./freelancer-dashbord.html"
+                    class="bg-karyar-500 hover:bg-karyar-900 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md shadow-karyar-500/20 hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    داشبورد فریلنسر
+                </a>
+            </div>
+
+            <!-- Hamburger Button (Mobile) -->
+            <button @click="mobileMenuOpen = !mobileMenuOpen"
+                class="lg:hidden text-black text-2xl p-2 focus:outline-none">
+                <i :class="mobileMenuOpen ? 'bi bi-x' : 'bi bi-list'"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Drawer Menu -->
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-4"
+            class="lg:hidden bg-white border-b border-slate-100 px-6 py-6 space-y-4 max-h-[80vh] overflow-y-auto">
+
+            <a href="" class="block text-slate-700 font-bold py-2 border-b border-slate-50">صفحه اصلی</a>
+
+            <!-- Mobile Jobs Accordion -->
+            <div x-data="{ jobsSubOpen: false }" class="border-b border-slate-50 py-2">
+                <button @click="jobsSubOpen = !jobsSubOpen"
+                    class="w-full flex items-center justify-between text-slate-700 font-bold">
+                    <span>شغل‌ها</span>
+                </button>
+                <div x-show="jobsSubOpen" class="mt-3 grid grid-cols-1 gap-2 pr-3 text-sm text-slate-600">
+                    <a href="./front-job-detail.html" class="py-1">برنامه‌نویس Frontend</a>
+                    <a href="/jobs/backend" class="py-1">برنامه‌نویس Backend</a>
+                    <a href="/jobs/fullstack" class="py-1">برنامه‌نویس Full-Stack</a>
+                    <a href="/jobs/ui-ux" class="py-1">طراح UI/UX</a>
+                    <a href="/jobs/devops" class="py-1">مهندس DevOps</a>
+                    <a href="/jobs/ai" class="py-1">متخصص هوش مصنوعی</a>
+                    <a href="/jobs/data-science" class="py-1">دانشمند داده</a>
+                    <a href="/jobs/mobile" class="py-1">توسعه‌دهنده موبایل</a>
+                    <a href="/jobs/seo" class="py-1">متخصص سئو</a>
+                    <a href="/jobs/security" class="py-1">امنیت شبکه</a>
+                    <a href="/jobs/qa" class="py-1">تستر نرم‌افزار</a>
+                    <a href="/jobs/product-manager" class="py-1">مدیر محصول</a>
+                    <a href="/jobs/network" class="py-1">مهندس شبکه</a>
+                    <a href="/jobs/game-dev" class="py-1">بازیساز</a>
+                    <a href="/jobs/database" class="py-1">مدیر پایگاه داده</a>
+                </div>
+            </div>
+            <a href="./game.html" class="block text-karyar-500 font-bold py-2 border-b border-slate-50">🎮 بازی و
+                سرگرمی</a>
+            <a href="./creat-job.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">ثبت آگهی
+                شغلی</a>
+            <a href="./about.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">درباره ما</a>
+            <a href="./contact.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">تماس با ما</a>
+
+            <div class="pt-4 flex flex-col gap-3">
+                <a href="./login.html"
+                    class="text-center bg-karyar-500 text-white font-bold py-2.5 rounded-xl shadow-md"> ورود
+                </a>
+                <a href="./regester.html"
+                    class="text-center bg-karyar-500 text-white font-bold py-2.5 rounded-xl shadow-md">ثبت‌نام
+                </a>
+                <a href="./employer-dashbord.html"
+                    class="text-center bg-karyar-500 text-white font-bold py-2.5 rounded-xl shadow-md">داشبورد کارفرما
+                </a>
+                <a href="./freelancer-dashbord.html"
+                    class="text-center bg-karyar-500 text-white font-bold py-2.5 rounded-xl shadow-md">داشبورد فریلنسر
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-12 sm:px-6 lg:px-8">
+
+        <!-- Header Banner -->
+        <header class="text-center mb-12 opacity-0 animate-fade-in-up" style="animation-delay: 0.1s;">
+            <span
+                class="inline-flex items-center gap-2 text-brand-900 bg-brand-100/70 px-4 py-1.5 rounded-full text-sm font-medium border border-brand-100 shadow-sm mb-4 animate-float">
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-ping"></span>
+                آخرین بروزرسانی: مرداد ۱۴۰۵
+            </span>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-brand-900 tracking-tight mb-4">
+                قوانین و مقررات استفاده از کار یار
+            </h1>
+            <p class="text-slate-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+                لطفا قبل از استفاده از خدمات سامانه کاریابی کار یار، شرایط زیر را به دقت مطالعه فرمایید.
+            </p>
+        </header>
+
+        <!-- Terms Content Container -->
+        <article
+            class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl shadow-brand-900/5 border border-brand-100/80 space-y-8 opacity-0 animate-fade-in-up"
+            style="animation-delay: 0.2s;">
+
+            <!-- بخش ۱ -->
+            <section class="group space-y-3 p-4 rounded-2xl transition-all duration-300 hover:bg-brand-50/50">
+                <h2
+                    class="text-xl font-bold text-brand-900 flex items-center gap-3 border-r-4 border-brand-500 pr-3 group-hover:translate-x-[-4px] transition-transform duration-200">
+                    ۱. تعاریف و کلیات
+                </h2>
+                <p class="text-slate-600 text-justify leading-8">
+                    سامانه «کار یار» یک پلتفرم آنلاین جهت تسهیل ارتباط میان کارجویان و کارفرمایان است. تمامی فعالیت‌های
+                    این پلتفرم تابع قوانین جمهوری اسلامی ایران، قانون تجارت الکترونیک و قانون حمایت از حقوق مؤلفان
+                    می‌باشد.
+                </p>
+            </section>
+
+            <hr class="border-brand-50">
+
+            <!-- بخش ۲ -->
+            <section class="group space-y-3 p-4 rounded-2xl transition-all duration-300 hover:bg-brand-50/50">
+                <h2
+                    class="text-xl font-bold text-brand-900 flex items-center gap-3 border-r-4 border-brand-500 pr-3 group-hover:translate-x-[-4px] transition-transform duration-200">
+                    ۲. تعهدات و مسئولیت‌های کارجویان
+                </h2>
+                <ul class="list-disc list-inside text-slate-600 space-y-2 leading-8">
+                    <li>کارجو موظف است اطلاعات مربوط به سوابق تحصیلی، شغلی و مهارت‌های خود را به صورت واقعی ثبت نماید.
+                    </li>
+                    <li>مسئولیت صحت مدارک و اطلاعات بارگذاری‌شده در رزومه کاملاً بر عهده کاربر است.</li>
+                    <li>حفظ محرمانگی اطلاعات حساب کاربری (نام کاربری و رمز عبور) بر عهده کاربر می‌باشد.</li>
+                </ul>
+            </section>
+
+            <hr class="border-brand-50">
+
+            <!-- بخش ۳ -->
+            <section class="group space-y-3 p-4 rounded-2xl transition-all duration-300 hover:bg-brand-50/50">
+                <h2
+                    class="text-xl font-bold text-brand-900 flex items-center gap-3 border-r-4 border-brand-500 pr-3 group-hover:translate-x-[-4px] transition-transform duration-200">
+                    ۳. تعهدات و مسئولیت‌های کارفرمایان
+                </h2>
+                <ul class="list-disc list-inside text-slate-600 space-y-2 leading-8">
+                    <li>فرصت‌های شغلی ثبت‌شده نباید مغایر با قوانین کشور یا حاوی اطلاعات نادرست باشند.</li>
+                    <li>کارفرما متعهد می‌شود از اطلاعات رزومه‌های دریافتی فقط در راستای فرآیند جذب همان موقعیت شغلی
+                        استفاده کند.</li>
+                    <li>دریافت هرگونه هزینه از کارجو بابت مصاحبه یا ثبت‌نام ممنوع بوده و موجب مسدودی حساب کارفرما
+                        می‌شود.</li>
+                </ul>
+            </section>
+
+            <hr class="border-brand-50">
+
+            <!-- بخش ۴ -->
+            <section class="group space-y-3 p-4 rounded-2xl transition-all duration-300 hover:bg-brand-50/50">
+                <h2
+                    class="text-xl font-bold text-brand-900 flex items-center gap-3 border-r-4 border-brand-500 pr-3 group-hover:translate-x-[-4px] transition-transform duration-200">
+                    ۴. حفظ حریم خصوصی
+                </h2>
+                <p class="text-slate-600 text-justify leading-8">
+                    کار یار متعهد می‌شود که اطلاعات شخصی کاربران را طبق بالاترین استانداردهای امنیتی حفظ نموده و جز در
+                    موارد قانونی و حکم مراجع قضایی، این اطلاعات را در اختیار هیچ شخص ثالثی قرار ندهد.
+                </p>
+            </section>
+
+            <hr class="border-brand-50">
+
+            <!-- بخش ۵ -->
+            <section class="group space-y-3 p-4 rounded-2xl transition-all duration-300 hover:bg-brand-50/50">
+                <h2
+                    class="text-xl font-bold text-brand-900 flex items-center gap-3 border-r-4 border-brand-500 pr-3 group-hover:translate-x-[-4px] transition-transform duration-200">
+                    ۵. حقوق مالکیت معنوی
+                </h2>
+                <p class="text-slate-600 text-justify leading-8">
+                    تمامی حقوق مادی و معنوی مربوط به برند، طراحی، کدهای نرم‌افزاری و محتوای منتشر شده در سامانه کار یار
+                    متعلق به این مجموعه بوده و هرگونه کپی‌برداری پیگرد قانونی دارد.
+                </p>
+            </section>
+
+        </article>
+
+    </main>
+
+    <!-- ================= FOOTER START ================= -->
+    <footer class="bg-ky-900 text-white relative overflow-hidden pt-16 pb-8 border-t-4 border-ky-500"
+        role="contentinfo">
+
+        <!-- کانواس المان ۳ بعدی تعاملی -->
+        <canvas id="3d-globe" class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none z-0"></canvas>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <!-- بخش بالایی: خبرنامه + معرفی -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b border-ky-200/20">
+
+                <!-- اطلاعات برند -->
+                <div class="lg:col-span-5 space-y-4">
+                    <!-- Logo Section -->
+                    <a href="" class="flex items-center gap-3 group">
+                        <div
+                            class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-karyar-900 to-karyar-500 flex items-center justify-center text-white font-black text-2xl shadow-md shadow-karyar-500/20 group-hover:scale-105 transition-transform">
+                            <i class="bi bi-briefcase-fill"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-2xl font-black text-karyar-800 tracking-tight leading-none">کار<span
+                                    class="text-karyar-500">یار</span></span>
+                            <span class="text-[10px] text-slate-400 font-medium mt-1">سامانه هوشمند کاریابی</span>
+                        </div>
+                    </a>
+                    <p class="text-ky-200 text-sm leading-relaxed max-w-sm">
+                        کاریار پل ارتباطی هوشمند بین کارجویان متخصص و برترین سازمان‌ها است. ساخت آینده شغلی شما از اینجا
+                        شروع می‌شود.
+                    </p>
+                </div>
+
+                <!-- فرم خبرنامه بهینه با AJAX/Alpine -->
+                <div class="lg:col-span-7 flex flex-col justify-center" x-data="{ subscribed: false }">
+                    <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-ky-200/10">
+                        <h3 class="text-lg font-bold text-ky-50 mb-2">عضویت در خبرنامه فرصت‌های شغلی</h3>
+                        <p class="text-xs text-ky-200 mb-4">جدیدترین آگهی‌های مرتبط با تخصص خود را هفتگی در ایمیل دریافت
+                            کنید.</p>
+
+                        <form @submit.prevent="subscribed = true" class="flex flex-col sm:flex-row gap-3">
+                            <input type="email" required placeholder="ایمیل خود را وارد کنید..."
+                                class="bg-ky-900/60 text-white placeholder-ky-200/60 px-4 py-3 rounded-xl border border-ky-200/30 focus:outline-none focus:border-ky-500 flex-1 transition-all text-sm" />
+                            <button type="submit"
+                                class="bg-ky-500 hover:bg-ky-200 hover:text-ky-900 text-white font-bold px-6 py-3 rounded-xl transition-all duration-300 text-sm shadow-md flex items-center justify-center gap-2">
+                                <span>عضویت سریع</span>
+                            </button>
+                        </form>
+
+                        <p x-show="subscribed" x-transition class="text-emerald-400 text-xs mt-3">✓ با موفقیت ثبت شد!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- بخش میان: لینک‌ها (بهینه‌شده برای خزنده گوگل) -->
+            <nav aria-label="لینک‌های فوتر" class="grid grid-cols-2 md:grid-cols-4 gap-8 py-12">
+
+                <!-- ستون ۱ -->
+                <div>
+                    <h4 class="text-ky-200 font-bold text-sm mb-4 border-r-2 border-ky-500 pr-2">برای کارجویان</h4>
+                    <ul class="space-y-2.5 text-xs text-gray-300">
+                        <li><a href="#header" class="hover:text-ky-200 transition-colors duration-200 block py-1">جستجوی
+                                فرصت‌های شغلی</a></li>
+                        <li><a href="14050516_21q.pdf" download="14050516_21q.pdf"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">استعلام حقوق بازار
+                                کار</a></li>
+                    </ul>
+                </div>
+
+                <!-- ستون ۲ -->
+                <div>
+                    <h4 class="text-ky-200 font-bold text-sm mb-4 border-r-2 border-ky-500 pr-2">برای کارفرمایان</h4>
+                    <ul class="space-y-2.5 text-xs text-gray-300">
+                        <li><a href="./creat-job.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">ثبت
+                                آگهی استخدام</a></li>
+                        <li><a href="./price.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">تعرفه‌ها و
+                                بسته‌ها</a></li>
+                    </ul>
+                </div>
+
+                <!-- ستون ۳ -->
+                <div>
+                    <h4 class="text-ky-200 font-bold text-sm mb-4 border-r-2 border-ky-500 pr-2">کاریار</h4>
+                    <ul class="space-y-2.5 text-xs text-gray-300">
+                        <li><a href="./about.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">درباره
+                                ما</a></li>
+                        <li><a href="/blog" class="hover:text-ky-200 transition-colors duration-200 block py-1">مجله
+                                آموزشی و مقالات</a></li>
+                        <li><a href="./contact.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">تماس
+                                با پشتیبانی</a></li>
+                    </ul>
+                </div>
+
+                <!-- ستون ۴ -->
+                <div>
+                    <h4 class="text-ky-200 font-bold text-sm mb-4 border-r-2 border-ky-500 pr-2">قوانین و امنیت</h4>
+                    <ul class="space-y-2.5 text-xs text-gray-300">
+                        <li><a href="./rule.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">قوانین
+                            </a></li>
+                    </ul>
+                </div>
+
+            </nav>
+
+            <!-- بخش پایینی: کپی‌رایت + شبکه اجتماعی -->
+            <div
+                class="pt-8 border-t border-ky-200/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-ky-200">
+                <p>© ۱۴۰۵ تمامی حقوق برای سامانه کاریابی کاریار محفوظ است.</p>
+
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <a href="https://linkedin.com" aria-label="لینکدین"
+                        class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center hover:bg-ky-500 hover:text-white transition-all">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.72a1.47 1.47 0 1 0 0 2.94 1.47 1.47 0 0 0 0-2.94Z" />
+                        </svg>
+                    </a>
+                    <a href="https://telegram.org" aria-label="تلگرام"
+                        class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center hover:bg-ky-500 hover:text-white transition-all">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <!-- ================= FOOTER END ================= -->
+
+
+</body>
+
+</html>

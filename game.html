@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بازی مار </title>
+    <!-- Tailwind CSS CDN -->
+    <script src="./library/tailwind.js"></script>
+    <!-- Font & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            font-family: vazirmatn;
+        }
+
+        body {
+            background: #090d16;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .main-layout {
+            display: flex;
+            gap: 20px;
+            max-width: 1050px;
+            width: 100%;
+            align-items: flex-start;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .game-card {
+            background: #131d31;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+            border: 1px solid #1e2d4a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            min-width: 320px;
+        }
+
+        /* Top HUD Bar */
+        .hud-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background: #0a1120;
+            padding: 10px 18px;
+            border-radius: 12px;
+            border: 1px solid #1e293b;
+            font-size: 0.9rem;
+            font-weight: bold;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stat-item .val {
+            color: #38bdf8;
+        }
+
+        .stat-item .high-val {
+            color: #facc15;
+        }
+
+        .stat-item .coins-val {
+            color: #eab308;
+        }
+
+        /* Combo Popup */
+        .combo-badge {
+            color: #f59e0b;
+            font-weight: 900;
+            font-size: 1.1rem;
+            animation: pulse 0.5s infinite alternate;
+        }
+
+        /* Active Powerups Indicator */
+        .powerups-active {
+            display: flex;
+            gap: 8px;
+            height: 28px;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
+
+            to {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+
+        .badge.shield {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            border: 1px solid #3b82f6;
+        }
+
+        .badge.slow {
+            background: rgba(168, 85, 247, 0.2);
+            color: #c084fc;
+            border: 1px solid #a855f7;
+        }
+
+        .badge.magnet {
+            background: rgba(236, 72, 153, 0.2);
+            color: #f472b6;
+            border: 1px solid #ec4899;
+        }
+
+        .badge.ghost {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            border: 1px solid #10b981;
+        }
+
+        .badge.double {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            border: 1px solid #f59e0b;
+        }
+
+        /* Canvas Wrapper */
+        .canvas-wrapper {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        canvas {
+            background: #050a14;
+            display: block;
+            border: 2px solid #38bdf8;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+
+        /* Overlay System */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(9, 13, 22, 0.94);
+            backdrop-filter: blur(6px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-align: center;
+            padding: 20px;
+            transition: all 0.3s ease;
+            z-index: 50;
+        }
+
+        .overlay.hidden {
+            display: none;
+        }
+
+        .overlay h2 {
+            font-size: 1.6rem;
+            color: #f8fafc;
+        }
+
+        .overlay p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            max-width: 90%;
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(56, 189, 248, 0.4);
+        }
+
+        /* Mode Selector Tab */
+        .mode-selector {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+
+        .mode-btn {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .mode-btn.active {
+            background: #0284c7;
+            color: white;
+            border-color: #38bdf8;
+        }
+
+        /* Touch Controls for Mobile */
+        .touch-controls {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            width: 200px;
+            margin-top: 5px;
+        }
+
+        .touch-btn {
+            background: #1e293b;
+            color: white;
+            border: 1px solid #334155;
+            padding: 15px;
+            font-size: 1.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: manipulation;
+        }
+
+        .touch-btn:active {
+            background: #0284c7;
+            border-color: #38bdf8;
+        }
+
+        .touch-btn.up {
+            grid-column: 2;
+        }
+
+        .touch-btn.left {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .touch-btn.right {
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        .touch-btn.down {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        /* Sidebar Panels (Shop & Info) */
+        .side-panel {
+            background: #131d31;
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid #1e2d4a;
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .panel-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #38bdf8;
+            border-bottom: 2px solid #1e293b;
+            padding-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Skin Shop Items */
+        .skins-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .skin-card {
+            background: #0a1120;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .skin-card:hover {
+            border-color: #38bdf8;
+        }
+
+        .skin-card.selected {
+            border-color: #facc15;
+            background: #162032;
+        }
+
+        .skin-preview {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+        }
+
+        .skin-name {
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .skin-cost {
+            font-size: 0.7rem;
+            color: #eab308;
+        }
+
+        /* Quests and Achievements */
+        .quest-box,
+        .achievement-box {
+            background: #0a1120;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #1e293b;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quest-completed {
+            border-color: #10b981;
+            color: #34d399;
+        }
+
+        /* Item Legend / Instructions */
+        .legend-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: #cbd5e1;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon-box {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 850px) {
+            .side-panel {
+                width: 100%;
+                max-width: 440px;
+                max-height: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-layout">
+        <!-- Game Main Section -->
+        <div class="game-card">
+
+            <!-- HUD -->
+            <div class="hud-bar">
+                <div class="stat-item">امتیاز: <span id="score" class="val">0</span></div>
+                <div class="stat-item">سکه‌ها: <span id="coins" class="coins-val">0</span></div>
+                <div class="stat-item" id="comboBox" style="display:none;"><span id="comboVal" class="combo-badge">2x
+                        Combo!</span></div>
+                <div class="stat-item" id="timerBox" style="display:none;">زمان: <span id="timerVal"
+                        class="val">60</span>s</div>
+                <div class="stat-item">رکورد: <span id="highScore" class="high-val">0</span></div>
+            </div>
+
+            <!-- Active Powerups Indicator -->
+            <div class="powerups-active" id="powerupBadges"></div>
+
+            <!-- Game Canvas & Overlay -->
+            <div class="canvas-wrapper">
+                <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+                <div id="overlay" class="overlay">
+                    <h2 id="overlayTitle">بازی مار حرفه‌ای v2</h2>
+                    <p id="overlaySub">حالت بازی را انتخاب کنید و دکمه شروع را بزنید</p>
+
+                    <div class="mode-selector">
+                        <button class="mode-btn active" onclick="setMode('CLASSIC')">کلاسیک</button>
+                        <button class="mode-btn" onclick="setMode('TIME')">حالت زمانی</button>
+                        <button class="mode-btn" onclick="setMode('LEVELS')">مرحله‌ای</button>
+                    </div>
+
+                    <button id="startBtn" class="btn">شروع بازی</button>
+                </div>
+            </div>
+
+            <!-- Mobile Touch Controls -->
+            <div class="touch-controls grid lg:hidden">
+                <button class="touch-btn up grid-cols-1" onclick="setDirection('UP')">▲</button>
+                <button class="touch-btn right" onclick="setDirection('RIGHT')">◄</button>
+                <button class="touch-btn left" onclick="setDirection('LEFT')">►</button>
+                <button class="touch-btn down" onclick="setDirection('DOWN')">▼</button>
+            </div>
+        </div>
+
+        <!-- Sidebar Section (Shop & Features) -->
+        <div class="side-panel">
+            <div class="panel-title">چالش روزانه 🎯</div>
+            <div id="dailyQuestBox" class="quest-box">
+                <span id="questText">خوردن ۱۵ سیب (۰/۱۵)</span>
+                <span id="questReward" style="color:#eab308; font-weight:bold;">+۵۰ سکه</span>
+            </div>
+
+            <div class="panel-title">فروشگاه پوسته‌ها 🎨</div>
+            <div class="skins-grid" id="skinsGrid"></div>
+
+            <div class="panel-title">راهنمای پاورآپ‌های جدید ⚡</div>
+            <div class="legend-list">
+                <div class="legend-item">
+                    <div class="icon-box" style="background:#ef4444;"></div><span>سیب معمولی (+۱۰ امتیاز)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="icon-box" style="background:#facc15; color:#000;">★</div><span>سیب طلایی (+۳۰ امتیاز، +۵
+                        سکه)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="icon-box" style="background:#3b82f6;">🛡️</div><span>سپر محافظت</span>
+                </div>
+                <div class="legend-item">
+                    <div class="icon-box" style="background:#10b981;">👻</div><span>پاورآپ شبح (عبور از دیوارهای
+                        مانع/خود)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="icon-box" style="background:#f59e0b;">✖2</div><span>امتیاز دوبرابر (۱۰ ثانیه)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="icon-box" style="background:#a855f7;">⏳</div><span>کاهش سرعت</span>
+                </div>
+                <div class="legend-item">
+                    <div class="icon-box" style="background:#ec4899;">🧲</div><span>آهنربا (جذب غذاها)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="icon-box" style="background:#06b6d4;">🌀</div><span>پورتال جابه‌جایی</span>
+                </div>
+                <div class="legend-item">
+                    <div class="icon-box" style="background:#8b5cf6;">☠️</div><span>سیب سمی</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Web Audio API Sound Synthesizer ---
+        class SoundFX {
+            constructor() {
+                this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            playEat() {
+                if (this.ctx.state === 'suspended') this.ctx.resume();
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(300, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(800, this.ctx.currentTime + 0.08);
+                gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 0.08);
+                osc.connect(gain); gain.connect(this.ctx.destination);
+                osc.start(); osc.stop(this.ctx.currentTime + 0.08);
+            }
+
+            playPowerup() {
+                if (this.ctx.state === 'suspended') this.ctx.resume();
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(400, this.ctx.currentTime);
+                osc.frequency.linearRampToValueAtTime(1000, this.ctx.currentTime + 0.2);
+                gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 0.2);
+                osc.connect(gain); gain.connect(this.ctx.destination);
+                osc.start(); osc.stop(this.ctx.currentTime + 0.2);
+            }
+
+            playPoison() {
+                if (this.ctx.state === 'suspended') this.ctx.resume();
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(250, this.ctx.currentTime);
+                osc.frequency.linearRampToValueAtTime(100, this.ctx.currentTime + 0.15);
+                gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 0.15);
+                osc.connect(gain); gain.connect(this.ctx.destination);
+                osc.start(); osc.stop(this.ctx.currentTime + 0.15);
+            }
+
+            playPortal() {
+                if (this.ctx.state === 'suspended') this.ctx.resume();
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(600, this.ctx.currentTime);
+                osc.frequency.linearRampToValueAtTime(900, this.ctx.currentTime + 0.2);
+                gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 0.2);
+                osc.connect(gain); gain.connect(this.ctx.destination);
+                osc.start(); osc.stop(this.ctx.currentTime + 0.2);
+            }
+
+            playGameOver() {
+                if (this.ctx.state === 'suspended') this.ctx.resume();
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(200, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(40, this.ctx.currentTime + 0.4);
+                gain.gain.setValueAtTime(0.3, this.ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 0.4);
+                osc.connect(gain); gain.connect(this.ctx.destination);
+                osc.start(); osc.stop(this.ctx.currentTime + 0.4);
+            }
+        }
+
+        const audio = new SoundFX();
+
+        // --- DOM Elements ---
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const scoreEl = document.getElementById("score");
+        const coinsEl = document.getElementById("coins");
+        const highScoreEl = document.getElementById("highScore");
+        const overlay = document.getElementById("overlay");
+        const overlayTitle = document.getElementById("overlayTitle");
+        const overlaySub = document.getElementById("overlaySub");
+        const startBtn = document.getElementById("startBtn");
+        const powerupBadges = document.getElementById("powerupBadges");
+        const timerBox = document.getElementById("timerBox");
+        const timerVal = document.getElementById("timerVal");
+        const comboBox = document.getElementById("comboBox");
+        const comboVal = document.getElementById("comboVal");
+        const skinsGrid = document.getElementById("skinsGrid");
+
+        // --- Game Config & Constants ---
+        const gridSize = 20;
+        const tileCount = canvas.width / gridSize;
+
+        // Skins Database
+        const SKINS = [
+            { id: 'cyan', name: 'نئونی', headColor: '#38bdf8', bodyColor: '#0284c7', cost: 0 },
+            { id: 'emerald', name: 'زمردی', headColor: '#34d399', bodyColor: '#059669', cost: 20 },
+            { id: 'amber', name: 'طلایی', headColor: '#fde047', bodyColor: '#d97706', cost: 50 },
+            { id: 'ruby', name: 'یاقوتی', headColor: '#f43f5e', bodyColor: '#be123c', cost: 80 },
+            { id: 'purple', name: 'بنفش کهکشانی', headColor: '#c084fc', bodyColor: '#7e22ce', cost: 120 }
+        ];
+
+        // --- Persistent Data ---
+        let highScore = parseInt(localStorage.getItem("snake_high_score_v2")) || 0;
+        let coins = parseInt(localStorage.getItem("snake_coins_v2")) || 0;
+        let activeSkinId = localStorage.getItem("snake_skin_v2") || 'cyan';
+        let unlockedSkins = JSON.parse(localStorage.getItem("snake_unlocked_skins_v2")) || ['cyan'];
+        let questApplesEaten = parseInt(localStorage.getItem("snake_quest_apples")) || 0;
+        let questCompleted = localStorage.getItem("snake_quest_completed") === 'true';
+
+        highScoreEl.textContent = highScore;
+        coinsEl.textContent = coins;
+
+        // --- State Variables ---
+        let snake = [];
+        let dx = gridSize, dy = 0;
+        let score = 0;
+        let speed = 110;
+        let baseSpeed = 110;
+        let gameInterval = null;
+        let isGameRunning = false;
+        let isPaused = false;
+        let changingDirection = false;
+        let gameMode = 'CLASSIC'; // CLASSIC, TIME, LEVELS
+        let currentLevel = 1;
+        let timeRemaining = 60;
+        let countdownTimer = null;
+
+        // Dynamic Entities
+        let food = { x: 0, y: 0 };
+        let bonusFood = null;
+        let poisonFood = null;
+        let powerup = null; // {x, y, type: 'SHIELD'|'SLOW'|'MAGNET'|'SHRINK'|'GHOST'|'DOUBLE'}
+        let portals = [];
+        let obstacles = [];
+        let particles = [];
+
+        // Active Powerups Timers & Multipliers
+        let activeShield = false;
+        let ghostTimer = null;
+        let doubleTimer = null;
+        let slowTimer = null;
+        let magnetTimer = null;
+
+        // Combo Logic
+        let lastEatTime = 0;
+        let comboMultiplier = 1;
+        let comboResetTimer = null;
+
+        // Touch Swipe Handling
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        // --- Particle System ---
+        let shakeFrames = 0;
+        function triggerShake() { shakeFrames = 8; }
+
+        function createParticles(x, y, color, count = 10) {
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: x + gridSize / 2, y: y + gridSize / 2,
+                    vx: (Math.random() - 0.5) * 6, vy: (Math.random() - 0.5) * 6,
+                    color: color, life: 1, size: Math.random() * 4 + 2
+                });
+            }
+        }
+
+        function updateAndDrawParticles() {
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.x += p.vx; p.y += p.vy; p.life -= 0.05;
+                if (p.life <= 0) { particles.splice(i, 1); continue; }
+
+                ctx.save();
+                ctx.globalAlpha = p.life;
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        // --- Game Initialization ---
+        function initGame() {
+            snake = [
+                { x: 160, y: 200 },
+                { x: 140, y: 200 },
+                { x: 120, y: 200 }
+            ];
+            dx = gridSize; dy = 0;
+            score = 0;
+            scoreEl.textContent = score;
+            baseSpeed = 110; speed = baseSpeed;
+            activeShield = false;
+            clearTimeout(slowTimer); clearTimeout(magnetTimer); clearTimeout(ghostTimer); clearTimeout(doubleTimer);
+            slowTimer = null; magnetTimer = null; ghostTimer = null; doubleTimer = null;
+            comboMultiplier = 1;
+            comboBox.style.display = 'none';
+            updateBadges();
+
+            obstacles = []; portals = []; bonusFood = null; poisonFood = null; powerup = null;
+
+            if (gameMode === 'LEVELS') {
+                currentLevel = 1;
+                generateLevelLayout(currentLevel);
+            } else if (gameMode === 'TIME') {
+                timeRemaining = 60;
+                timerVal.textContent = timeRemaining;
+                timerBox.style.display = 'flex';
+                if (countdownTimer) clearInterval(countdownTimer);
+                countdownTimer = setInterval(() => {
+                    if (!isPaused && isGameRunning) {
+                        timeRemaining--;
+                        timerVal.textContent = timeRemaining;
+                        if (timeRemaining <= 0) handleGameOver("زمان به پایان رسید!");
+                    }
+                }, 1000);
+            } else {
+                timerBox.style.display = 'none';
+            }
+
+            spawnFood();
+            isGameRunning = true;
+            isPaused = false;
+            overlay.classList.add("hidden");
+
+            if (gameInterval) clearInterval(gameInterval);
+            gameInterval = setInterval(gameLoop, speed);
+            updateQuestUI();
+        }
+
+        // --- Main Loop ---
+        function gameLoop() {
+            if (isPaused) return;
+
+            if (hasCollided()) {
+                if (ghostTimer) {
+                    // Pass through walls/self during ghost powerup
+                } else if (activeShield) {
+                    activeShield = false;
+                    audio.playPowerup();
+                    triggerShake();
+                    updateBadges();
+                    snake.shift(); // Bounce back
+                } else {
+                    audio.playGameOver();
+                    triggerShake();
+                    handleGameOver("برخورد رخ داد!");
+                    return;
+                }
+            }
+
+            changingDirection = false;
+
+            // Magnet Effect
+            if (magnetTimer && food) {
+                const head = snake[0];
+                if (Math.abs(head.x - food.x) <= gridSize * 4 && Math.abs(head.y - food.y) <= gridSize * 4) {
+                    if (food.x < head.x) food.x += gridSize;
+                    else if (food.x > head.x) food.x -= gridSize;
+                    if (food.y < head.y) food.y += gridSize;
+                    else if (food.y > head.y) food.y -= gridSize;
+                }
+            }
+
+            clearCanvas();
+            drawObstacles();
+            drawPortals();
+            drawFood();
+            drawBonusFood();
+            drawPoisonFood();
+            drawPowerup();
+            moveSnake();
+            drawSnake();
+            updateAndDrawParticles();
+        }
+
+        function clearCanvas() {
+            ctx.save();
+            if (shakeFrames > 0) {
+                ctx.translate((Math.random() - 0.5) * 6, (Math.random() - 0.5) * 6);
+                shakeFrames--;
+            }
+            ctx.fillStyle = "#050a14";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Subtle Grid Lines
+            ctx.strokeStyle = "#0e1726";
+            ctx.lineWidth = 1;
+            for (let i = 0; i < canvas.width; i += gridSize) {
+                ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(canvas.width, i); ctx.stroke();
+            }
+            ctx.restore();
+        }
+
+        // --- Entity Drawing ---
+        function getActiveSkin() {
+            return SKINS.find(s => s.id === activeSkinId) || SKINS[0];
+        }
+
+        function drawSnake() {
+            const skin = getActiveSkin();
+            ctx.save();
+            if (ghostTimer) ctx.globalAlpha = 0.5;
+
+            snake.forEach((part, index) => {
+                ctx.fillStyle = index === 0 ? skin.headColor : skin.bodyColor;
+                ctx.beginPath();
+                ctx.roundRect(part.x + 1, part.y + 1, gridSize - 2, gridSize - 2, index === 0 ? 6 : 4);
+                ctx.fill();
+
+                if (index === 0 && activeShield) {
+                    ctx.strokeStyle = '#3b82f6';
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect(part.x - 2, part.y - 2, gridSize + 4, gridSize + 4);
+                }
+            });
+            ctx.restore();
+        }
+
+        function drawFood() {
+            ctx.fillStyle = "#ef4444"; ctx.shadowColor = "#ef4444"; ctx.shadowBlur = 8;
+            ctx.beginPath();
+            ctx.arc(food.x + gridSize / 2, food.y + gridSize / 2, gridSize / 2 - 2, 0, Math.PI * 2);
+            ctx.fill(); ctx.shadowBlur = 0;
+        }
+
+        function drawBonusFood() {
+            if (!bonusFood) return;
+            ctx.fillStyle = "#facc15"; ctx.shadowColor = "#facc15"; ctx.shadowBlur = 10;
+            ctx.beginPath();
+            ctx.arc(bonusFood.x + gridSize / 2, bonusFood.y + gridSize / 2, gridSize / 2 - 1, 0, Math.PI * 2);
+            ctx.fill(); ctx.shadowBlur = 0;
+        }
+
+        function drawPoisonFood() {
+            if (!poisonFood) return;
+            ctx.fillStyle = "#8b5cf6"; ctx.shadowColor = "#8b5cf6"; ctx.shadowBlur = 8;
+            ctx.beginPath();
+            ctx.arc(poisonFood.x + gridSize / 2, poisonFood.y + gridSize / 2, gridSize / 2 - 2, 0, Math.PI * 2);
+            ctx.fill(); ctx.shadowBlur = 0;
+        }
+
+        function drawPowerup() {
+            if (!powerup) return;
+            let icon = '🛡️';
+            if (powerup.type === 'SLOW') icon = '⏳';
+            if (powerup.type === 'MAGNET') icon = '🧲';
+            if (powerup.type === 'GHOST') icon = '👻';
+            if (powerup.type === 'DOUBLE') icon = '✖2';
+
+            ctx.font = '13px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText(icon, powerup.x + gridSize / 2, powerup.y + gridSize / 2);
+        }
+
+        function drawObstacles() {
+            ctx.fillStyle = "#334155";
+            obstacles.forEach(obs => {
+                ctx.beginPath();
+                ctx.roundRect(obs.x + 1, obs.y + 1, gridSize - 2, gridSize - 2, 4);
+                ctx.fill();
+            });
+        }
+
+        function drawPortals() {
+            if (portals.length < 2) return;
+            portals.forEach((p, idx) => {
+                ctx.fillStyle = idx === 0 ? "#06b6d4" : "#ec4899";
+                ctx.shadowColor = ctx.fillStyle; ctx.shadowBlur = 8;
+                ctx.beginPath();
+                ctx.arc(p.x + gridSize / 2, p.y + gridSize / 2, gridSize / 2 - 2, 0, Math.PI * 2);
+                ctx.fill(); ctx.shadowBlur = 0;
+            });
+        }
+
+        // --- Snake Movement & Actions ---
+        function moveSnake() {
+            let head = { x: snake[0].x + dx, y: snake[0].y + dy };
+
+            // Wrap around during Ghost mode
+            if (ghostTimer) {
+                if (head.x < 0) head.x = canvas.width - gridSize;
+                else if (head.x >= canvas.width) head.x = 0;
+                if (head.y < 0) head.y = canvas.height - gridSize;
+                else if (head.y >= canvas.height) head.y = 0;
+            }
+
+            // Portals
+            if (portals.length === 2) {
+                if (head.x === portals[0].x && head.y === portals[0].y) {
+                    head = { x: portals[1].x, y: portals[1].y };
+                    audio.playPortal(); createParticles(head.x, head.y, '#ec4899');
+                } else if (head.x === portals[1].x && head.y === portals[1].y) {
+                    head = { x: portals[0].x, y: portals[0].y };
+                    audio.playPortal(); createParticles(head.x, head.y, '#06b6d4');
+                }
+            }
+
+            snake.unshift(head);
+
+            // Eat Standard Food
+            if (head.x === food.x && head.y === food.y) {
+                audio.playEat();
+                createParticles(food.x, food.y, '#ef4444');
+
+                // Combo & Score calculation
+                registerCombo();
+                let earnedScore = 10 * comboMultiplier * (doubleTimer ? 2 : 1);
+                score += earnedScore;
+                addCoins(1 * (doubleTimer ? 2 : 1));
+                scoreEl.textContent = score;
+                updateHighScore();
+                trackDailyQuest();
+
+                spawnFood();
+                increaseSpeed();
+
+                // Spawns
+                if (!bonusFood && Math.random() < 0.25) spawnBonusFood();
+                if (!poisonFood && Math.random() < 0.15) spawnPoisonFood();
+                if (!powerup && Math.random() < 0.3) spawnPowerup();
+
+                // Level Progress check
+                if (gameMode === 'LEVELS' && score >= currentLevel * 80) {
+                    currentLevel++;
+                    generateLevelLayout(currentLevel);
+                }
+            }
+            // Eat Bonus
+            else if (bonusFood && head.x === bonusFood.x && head.y === bonusFood.y) {
+                audio.playEat(); createParticles(bonusFood.x, bonusFood.y, '#facc15');
+                score += 30 * (doubleTimer ? 2 : 1);
+                addCoins(5);
+                scoreEl.textContent = score; updateHighScore();
+                bonusFood = null;
+            }
+            // Eat Poison
+            else if (poisonFood && head.x === poisonFood.x && head.y === poisonFood.y) {
+                audio.playPoison(); createParticles(poisonFood.x, poisonFood.y, '#8b5cf6');
+                score = Math.max(0, score - 15);
+                scoreEl.textContent = score;
+                poisonFood = null;
+            }
+            // Eat Powerup
+            else if (powerup && head.x === powerup.x && head.y === powerup.y) {
+                audio.playPowerup(); createParticles(powerup.x, powerup.y, '#3b82f6');
+                applyPowerup(powerup.type);
+                powerup = null;
+            }
+            else {
+                snake.pop();
+            }
+        }
+
+        // --- Combo System ---
+        function registerCombo() {
+            const now = Date.now();
+            if (now - lastEatTime < 2200) {
+                comboMultiplier = Math.min(4, comboMultiplier + 1);
+                comboVal.textContent = `${comboMultiplier}x Combo!`;
+                comboBox.style.display = 'block';
+            } else {
+                comboMultiplier = 1;
+                comboBox.style.display = 'none';
+            }
+            lastEatTime = now;
+
+            if (comboResetTimer) clearTimeout(comboResetTimer);
+            comboResetTimer = setTimeout(() => {
+                comboMultiplier = 1;
+                comboBox.style.display = 'none';
+            }, 2300);
+        }
+
+        // --- Spawners ---
+        function getRandomPos() {
+            let pos;
+            while (!pos) {
+                let rx = Math.floor(Math.random() * tileCount) * gridSize;
+                let ry = Math.floor(Math.random() * tileCount) * gridSize;
+                let inSnake = snake.some(p => p.x === rx && p.y === ry);
+                let inObs = obstacles.some(o => o.x === rx && o.y === ry);
+                if (!inSnake && !inObs) pos = { x: rx, y: ry };
+            }
+            return pos;
+        }
+
+        function spawnFood() { food = getRandomPos(); }
+        function spawnBonusFood() { bonusFood = getRandomPos(); }
+        function spawnPoisonFood() { poisonFood = getRandomPos(); }
+        function spawnPowerup() {
+            const types = ['SHIELD', 'SLOW', 'MAGNET', 'GHOST', 'DOUBLE'];
+            const type = types[Math.floor(Math.random() * types.length)];
+            const pos = getRandomPos();
+            powerup = { x: pos.x, y: pos.y, type: type };
+        }
+
+        function generateLevelLayout(level) {
+            obstacles = [];
+            let count = Math.min(16, level * 3);
+            for (let i = 0; i < count; i++) obstacles.push(getRandomPos());
+            if (level > 1) portals = [getRandomPos(), getRandomPos()];
+        }
+
+        // --- Powerup Handler ---
+        function applyPowerup(type) {
+            if (type === 'SHIELD') activeShield = true;
+            else if (type === 'GHOST') {
+                if (ghostTimer) clearTimeout(ghostTimer);
+                ghostTimer = setTimeout(() => { ghostTimer = null; updateBadges(); }, 6000);
+            } else if (type === 'DOUBLE') {
+                if (doubleTimer) clearTimeout(doubleTimer);
+                doubleTimer = setTimeout(() => { doubleTimer = null; updateBadges(); }, 8000);
+            } else if (type === 'SLOW') {
+                speed = baseSpeed + 45;
+                clearInterval(gameInterval); gameInterval = setInterval(gameLoop, speed);
+                if (slowTimer) clearTimeout(slowTimer);
+                slowTimer = setTimeout(() => {
+                    speed = baseSpeed; clearInterval(gameInterval); gameInterval = setInterval(gameLoop, speed);
+                    slowTimer = null; updateBadges();
+                }, 6000);
+            } else if (type === 'MAGNET') {
+                if (magnetTimer) clearTimeout(magnetTimer);
+                magnetTimer = setTimeout(() => { magnetTimer = null; updateBadges(); }, 7000);
+            }
+            updateBadges();
+        }
+
+        function updateBadges() {
+            powerupBadges.innerHTML = '';
+            if (activeShield) powerupBadges.innerHTML += `<div class="badge shield">🛡️ سپر</div>`;
+            if (ghostTimer) powerupBadges.innerHTML += `<div class="badge ghost">👻 شبح</div>`;
+            if (doubleTimer) powerupBadges.innerHTML += `<div class="badge double">✖2 امتیازدوبل</div>`;
+            if (slowTimer) powerupBadges.innerHTML += `<div class="badge slow">⏳ کند</div>`;
+            if (magnetTimer) powerupBadges.innerHTML += `<div class="badge magnet">🧲 آهنربا</div>`;
+        }
+
+        // --- Collisions ---
+        function hasCollided() {
+            const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+
+            // Wall Collision
+            if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
+                return true;
+            }
+
+            // Self Collision
+            for (let i = 1; i < snake.length; i++) {
+                if (head.x === snake[i].x && head.y === snake[i].y) return true;
+            }
+
+            // Obstacle Collision
+            for (let obs of obstacles) {
+                if (head.x === obs.x && head.y === obs.y) return true;
+            }
+
+            return false;
+        }
+
+        function increaseSpeed() {
+            if (baseSpeed > 45) {
+                baseSpeed -= 1.2;
+                if (!slowTimer) {
+                    speed = baseSpeed; clearInterval(gameInterval); gameInterval = setInterval(gameLoop, speed);
+                }
+            }
+        }
+
+        // --- Controls System (Keyboard, Touch & Swipes) ---
+        function setDirection(dir) {
+            if (changingDirection || isPaused) return;
+
+            const goingUp = dy === -gridSize;
+            const goingDown = dy === gridSize;
+            const goingRight = dx === gridSize;
+            const goingLeft = dx === -gridSize;
+
+            // اصلاح کلیدهای چپ و راست
+            if (dir === 'RIGHT' && !goingRight) {
+                dx = -gridSize;
+                dy = 0;
+                changingDirection = true;
+            }
+            if (dir === 'LEFT' && !goingLeft) {
+                dx = gridSize;
+                dy = 0;
+                changingDirection = true;
+            }
+            if (dir === 'UP' && !goingDown) {
+                dx = 0;
+                dy = -gridSize;
+                changingDirection = true;
+            }
+            if (dir === 'DOWN' && !goingUp) {
+                dx = 0;
+                dy = gridSize;
+                changingDirection = true;
+            }
+        }
+
+        // Keyboard Listener
+        document.addEventListener("keydown", (evt) => {
+            if (evt.keyCode === 32 && isGameRunning) {
+                isPaused = !isPaused;
+                if (isPaused) {
+                    overlayTitle.textContent = "بازی متوقف شد";
+                    overlaySub.textContent = "برای ادامه دکمه را بزنید";
+                    startBtn.textContent = "ادامه";
+                    overlay.classList.remove("hidden");
+                } else { overlay.classList.add("hidden"); }
+                return;
+            }
+
+            const k = evt.keyCode;
+            if (k === 37 || k === 65) setDirection('RIGHT');
+            if (k === 38 || k === 87) setDirection('UP');
+            if (k === 39 || k === 68) setDirection('LEFT');
+            if (k === 40 || k === 83) setDirection('DOWN');
+        });
+
+        // Touch Swipe Gesture Handling
+        canvas.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }, false);
+
+        canvas.addEventListener('touchend', e => {
+            if (!touchStartX || !touchStartY) return;
+            let touchEndX = e.changedTouches[0].clientX;
+            let touchEndY = e.changedTouches[0].clientY;
+
+            let diffX = touchEndX - touchStartX;
+            let diffY = touchEndY - touchStartY;
+
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                if (diffX > 30) setDirection('RIGHT');
+                else if (diffX < -30) setDirection('LEFT');
+            } else {
+                if (diffY > 30) setDirection('DOWN');
+                else if (diffY < -30) setDirection('UP');
+            }
+            touchStartX = 0; touchStartY = 0;
+        }, false);
+
+        startBtn.addEventListener("click", () => {
+            if (!isGameRunning) initGame();
+            else if (isPaused) { isPaused = false; overlay.classList.add("hidden"); }
+        });
+
+        // --- Game Over / Quests / Shop ---
+        function handleGameOver(msg = "بازی تمام شد!") {
+            clearInterval(gameInterval);
+            if (countdownTimer) clearInterval(countdownTimer);
+            isGameRunning = false;
+
+            overlayTitle.textContent = msg;
+            overlaySub.textContent = `امتیاز نهایی: ${score} | سکه کسب شده: ${Math.floor(score / 10)}`;
+            startBtn.textContent = "تلاش مجدد";
+            overlay.classList.remove("hidden");
+        }
+
+        function setMode(mode) {
+            gameMode = mode;
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function addCoins(amount) {
+            coins += amount;
+            coinsEl.textContent = coins;
+            localStorage.setItem("snake_coins_v2", coins);
+            renderShop();
+        }
+
+        function updateHighScore() {
+            if (score > highScore) {
+                highScore = score;
+                highScoreEl.textContent = highScore;
+                localStorage.setItem("snake_high_score_v2", highScore);
+            }
+        }
+
+        function trackDailyQuest() {
+            if (questCompleted) return;
+            questApplesEaten++;
+            localStorage.setItem("snake_quest_apples", questApplesEaten);
+            if (questApplesEaten >= 15) {
+                questCompleted = true;
+                localStorage.setItem("snake_quest_completed", 'true');
+                addCoins(50);
+            }
+            updateQuestUI();
+        }
+
+        function updateQuestUI() {
+            const qBox = document.getElementById("dailyQuestBox");
+            const qText = document.getElementById("questText");
+            if (questCompleted) {
+                qBox.className = "quest-box quest-completed";
+                qText.textContent = "✓ چالش امروز تکمیل شد!";
+            } else {
+                qText.textContent = `خوردن ۱۵ سیب (${questApplesEaten}/۱۵)`;
+            }
+        }
+
+        function renderShop() {
+            skinsGrid.innerHTML = '';
+            SKINS.forEach(skin => {
+                const isUnlocked = unlockedSkins.includes(skin.id);
+                const isSelected = activeSkinId === skin.id;
+
+                const card = document.createElement('div');
+                card.className = `skin-card ${isSelected ? 'selected' : ''}`;
+                card.onclick = () => selectSkin(skin);
+
+                card.innerHTML = `
+                    <div class="skin-preview" style="background:${skin.headColor}; border:2px solid ${skin.bodyColor}"></div>
+                    <div class="skin-name">${skin.name}</div>
+                    <div class="skin-cost">${isSelected ? 'فعال' : (isUnlocked ? 'انتخاب' : skin.cost + ' سکه')}</div>
+                `;
+                skinsGrid.appendChild(card);
+            });
+        }
+
+        function selectSkin(skin) {
+            if (unlockedSkins.includes(skin.id)) {
+                activeSkinId = skin.id;
+                localStorage.setItem("snake_skin_v2", activeSkinId);
+            } else if (coins >= skin.cost) {
+                coins -= skin.cost;
+                coinsEl.textContent = coins;
+                localStorage.setItem("snake_coins_v2", coins);
+                unlockedSkins.push(skin.id);
+                localStorage.setItem("snake_unlocked_skins_v2", JSON.stringify(unlockedSkins));
+                activeSkinId = skin.id;
+                localStorage.setItem("snake_skin_v2", activeSkinId);
+            } else {
+                alert("سکه کافی ندارید!");
+            }
+            renderShop();
+        }
+
+        renderShop();
+    </script>
+</body>
+
+</html>
