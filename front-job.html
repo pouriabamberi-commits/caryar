@@ -221,16 +221,16 @@
         </section>
 
         <!-- ساختار شبکه با قابلیت پرکردن کل ارتفاع (flex-1) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch flex-1 overflow-hidden pb-2">
+        <div class="grid grid-cols-1 lg:grid-cols-8 gap-6 items-stretch flex-1 overflow-hidden pb-2">
 
-            <!-- ==================== سمت راست: لیست آگهی‌ها (اسکرول مستقل) ==================== -->
-            <section class="lg:col-span-5 space-y-3 h-full overflow-y-auto pl-1 pr-1 custom-scroll">
+            <!-- ==================== سمت راست: لیست آگهی‌ها  ==================== -->
+            <section class="lg:col-span-5 space-y-3 h-full overflow-y-auto pl-1 pr-1">
 
                 <!-- آگهی ۱ -->
                 <article
-                    @click="if(isMobile) { window.location.href = './front-job-detail.html' } else { activeJob = 1 }"
-                    :class="activeJob === 1 ? 'border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white' : 'border-[#90CAF9]/60 bg-white/80 hover:bg-white'"
-                    class="p-4 rounded-2xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md relative">
+                    @click=" window.location.href = './front-job-detail.html'"
+                    :class=" 'border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white' : 'border-[#90CAF9]/60 bg-white/80 hover:bg-white'"
+                    class="border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white p-4 rounded-2xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md relative">
                     <div class="flex justify-between items-start">
                         <div>
                             <h2 class="font-bold text-base text-[#0D47A1]">توسعه‌دهنده ارشد React.js</h2>
@@ -249,9 +249,9 @@
 
                 <!-- آگهی 2 -->
                 <article
-                    @click="if(isMobile) { window.location.href = './front-job-detail.html' } else { activeJob = 2 }"
-                    :class="activeJob === 2 ? 'border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white' : 'border-[#90CAF9]/60 bg-white/80 hover:bg-white'"
-                    class="p-4 rounded-2xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md relative">
+                    @click=" window.location.href = './front-job-detail.html'"
+                    :class=" 'border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white' : 'border-[#90CAF9]/60 bg-white/80 hover:bg-white'"
+                    class="border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white p-4 rounded-2xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md relative">
                     <div class="flex justify-between items-start">
                         <div>
                             <h2 class="font-bold text-base text-[#0D47A1]"> ارشد React.js</h2>
@@ -270,9 +270,9 @@
 
                 <!-- آگهی 3 -->
                 <article
-                    @click="if(isMobile) { window.location.href = './front-job-detail.html' } else { activeJob = 1 }"
-                    :class="activeJob === 3 ? 'border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white' : 'border-[#90CAF9]/60 bg-white/80 hover:bg-white'"
-                    class="p-4 rounded-2xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md relative">
+                    @click="window.location.href = './front-job-detail.html' "
+                    :class="'border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white' 'border-[#90CAF9]/60 bg-white/80 hover:bg-white'"
+                    class="border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white p-4 rounded-2xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md relative">
                     <div class="flex justify-between items-start">
                         <div>
                             <h2 class="font-bold text-base text-[#0D47A1]">توسعه‌دهنده React.js</h2>
@@ -290,296 +290,6 @@
                 </article>
             </section>
 
-
-            <!-- ==================== سمت چپ: جزئیات آگهی‌ها (اسکرول مستقل) ==================== -->
-            <section
-                class="hidden lg:block lg:col-span-7 bg-white rounded-2xl border border-[#90CAF9] p-6 shadow-sm h-full overflow-y-auto custom-scroll">
-
-                <!-- =============== جزئیات آگهی ۱ =============== -->
-                <div x-show="activeJob === 1" class="space-y-6">
-                    <div class="border-b border-[#E3F2FD] pb-4">
-                        <div class="flex justify-between items-center mb-3">
-                            <h2 class="text-xl font-bold text-[#0D47A1]">توسعه‌دهنده ارشد React.js</h2>
-                            <button
-                                class="px-5 py-2.5 bg-[#2196F3] hover:bg-[#0D47A1] text-white font-medium text-sm rounded-xl shadow-md transition-all">
-                                ارسال رزومه
-                            </button>
-                        </div>
-                        <div class="flex gap-4 text-xs text-gray-600 font-medium">
-                            <span>شرکت: <strong>دیجی‌کالا</strong></span>
-                            <span>|</span>
-                            <span>موقعیت: <strong>تهران (دورکاری)</strong></span>
-                            <span>|</span>
-                            <span class="text-emerald-700 font-bold">حقوق: ۴۰ تا ۵۰ میلیون</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-sm font-bold text-[#0D47A1] mb-2">توضیحات موقعیت شغلی:</h3>
-                        <p class="text-gray-700 text-xs leading-relaxed">
-                            ما در تیم زیرساخت وب دیجی‌کالا به دنبال یک برنامه‌نویس ارشد و باانگیزه React هستیم. شما در
-                            این موقعیت مسئولیت توسعه کامپوننت‌های با بازدهی بالا، بهینه‌سازی سرعت بارگذاری (Core Web
-                            Vitals) و بهبود معماری Front-end پلتفرم اصلی را بر عهده خواهید داشت.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 class="text-sm font-bold text-[#0D47A1] mb-3">مهارت‌های اصلی و میزان تسلط مورد نیاز:</h3>
-                        <div class="space-y-2">
-                            <div
-                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
-                                <div>
-                                    <strong class="text-[#0D47A1] block">React.js & Next.js (App Router)</strong>
-                                    <span class="text-gray-600">تسلط کامل بر SSR، SSG و مدیریت State های پیچیده</span>
-                                </div>
-                                <span
-                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">سطح
-                                    ارشد</span>
-                            </div>
-
-                            <div
-                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
-                                <div>
-                                    <strong class="text-[#0D47A1] block">TypeScript</strong>
-                                    <span class="text-gray-600">کدنویسی Strict، تایپ‌های سفارشی و Generics</span>
-                                </div>
-                                <span
-                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">تسلط
-                                    کامل</span>
-                            </div>
-
-                            <div
-                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
-                                <div>
-                                    <strong class="text-[#0D47A1] block">Tailwind CSS & CSS Architecture</strong>
-                                    <span class="text-gray-600">پیاده‌سازی دقیقا طبق Figma و رعایت استانداردهای
-                                        Responsive</span>
-                                </div>
-                                <span
-                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">تسلط
-                                    کامل</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-sm font-bold text-[#0D47A1] mb-2">مهارت‌هایی که امتیاز محسوب می‌شوند (Plus
-                            Points):</h3>
-                        <ul class="list-disc list-inside text-xs text-gray-700 space-y-1">
-                            <li>تجربه بهینه‌سازی عملکرد وب‌سایت‌های پرترافیک (Performance Tuning).</li>
-                            <li>تسلط بر تست‌نویسی فرانت‌اند با Jest و React Testing Library.</li>
-                            <li>آشنایی با ابزارهای CI/CD و فرایندهای Dockerize کردن پروژه‌های Next.js.</li>
-                        </ul>
-                    </div>
-
-                    <div
-                        class="bg-[#E3F2FD] p-4 rounded-xl border border-[#90CAF9]/50 flex items-center justify-between text-xs">
-                        <span class="font-medium text-[#0D47A1]">تعداد رزومه‌های ارسالی: <strong
-                                class="text-[#2196F3] font-extrabold text-sm">۴۲</strong> نفر</span>
-                        <div class="flex items-center gap-2">
-                            <span class="text-gray-500">آخرین متقاضیان:</span>
-                            <div class="flex -space-x-2 space-x-reverse">
-                                <span
-                                    class="h-6 w-6 rounded-full bg-[#90CAF9] text-[#0D47A1] text-[10px] font-bold flex items-center justify-center ring-2 ring-white">ع</span>
-                                <span
-                                    class="h-6 w-6 rounded-full bg-[#2196F3] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">س</span>
-                                <span
-                                    class="h-6 w-6 rounded-full bg-[#0D47A1] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">ر</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- =============== جزئیات آگهی 2 =============== -->
-                <div x-show="activeJob === 2" class="space-y-6">
-                    <div class="border-b border-[#E3F2FD] pb-4">
-                        <div class="flex justify-between items-center mb-3">
-                            <h2 class="text-xl font-bold text-[#0D47A1]"> ارشد React.js</h2>
-                            <button
-                                class="px-5 py-2.5 bg-[#2196F3] hover:bg-[#0D47A1] text-white font-medium text-sm rounded-xl shadow-md transition-all">
-                                ارسال رزومه
-                            </button>
-                        </div>
-                        <div class="flex gap-4 text-xs text-gray-600 font-medium">
-                            <span>شرکت: <strong>دیجی‌کالا</strong></span>
-                            <span>|</span>
-                            <span>موقعیت: <strong>تهران (دورکاری)</strong></span>
-                            <span>|</span>
-                            <span class="text-emerald-700 font-bold">حقوق: ۴۰ تا ۵۰ میلیون</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-sm font-bold text-[#0D47A1] mb-2">توضیحات موقعیت شغلی:</h3>
-                        <p class="text-gray-700 text-xs leading-relaxed">
-                            ما در تیم زیرساخت وب دیجی‌کالا به دنبال یک برنامه‌نویس ارشد و باانگیزه React هستیم. شما در
-                            این موقعیت مسئولیت توسعه کامپوننت‌های با بازدهی بالا، بهینه‌سازی سرعت بارگذاری (Core Web
-                            Vitals) و بهبود معماری Front-end پلتفرم اصلی را بر عهده خواهید داشت.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 class="text-sm font-bold text-[#0D47A1] mb-3">مهارت‌های اصلی و میزان تسلط مورد نیاز:</h3>
-                        <div class="space-y-2">
-                            <div
-                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
-                                <div>
-                                    <strong class="text-[#0D47A1] block">React.js & Next.js (App Router)</strong>
-                                    <span class="text-gray-600">تسلط کامل بر SSR، SSG و مدیریت State های پیچیده</span>
-                                </div>
-                                <span
-                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">سطح
-                                    ارشد</span>
-                            </div>
-
-                            <div
-                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
-                                <div>
-                                    <strong class="text-[#0D47A1] block">TypeScript</strong>
-                                    <span class="text-gray-600">کدنویسی Strict، تایپ‌های سفارشی و Generics</span>
-                                </div>
-                                <span
-                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">تسلط
-                                    کامل</span>
-                            </div>
-
-                            <div
-                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
-                                <div>
-                                    <strong class="text-[#0D47A1] block">Tailwind CSS & CSS Architecture</strong>
-                                    <span class="text-gray-600">پیاده‌سازی دقیقا طبق Figma و رعایت استانداردهای
-                                        Responsive</span>
-                                </div>
-                                <span
-                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">تسلط
-                                    کامل</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-sm font-bold text-[#0D47A1] mb-2">مهارت‌هایی که امتیاز محسوب می‌شوند (Plus
-                            Points):</h3>
-                        <ul class="list-disc list-inside text-xs text-gray-700 space-y-1">
-                            <li>تجربه بهینه‌سازی عملکرد وب‌سایت‌های پرترافیک (Performance Tuning).</li>
-                            <li>تسلط بر تست‌نویسی فرانت‌اند با Jest و React Testing Library.</li>
-                            <li>آشنایی با ابزارهای CI/CD و فرایندهای Dockerize کردن پروژه‌های Next.js.</li>
-                        </ul>
-                    </div>
-
-                    <div
-                        class="bg-[#E3F2FD] p-4 rounded-xl border border-[#90CAF9]/50 flex items-center justify-between text-xs">
-                        <span class="font-medium text-[#0D47A1]">تعداد رزومه‌های ارسالی: <strong
-                                class="text-[#2196F3] font-extrabold text-sm">۴۲</strong> نفر</span>
-                        <div class="flex items-center gap-2">
-                            <span class="text-gray-500">آخرین متقاضیان:</span>
-                            <div class="flex -space-x-2 space-x-reverse">
-                                <span
-                                    class="h-6 w-6 rounded-full bg-[#90CAF9] text-[#0D47A1] text-[10px] font-bold flex items-center justify-center ring-2 ring-white">ع</span>
-                                <span
-                                    class="h-6 w-6 rounded-full bg-[#2196F3] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">س</span>
-                                <span
-                                    class="h-6 w-6 rounded-full bg-[#0D47A1] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">ر</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- =============== جزئیات آگهی 3 =============== -->
-                <div x-show="activeJob === 3" class="space-y-6">
-                    <div class="border-b border-[#E3F2FD] pb-4">
-                        <div class="flex justify-between items-center mb-3">
-                            <h2 class="text-xl font-bold text-[#0D47A1]">توسعه‌دهنده React.js</h2>
-                            <button
-                                class="px-5 py-2.5 bg-[#2196F3] hover:bg-[#0D47A1] text-white font-medium text-sm rounded-xl shadow-md transition-all">
-                                ارسال رزومه
-                            </button>
-                        </div>
-                        <div class="flex gap-4 text-xs text-gray-600 font-medium">
-                            <span>شرکت: <strong>دیجی‌کالا</strong></span>
-                            <span>|</span>
-                            <span>موقعیت: <strong>تهران (دورکاری)</strong></span>
-                            <span>|</span>
-                            <span class="text-emerald-700 font-bold">حقوق: ۴۰ تا ۵۰ میلیون</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-sm font-bold text-[#0D47A1] mb-2">توضیحات موقعیت شغلی:</h3>
-                        <p class="text-gray-700 text-xs leading-relaxed">
-                            ما در تیم زیرساخت وب دیجی‌کالا به دنبال یک برنامه‌نویس ارشد و باانگیزه React هستیم. شما در
-                            این موقعیت مسئولیت توسعه کامپوننت‌های با بازدهی بالا، بهینه‌سازی سرعت بارگذاری (Core Web
-                            Vitals) و بهبود معماری Front-end پلتفرم اصلی را بر عهده خواهید داشت.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h3 class="text-sm font-bold text-[#0D47A1] mb-3">مهارت‌های اصلی و میزان تسلط مورد نیاز:</h3>
-                        <div class="space-y-2">
-                            <div
-                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
-                                <div>
-                                    <strong class="text-[#0D47A1] block">React.js & Next.js (App Router)</strong>
-                                    <span class="text-gray-600">تسلط کامل بر SSR، SSG و مدیریت State های پیچیده</span>
-                                </div>
-                                <span
-                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">سطح
-                                    ارشد</span>
-                            </div>
-
-                            <div
-                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
-                                <div>
-                                    <strong class="text-[#0D47A1] block">TypeScript</strong>
-                                    <span class="text-gray-600">کدنویسی Strict، تایپ‌های سفارشی و Generics</span>
-                                </div>
-                                <span
-                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">تسلط
-                                    کامل</span>
-                            </div>
-
-                            <div
-                                class="p-3 bg-[#E3F2FD]/50 rounded-xl border border-[#90CAF9]/40 flex justify-between items-center text-xs">
-                                <div>
-                                    <strong class="text-[#0D47A1] block">Tailwind CSS & CSS Architecture</strong>
-                                    <span class="text-gray-600">پیاده‌سازی دقیقا طبق Figma و رعایت استانداردهای
-                                        Responsive</span>
-                                </div>
-                                <span
-                                    class="px-2.5 py-1 bg-[#2196F3] text-white font-semibold rounded-lg text-[10px]">تسلط
-                                    کامل</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-sm font-bold text-[#0D47A1] mb-2">مهارت‌هایی که امتیاز محسوب می‌شوند (Plus
-                            Points):</h3>
-                        <ul class="list-disc list-inside text-xs text-gray-700 space-y-1">
-                            <li>تجربه بهینه‌سازی عملکرد وب‌سایت‌های پرترافیک (Performance Tuning).</li>
-                            <li>تسلط بر تست‌نویسی فرانت‌اند با Jest و React Testing Library.</li>
-                            <li>آشنایی با ابزارهای CI/CD و فرایندهای Dockerize کردن پروژه‌های Next.js.</li>
-                        </ul>
-                    </div>
-
-                    <div
-                        class="bg-[#E3F2FD] p-4 rounded-xl border border-[#90CAF9]/50 flex items-center justify-between text-xs">
-                        <span class="font-medium text-[#0D47A1]">تعداد رزومه‌های ارسالی: <strong
-                                class="text-[#2196F3] font-extrabold text-sm">۴۲</strong> نفر</span>
-                        <div class="flex items-center gap-2">
-                            <span class="text-gray-500">آخرین متقاضیان:</span>
-                            <div class="flex -space-x-2 space-x-reverse">
-                                <span
-                                    class="h-6 w-6 rounded-full bg-[#90CAF9] text-[#0D47A1] text-[10px] font-bold flex items-center justify-center ring-2 ring-white">ع</span>
-                                <span
-                                    class="h-6 w-6 rounded-full bg-[#2196F3] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">س</span>
-                                <span
-                                    class="h-6 w-6 rounded-full bg-[#0D47A1] text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">ر</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
         </div>
     </main>
