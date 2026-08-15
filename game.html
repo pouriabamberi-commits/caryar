@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بازی مار </title>
+    <title>بازی مار - ارتقای قدرت‌ها و کنترل سرعت</title>
     <!-- Tailwind CSS CDN -->
     <script src="./library/tailwind.js"></script>
     <!-- Font & Icons -->
@@ -34,7 +34,7 @@
         .main-layout {
             display: flex;
             gap: 20px;
-            max-width: 1050px;
+            max-width: 1100px;
             width: 100%;
             align-items: flex-start;
             justify-content: center;
@@ -77,17 +77,9 @@
             gap: 6px;
         }
 
-        .stat-item .val {
-            color: #38bdf8;
-        }
-
-        .stat-item .high-val {
-            color: #facc15;
-        }
-
-        .stat-item .coins-val {
-            color: #eab308;
-        }
+        .stat-item .val { color: #38bdf8; }
+        .stat-item .high-val { color: #facc15; }
+        .stat-item .coins-val { color: #eab308; }
 
         /* Combo Popup */
         .combo-badge {
@@ -120,46 +112,16 @@
         }
 
         @keyframes pulse {
-            from {
-                transform: scale(0.95);
-                opacity: 0.8;
-            }
-
-            to {
-                transform: scale(1.05);
-                opacity: 1;
-            }
+            from { transform: scale(0.95); opacity: 0.8; }
+            to { transform: scale(1.05); opacity: 1; }
         }
 
-        .badge.shield {
-            background: rgba(59, 130, 246, 0.2);
-            color: #60a5fa;
-            border: 1px solid #3b82f6;
-        }
-
-        .badge.slow {
-            background: rgba(168, 85, 247, 0.2);
-            color: #c084fc;
-            border: 1px solid #a855f7;
-        }
-
-        .badge.magnet {
-            background: rgba(236, 72, 153, 0.2);
-            color: #f472b6;
-            border: 1px solid #ec4899;
-        }
-
-        .badge.ghost {
-            background: rgba(16, 185, 129, 0.2);
-            color: #34d399;
-            border: 1px solid #10b981;
-        }
-
-        .badge.double {
-            background: rgba(245, 158, 11, 0.2);
-            color: #fbbf24;
-            border: 1px solid #f59e0b;
-        }
+        .badge.shield { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid #3b82f6; }
+        .badge.slow { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid #a855f7; }
+        .badge.magnet { background: rgba(236, 72, 153, 0.2); color: #f472b6; border: 1px solid #ec4899; }
+        .badge.ghost { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; }
+        .badge.double { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid #f59e0b; }
+        .badge.shoot { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid #ef4444; }
 
         /* Canvas Wrapper */
         .canvas-wrapper {
@@ -196,20 +158,9 @@
             z-index: 50;
         }
 
-        .overlay.hidden {
-            display: none;
-        }
-
-        .overlay h2 {
-            font-size: 1.6rem;
-            color: #f8fafc;
-        }
-
-        .overlay p {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            max-width: 90%;
-        }
+        .overlay.hidden { display: none; }
+        .overlay h2 { font-size: 1.6rem; color: #f8fafc; }
+        .overlay p { color: #94a3b8; font-size: 0.9rem; max-width: 90%; }
 
         /* Buttons */
         .btn {
@@ -231,11 +182,7 @@
         }
 
         /* Mode Selector Tab */
-        .mode-selector {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 5px;
-        }
+        .mode-selector { display: flex; gap: 8px; margin-bottom: 5px; }
 
         .mode-btn {
             padding: 6px 12px;
@@ -258,7 +205,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 8px;
-            width: 200px;
+            width: 220px;
             margin-top: 5px;
         }
 
@@ -266,8 +213,8 @@
             background: #1e293b;
             color: white;
             border: 1px solid #334155;
-            padding: 15px;
-            font-size: 1.2rem;
+            padding: 14px;
+            font-size: 1.1rem;
             border-radius: 12px;
             cursor: pointer;
             display: flex;
@@ -276,28 +223,17 @@
             touch-action: manipulation;
         }
 
-        .touch-btn:active {
-            background: #0284c7;
-            border-color: #38bdf8;
-        }
-
-        .touch-btn.up {
+        .touch-btn:active { background: #0284c7; border-color: #38bdf8; }
+        .touch-btn.up { grid-column: 2; }
+        .touch-btn.left { grid-column: 1; grid-row: 2; }
+        .touch-btn.right { grid-column: 3; grid-row: 2; }
+        .touch-btn.down { grid-column: 2; grid-row: 2; }
+        .touch-btn.shoot {
             grid-column: 2;
-        }
-
-        .touch-btn.left {
-            grid-column: 1;
-            grid-row: 2;
-        }
-
-        .touch-btn.right {
-            grid-column: 3;
-            grid-row: 2;
-        }
-
-        .touch-btn.down {
-            grid-column: 2;
-            grid-row: 2;
+            grid-row: 3;
+            background: #ef4444;
+            border-color: #f87171;
+            font-weight: bold;
         }
 
         /* Sidebar Panels (Shop & Info) */
@@ -306,11 +242,11 @@
             padding: 20px;
             border-radius: 20px;
             border: 1px solid #1e2d4a;
-            width: 320px;
+            width: 340px;
             display: flex;
             flex-direction: column;
             gap: 16px;
-            max-height: 80vh;
+            max-height: 85vh;
             overflow-y: auto;
         }
 
@@ -325,12 +261,37 @@
             align-items: center;
         }
 
-        /* Skin Shop Items */
-        .skins-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+        /* Speed Control Box */
+        .speed-control-box {
+            background: #0a1120;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 10px 14px;
+            display: flex;
+            flex-direction: column;
             gap: 8px;
         }
+
+        .speed-label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .speed-slider {
+            width: 100%;
+            accent-color: #0284c7;
+            cursor: pointer;
+        }
+
+        .speed-slider:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* Skin Shop Items */
+        .skins-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
 
         .skin-card {
             background: #0a1120;
@@ -345,34 +306,45 @@
             transition: all 0.2s;
         }
 
-        .skin-card:hover {
-            border-color: #38bdf8;
+        .skin-card:hover { border-color: #38bdf8; }
+        .skin-card.selected { border-color: #facc15; background: #162032; }
+        .skin-preview { width: 22px; height: 22px; border-radius: 6px; }
+        .skin-name { font-size: 0.8rem; font-weight: bold; }
+        .skin-cost { font-size: 0.7rem; color: #eab308; }
+
+        /* Upgrade Items List */
+        .upgrades-list { display: flex; flex-direction: column; gap: 8px; }
+
+        .upgrade-card {
+            background: #0a1120;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .skin-card.selected {
-            border-color: #facc15;
-            background: #162032;
-        }
+        .upgrade-info { display: flex; flex-direction: column; gap: 2px; }
+        .upgrade-title { font-size: 0.85rem; font-weight: bold; color: #f8fafc; }
+        .upgrade-lvl { font-size: 0.7rem; color: #38bdf8; }
 
-        .skin-preview {
-            width: 22px;
-            height: 22px;
+        .upgrade-btn {
+            background: #0284c7;
+            color: white;
+            border: none;
+            padding: 5px 10px;
             border-radius: 6px;
-        }
-
-        .skin-name {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
         }
 
-        .skin-cost {
-            font-size: 0.7rem;
-            color: #eab308;
-        }
+        .upgrade-btn:hover { background: #0369a1; }
 
         /* Quests and Achievements */
-        .quest-box,
-        .achievement-box {
+        .quest-box {
             background: #0a1120;
             padding: 8px 12px;
             border-radius: 8px;
@@ -383,10 +355,7 @@
             align-items: center;
         }
 
-        .quest-completed {
-            border-color: #10b981;
-            color: #34d399;
-        }
+        .quest-completed { border-color: #10b981; color: #34d399; }
 
         /* Item Legend / Instructions */
         .legend-list {
@@ -397,11 +366,7 @@
             color: #cbd5e1;
         }
 
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .legend-item { display: flex; align-items: center; gap: 8px; }
 
         .icon-box {
             width: 18px;
@@ -434,10 +399,8 @@
             <div class="hud-bar">
                 <div class="stat-item">امتیاز: <span id="score" class="val">0</span></div>
                 <div class="stat-item">سکه‌ها: <span id="coins" class="coins-val">0</span></div>
-                <div class="stat-item" id="comboBox" style="display:none;"><span id="comboVal" class="combo-badge">2x
-                        Combo!</span></div>
-                <div class="stat-item" id="timerBox" style="display:none;">زمان: <span id="timerVal"
-                        class="val">60</span>s</div>
+                <div class="stat-item" id="comboBox" style="display:none;"><span id="comboVal" class="combo-badge">2x Combo!</span></div>
+                <div class="stat-item" id="timerBox" style="display:none;">زمان: <span id="timerVal" class="val">60</span>s</div>
                 <div class="stat-item">رکورد: <span id="highScore" class="high-val">0</span></div>
             </div>
 
@@ -468,11 +431,25 @@
                 <button class="touch-btn right" onclick="setDirection('RIGHT')">◄</button>
                 <button class="touch-btn left" onclick="setDirection('LEFT')">►</button>
                 <button class="touch-btn down" onclick="setDirection('DOWN')">▼</button>
+                <button class="touch-btn shoot" onclick="shootLaser()">🔫 شلیک</button>
             </div>
         </div>
 
         <!-- Sidebar Section (Shop & Features) -->
         <div class="side-panel">
+            <!-- بخش کنترل سرعت قبل بازی -->
+            <div class="panel-title">تنظیم سرعت اولیه ⚙️</div>
+            <div class="speed-control-box">
+                <div class="speed-label-row">
+                    <span>سطح سرعت:</span>
+                    <span id="speedDisplay" class="text-sky-400">متوسط (110ms)</span>
+                </div>
+                <input type="range" id="speedInput" class="speed-slider" min="50" max="180" step="10" value="110" dir="ltr" oninput="updateSpeedDisplay(this.value)">
+            </div>
+
+            <div class="panel-title">ارتقای دائمی قدرت‌ها ⚡</div>
+            <div class="upgrades-list" id="upgradesList"></div>
+
             <div class="panel-title">چالش روزانه 🎯</div>
             <div id="dailyQuestBox" class="quest-box">
                 <span id="questText">خوردن ۱۵ سیب (۰/۱۵)</span>
@@ -488,15 +465,13 @@
                     <div class="icon-box" style="background:#ef4444;"></div><span>سیب معمولی (+۱۰ امتیاز)</span>
                 </div>
                 <div class="legend-item">
-                    <div class="icon-box" style="background:#facc15; color:#000;">★</div><span>سیب طلایی (+۳۰ امتیاز، +۵
-                        سکه)</span>
+                    <div class="icon-box" style="background:#facc15; color:#000;">★</div><span>سیب طلایی (+۳۰ امتیاز، +۵ سکه)</span>
                 </div>
                 <div class="legend-item">
                     <div class="icon-box" style="background:#3b82f6;">🛡️</div><span>سپر محافظت</span>
                 </div>
                 <div class="legend-item">
-                    <div class="icon-box" style="background:#10b981;">👻</div><span>پاورآپ شبح (عبور از دیوارهای
-                        مانع/خود)</span>
+                    <div class="icon-box" style="background:#10b981;">👻</div><span>پاورآپ شبح (عبور از دیوارهای مانع/خود)</span>
                 </div>
                 <div class="legend-item">
                     <div class="icon-box" style="background:#f59e0b;">✖2</div><span>امتیاز دوبرابر (۱۰ ثانیه)</span>
@@ -506,6 +481,9 @@
                 </div>
                 <div class="legend-item">
                     <div class="icon-box" style="background:#ec4899;">🧲</div><span>آهنربا (جذب غذاها)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="icon-box" style="background:#ef4444; color:#fff;">🔫</div><span>شلیک لیزر (امکان نابودی موانع)</span>
                 </div>
                 <div class="legend-item">
                     <div class="icon-box" style="background:#06b6d4;">🌀</div><span>پورتال جابه‌جایی</span>
@@ -588,6 +566,19 @@
                 osc.connect(gain); gain.connect(this.ctx.destination);
                 osc.start(); osc.stop(this.ctx.currentTime + 0.4);
             }
+
+            playShoot() {
+                if (this.ctx.state === 'suspended') this.ctx.resume();
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(800, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(100, this.ctx.currentTime + 0.1);
+                gain.gain.setValueAtTime(0.1, this.ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 0.1);
+                osc.connect(gain); gain.connect(this.ctx.destination);
+                osc.start(); osc.stop(this.ctx.currentTime + 0.1);
+            }
         }
 
         const audio = new SoundFX();
@@ -608,10 +599,14 @@
         const comboBox = document.getElementById("comboBox");
         const comboVal = document.getElementById("comboVal");
         const skinsGrid = document.getElementById("skinsGrid");
+        const upgradesList = document.getElementById("upgradesList");
+        const speedInput = document.getElementById("speedInput");
+        const speedDisplay = document.getElementById("speedDisplay");
 
         // --- Game Config & Constants ---
         const gridSize = 20;
         const tileCount = canvas.width / gridSize;
+        const ITEM_LIFETIME = 12000;
 
         // Skins Database
         const SKINS = [
@@ -622,6 +617,16 @@
             { id: 'purple', name: 'بنفش کهکشانی', headColor: '#c084fc', bodyColor: '#7e22ce', cost: 120 }
         ];
 
+        // Powerup Upgrades Config
+        const POWERUP_TYPES = [
+            { id: 'GHOST', name: '👻 پاورآپ شبح', baseDuration: 6000 },
+            { id: 'DOUBLE', name: '✖2 امتیاز دوبرابر', baseDuration: 8000 },
+            { id: 'SLOW', name: '⏳ کاهش سرعت', baseDuration: 6000 },
+            { id: 'MAGNET', name: '🧲 آهنربا', baseDuration: 7000 },
+            { id: 'SHOOT', name: '🔫 قابلیت شلیک', baseDuration: 8000 },
+            { id: 'SHIELD', name: '🛡️ سپر محافظ', baseDuration: 0 }
+        ];
+
         // --- Persistent Data ---
         let highScore = parseInt(localStorage.getItem("snake_high_score_v2")) || 0;
         let coins = parseInt(localStorage.getItem("snake_coins_v2")) || 0;
@@ -629,9 +634,29 @@
         let unlockedSkins = JSON.parse(localStorage.getItem("snake_unlocked_skins_v2")) || ['cyan'];
         let questApplesEaten = parseInt(localStorage.getItem("snake_quest_apples")) || 0;
         let questCompleted = localStorage.getItem("snake_quest_completed") === 'true';
+        let powerupLevels = JSON.parse(localStorage.getItem("snake_powerup_levels_v2")) || {
+            GHOST: 0, DOUBLE: 0, SLOW: 0, MAGNET: 0, SHOOT: 0, SHIELD: 0
+        };
 
         highScoreEl.textContent = highScore;
         coinsEl.textContent = coins;
+
+        // Calculate Cost Function: 1st Upgrade = 50, subsequent +30
+        function getUpgradeCost(level) {
+            return 50 + (level * 30);
+        }
+
+        // --- Speed Control Functions ---
+        function updateSpeedDisplay(val) {
+            let speedText = "";
+            let numVal = parseInt(val);
+            if (numVal <= 70) speedText = `خیلی سریع (${numVal}ms)`;
+            else if (numVal <= 90) speedText = `سریع (${numVal}ms)`;
+            else if (numVal <= 130) speedText = `متوسط (${numVal}ms)`;
+            else speedText = `آرام (${numVal}ms)`;
+            
+            speedDisplay.textContent = speedText;
+        }
 
         // --- State Variables ---
         let snake = [];
@@ -643,33 +668,38 @@
         let isGameRunning = false;
         let isPaused = false;
         let changingDirection = false;
-        let gameMode = 'CLASSIC'; // CLASSIC, TIME, LEVELS
+        let gameMode = 'CLASSIC';
         let currentLevel = 1;
         let timeRemaining = 60;
         let countdownTimer = null;
 
-        // Dynamic Entities
-        let food = { x: 0, y: 0 };
+        let food = null;
+        let foodTimer = null;
         let bonusFood = null;
+        let bonusTimer = null;
         let poisonFood = null;
-        let powerup = null; // {x, y, type: 'SHIELD'|'SLOW'|'MAGNET'|'SHRINK'|'GHOST'|'DOUBLE'}
+        let poisonTimer = null;
+        let powerup = null; 
+        let powerupSpawnTimer = null;
         let portals = [];
         let obstacles = [];
         let particles = [];
+        let bullets = [];
 
-        // Active Powerups Timers & Multipliers
+        let mouthOpenTimer = 0;
+        let headScale = 1;
+
         let activeShield = false;
         let ghostTimer = null;
         let doubleTimer = null;
         let slowTimer = null;
         let magnetTimer = null;
+        let shootTimer = null;
 
-        // Combo Logic
         let lastEatTime = 0;
         let comboMultiplier = 1;
         let comboResetTimer = null;
 
-        // Touch Swipe Handling
         let touchStartX = 0;
         let touchStartY = 0;
 
@@ -705,6 +735,9 @@
 
         // --- Game Initialization ---
         function initGame() {
+            // Lock Speed Slider during game
+            speedInput.disabled = true;
+
             snake = [
                 { x: 160, y: 200 },
                 { x: 140, y: 200 },
@@ -713,15 +746,19 @@
             dx = gridSize; dy = 0;
             score = 0;
             scoreEl.textContent = score;
-            baseSpeed = 110; speed = baseSpeed;
+            
+            // Set speed from user selection
+            baseSpeed = parseInt(speedInput.value); 
+            speed = baseSpeed;
+            
             activeShield = false;
-            clearTimeout(slowTimer); clearTimeout(magnetTimer); clearTimeout(ghostTimer); clearTimeout(doubleTimer);
-            slowTimer = null; magnetTimer = null; ghostTimer = null; doubleTimer = null;
+            
+            clearAllTimers();
             comboMultiplier = 1;
             comboBox.style.display = 'none';
             updateBadges();
 
-            obstacles = []; portals = []; bonusFood = null; poisonFood = null; powerup = null;
+            obstacles = []; portals = []; bullets = []; bonusFood = null; poisonFood = null; powerup = null;
 
             if (gameMode === 'LEVELS') {
                 currentLevel = 1;
@@ -752,19 +789,81 @@
             updateQuestUI();
         }
 
+        function clearAllTimers() {
+            clearTimeout(slowTimer); clearTimeout(magnetTimer); clearTimeout(ghostTimer); clearTimeout(doubleTimer); clearTimeout(shootTimer);
+            clearTimeout(foodTimer); clearTimeout(bonusTimer); clearTimeout(poisonTimer); clearTimeout(powerupSpawnTimer);
+            slowTimer = null; magnetTimer = null; ghostTimer = null; doubleTimer = null; shootTimer = null;
+            foodTimer = null; bonusTimer = null; poisonTimer = null; powerupSpawnTimer = null;
+        }
+
+        // --- Shooter Mechanic ---
+        function shootLaser() {
+            if (!shootTimer || !isGameRunning || isPaused) return;
+            audio.playShoot();
+            const head = snake[0];
+            bullets.push({
+                x: head.x + gridSize / 2,
+                y: head.y + gridSize / 2,
+                vx: dx === 0 ? 0 : (dx > 0 ? 8 : -8),
+                vy: dy === 0 ? 0 : (dy > 0 ? 8 : -8)
+            });
+        }
+
+        function updateAndDrawBullets() {
+            for (let i = bullets.length - 1; i >= 0; i--) {
+                let b = bullets[i];
+                b.x += b.vx;
+                b.y += b.vy;
+
+                // Draw Bullet
+                ctx.fillStyle = '#ef4444';
+                ctx.shadowColor = '#ef4444';
+                ctx.shadowBlur = 6;
+                ctx.beginPath();
+                ctx.arc(b.x, b.y, 4, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+
+                // Bullet Collision with Obstacles
+                for (let j = obstacles.length - 1; j >= 0; j--) {
+                    let obs = obstacles[j];
+                    if (b.x >= obs.x && b.x <= obs.x + gridSize && b.y >= obs.y && b.y <= obs.y + gridSize) {
+                        createParticles(obs.x, obs.y, '#f97316', 12);
+                        obstacles.splice(j, 1);
+                        bullets.splice(i, 1);
+                        score += 5;
+                        scoreEl.textContent = score;
+                        break;
+                    }
+                }
+
+                // Bullet Collision with Poison Food
+                if (poisonFood && b.x >= poisonFood.x && b.x <= poisonFood.x + gridSize && b.y >= poisonFood.y && b.y <= poisonFood.y + gridSize) {
+                    createParticles(poisonFood.x, poisonFood.y, '#8b5cf6', 10);
+                    poisonFood = null;
+                    bullets.splice(i, 1);
+                    continue;
+                }
+
+                // Remove Bullet out of bounds
+                if (b.x < 0 || b.x > canvas.width || b.y < 0 || b.y > canvas.height) {
+                    bullets.splice(i, 1);
+                }
+            }
+        }
+
         // --- Main Loop ---
         function gameLoop() {
             if (isPaused) return;
 
             if (hasCollided()) {
                 if (ghostTimer) {
-                    // Pass through walls/self during ghost powerup
                 } else if (activeShield) {
                     activeShield = false;
                     audio.playPowerup();
                     triggerShake();
                     updateBadges();
-                    snake.shift(); // Bounce back
+                    snake.shift();
                 } else {
                     audio.playGameOver();
                     triggerShake();
@@ -775,7 +874,6 @@
 
             changingDirection = false;
 
-            // Magnet Effect
             if (magnetTimer && food) {
                 const head = snake[0];
                 if (Math.abs(head.x - food.x) <= gridSize * 4 && Math.abs(head.y - food.y) <= gridSize * 4) {
@@ -786,6 +884,9 @@
                 }
             }
 
+            if (headScale > 1) headScale -= 0.05;
+            if (mouthOpenTimer > 0) mouthOpenTimer--;
+
             clearCanvas();
             drawObstacles();
             drawPortals();
@@ -793,6 +894,7 @@
             drawBonusFood();
             drawPoisonFood();
             drawPowerup();
+            updateAndDrawBullets();
             moveSnake();
             drawSnake();
             updateAndDrawParticles();
@@ -807,7 +909,6 @@
             ctx.fillStyle = "#050a14";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Subtle Grid Lines
             ctx.strokeStyle = "#0e1726";
             ctx.lineWidth = 1;
             for (let i = 0; i < canvas.width; i += gridSize) {
@@ -828,21 +929,66 @@
             if (ghostTimer) ctx.globalAlpha = 0.5;
 
             snake.forEach((part, index) => {
-                ctx.fillStyle = index === 0 ? skin.headColor : skin.bodyColor;
-                ctx.beginPath();
-                ctx.roundRect(part.x + 1, part.y + 1, gridSize - 2, gridSize - 2, index === 0 ? 6 : 4);
-                ctx.fill();
+                if (index === 0) {
+                    ctx.save();
+                    const cx = part.x + gridSize / 2;
+                    const cy = part.y + gridSize / 2;
+                    ctx.translate(cx, cy);
+                    ctx.scale(headScale, headScale);
 
-                if (index === 0 && activeShield) {
-                    ctx.strokeStyle = '#3b82f6';
-                    ctx.lineWidth = 2;
-                    ctx.strokeRect(part.x - 2, part.y - 2, gridSize + 4, gridSize + 4);
+                    ctx.fillStyle = skin.headColor;
+                    ctx.beginPath();
+                    ctx.arc(0, 0, gridSize / 2, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    let angle = 0;
+                    if (dx > 0) angle = 0;
+                    else if (dx < 0) angle = Math.PI;
+                    else if (dy > 0) angle = Math.PI / 2;
+                    else if (dy < 0) angle = -Math.PI / 2;
+
+                    ctx.rotate(angle);
+
+                    ctx.fillStyle = "#ffffff";
+                    ctx.beginPath();
+                    ctx.arc(2, -4, 3, 0, Math.PI * 2);
+                    ctx.arc(2, 4, 3, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.fillStyle = "#000000";
+                    ctx.beginPath();
+                    ctx.arc(3, -4, 1.5, 0, Math.PI * 2);
+                    ctx.arc(3, 4, 1.5, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.fillStyle = "#ef4444";
+                    ctx.beginPath();
+                    if (mouthOpenTimer > 0) {
+                        ctx.arc(4, 0, 4, 0, Math.PI * 2);
+                    } else {
+                        ctx.arc(6, 0, 2, 0, Math.PI * 2);
+                    }
+                    ctx.fill();
+
+                    ctx.restore();
+
+                    if (activeShield) {
+                        ctx.strokeStyle = '#3b82f6';
+                        ctx.lineWidth = 2;
+                        ctx.strokeRect(part.x - 2, part.y - 2, gridSize + 4, gridSize + 4);
+                    }
+                } else {
+                    ctx.fillStyle = skin.bodyColor;
+                    ctx.beginPath();
+                    ctx.roundRect(part.x + 1, part.y + 1, gridSize - 2, gridSize - 2, 4);
+                    ctx.fill();
                 }
             });
             ctx.restore();
         }
 
         function drawFood() {
+            if (!food) return;
             ctx.fillStyle = "#ef4444"; ctx.shadowColor = "#ef4444"; ctx.shadowBlur = 8;
             ctx.beginPath();
             ctx.arc(food.x + gridSize / 2, food.y + gridSize / 2, gridSize / 2 - 2, 0, Math.PI * 2);
@@ -872,6 +1018,7 @@
             if (powerup.type === 'MAGNET') icon = '🧲';
             if (powerup.type === 'GHOST') icon = '👻';
             if (powerup.type === 'DOUBLE') icon = '✖2';
+            if (powerup.type === 'SHOOT') icon = '🔫';
 
             ctx.font = '13px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
             ctx.fillText(icon, powerup.x + gridSize / 2, powerup.y + gridSize / 2);
@@ -901,7 +1048,6 @@
         function moveSnake() {
             let head = { x: snake[0].x + dx, y: snake[0].y + dy };
 
-            // Wrap around during Ghost mode
             if (ghostTimer) {
                 if (head.x < 0) head.x = canvas.width - gridSize;
                 else if (head.x >= canvas.width) head.x = 0;
@@ -909,7 +1055,6 @@
                 else if (head.y >= canvas.height) head.y = 0;
             }
 
-            // Portals
             if (portals.length === 2) {
                 if (head.x === portals[0].x && head.y === portals[0].y) {
                     head = { x: portals[1].x, y: portals[1].y };
@@ -922,12 +1067,13 @@
 
             snake.unshift(head);
 
-            // Eat Standard Food
-            if (head.x === food.x && head.y === food.y) {
+            if (food && head.x === food.x && head.y === food.y) {
                 audio.playEat();
                 createParticles(food.x, food.y, '#ef4444');
+                
+                headScale = 1.35;
+                mouthOpenTimer = 8;
 
-                // Combo & Score calculation
                 registerCombo();
                 let earnedScore = 10 * comboMultiplier * (doubleTimer ? 2 : 1);
                 score += earnedScore;
@@ -939,36 +1085,37 @@
                 spawnFood();
                 increaseSpeed();
 
-                // Spawns
                 if (!bonusFood && Math.random() < 0.25) spawnBonusFood();
                 if (!poisonFood && Math.random() < 0.15) spawnPoisonFood();
-                if (!powerup && Math.random() < 0.3) spawnPowerup();
+                if (!powerup && Math.random() < 0.35) spawnPowerup();
 
-                // Level Progress check
                 if (gameMode === 'LEVELS' && score >= currentLevel * 80) {
                     currentLevel++;
                     generateLevelLayout(currentLevel);
                 }
             }
-            // Eat Bonus
             else if (bonusFood && head.x === bonusFood.x && head.y === bonusFood.y) {
                 audio.playEat(); createParticles(bonusFood.x, bonusFood.y, '#facc15');
+                headScale = 1.35; mouthOpenTimer = 8;
                 score += 30 * (doubleTimer ? 2 : 1);
                 addCoins(5);
                 scoreEl.textContent = score; updateHighScore();
+                if (bonusTimer) clearTimeout(bonusTimer);
                 bonusFood = null;
             }
-            // Eat Poison
             else if (poisonFood && head.x === poisonFood.x && head.y === poisonFood.y) {
                 audio.playPoison(); createParticles(poisonFood.x, poisonFood.y, '#8b5cf6');
+                headScale = 1.35; mouthOpenTimer = 8;
                 score = Math.max(0, score - 15);
                 scoreEl.textContent = score;
+                if (poisonTimer) clearTimeout(poisonTimer);
                 poisonFood = null;
             }
-            // Eat Powerup
             else if (powerup && head.x === powerup.x && head.y === powerup.y) {
                 audio.playPowerup(); createParticles(powerup.x, powerup.y, '#3b82f6');
+                headScale = 1.35; mouthOpenTimer = 8;
                 applyPowerup(powerup.type);
+                if (powerupSpawnTimer) clearTimeout(powerupSpawnTimer);
                 powerup = null;
             }
             else {
@@ -1009,14 +1156,39 @@
             return pos;
         }
 
-        function spawnFood() { food = getRandomPos(); }
-        function spawnBonusFood() { bonusFood = getRandomPos(); }
-        function spawnPoisonFood() { poisonFood = getRandomPos(); }
+        function spawnFood() {
+            if (foodTimer) clearTimeout(foodTimer);
+            food = getRandomPos();
+            foodTimer = setTimeout(() => {
+                if (isGameRunning) spawnFood();
+            }, ITEM_LIFETIME);
+        }
+
+        function spawnBonusFood() {
+            if (bonusTimer) clearTimeout(bonusTimer);
+            bonusFood = getRandomPos();
+            bonusTimer = setTimeout(() => {
+                bonusFood = null;
+            }, ITEM_LIFETIME);
+        }
+
+        function spawnPoisonFood() {
+            if (poisonTimer) clearTimeout(poisonTimer);
+            poisonFood = getRandomPos();
+            poisonTimer = setTimeout(() => {
+                poisonFood = null;
+            }, ITEM_LIFETIME);
+        }
+
         function spawnPowerup() {
-            const types = ['SHIELD', 'SLOW', 'MAGNET', 'GHOST', 'DOUBLE'];
+            if (powerupSpawnTimer) clearTimeout(powerupSpawnTimer);
+            const types = ['SHIELD', 'SLOW', 'MAGNET', 'GHOST', 'DOUBLE', 'SHOOT'];
             const type = types[Math.floor(Math.random() * types.length)];
             const pos = getRandomPos();
             powerup = { x: pos.x, y: pos.y, type: type };
+            powerupSpawnTimer = setTimeout(() => {
+                powerup = null;
+            }, ITEM_LIFETIME);
         }
 
         function generateLevelLayout(level) {
@@ -1026,15 +1198,20 @@
             if (level > 1) portals = [getRandomPos(), getRandomPos()];
         }
 
-        // --- Powerup Handler ---
+        // --- Powerup Handler & Dynamic Upgrade Durations ---
         function applyPowerup(type) {
-            if (type === 'SHIELD') activeShield = true;
-            else if (type === 'GHOST') {
+            const level = powerupLevels[type] || 0;
+            // Each level adds 1.5s (1500ms) extra duration
+            const bonusDuration = level * 1500;
+
+            if (type === 'SHIELD') {
+                activeShield = true;
+            } else if (type === 'GHOST') {
                 if (ghostTimer) clearTimeout(ghostTimer);
-                ghostTimer = setTimeout(() => { ghostTimer = null; updateBadges(); }, 6000);
+                ghostTimer = setTimeout(() => { ghostTimer = null; updateBadges(); }, 6000 + bonusDuration);
             } else if (type === 'DOUBLE') {
                 if (doubleTimer) clearTimeout(doubleTimer);
-                doubleTimer = setTimeout(() => { doubleTimer = null; updateBadges(); }, 8000);
+                doubleTimer = setTimeout(() => { doubleTimer = null; updateBadges(); }, 8000 + bonusDuration);
             } else if (type === 'SLOW') {
                 speed = baseSpeed + 45;
                 clearInterval(gameInterval); gameInterval = setInterval(gameLoop, speed);
@@ -1042,10 +1219,13 @@
                 slowTimer = setTimeout(() => {
                     speed = baseSpeed; clearInterval(gameInterval); gameInterval = setInterval(gameLoop, speed);
                     slowTimer = null; updateBadges();
-                }, 6000);
+                }, 6000 + bonusDuration);
             } else if (type === 'MAGNET') {
                 if (magnetTimer) clearTimeout(magnetTimer);
-                magnetTimer = setTimeout(() => { magnetTimer = null; updateBadges(); }, 7000);
+                magnetTimer = setTimeout(() => { magnetTimer = null; updateBadges(); }, 7000 + bonusDuration);
+            } else if (type === 'SHOOT') {
+                if (shootTimer) clearTimeout(shootTimer);
+                shootTimer = setTimeout(() => { shootTimer = null; updateBadges(); }, 8000 + bonusDuration);
             }
             updateBadges();
         }
@@ -1057,23 +1237,21 @@
             if (doubleTimer) powerupBadges.innerHTML += `<div class="badge double">✖2 امتیازدوبل</div>`;
             if (slowTimer) powerupBadges.innerHTML += `<div class="badge slow">⏳ کند</div>`;
             if (magnetTimer) powerupBadges.innerHTML += `<div class="badge magnet">🧲 آهنربا</div>`;
+            if (shootTimer) powerupBadges.innerHTML += `<div class="badge shoot">🔫 شلیک</div>`;
         }
 
         // --- Collisions ---
         function hasCollided() {
             const head = { x: snake[0].x + dx, y: snake[0].y + dy };
 
-            // Wall Collision
             if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
                 return true;
             }
 
-            // Self Collision
             for (let i = 1; i < snake.length; i++) {
                 if (head.x === snake[i].x && head.y === snake[i].y) return true;
             }
 
-            // Obstacle Collision
             for (let obs of obstacles) {
                 if (head.x === obs.x && head.y === obs.y) return true;
             }
@@ -1090,7 +1268,7 @@
             }
         }
 
-        // --- Controls System (Keyboard, Touch & Swipes) ---
+        // --- Controls System ---
         function setDirection(dir) {
             if (changingDirection || isPaused) return;
 
@@ -1099,7 +1277,6 @@
             const goingRight = dx === gridSize;
             const goingLeft = dx === -gridSize;
 
-            // اصلاح کلیدهای چپ و راست
             if (dir === 'RIGHT' && !goingRight) {
                 dx = -gridSize;
                 dy = 0;
@@ -1122,9 +1299,8 @@
             }
         }
 
-        // Keyboard Listener
         document.addEventListener("keydown", (evt) => {
-            if (evt.keyCode === 32 && isGameRunning) {
+            if (evt.keyCode === 80 && isGameRunning) { // Key P for Pause
                 isPaused = !isPaused;
                 if (isPaused) {
                     overlayTitle.textContent = "بازی متوقف شد";
@@ -1135,6 +1311,12 @@
                 return;
             }
 
+            // Shoot Key (Space or F)
+            if ((evt.keyCode === 32 || evt.keyCode === 70) && isGameRunning) {
+                shootLaser();
+                return;
+            }
+
             const k = evt.keyCode;
             if (k === 37 || k === 65) setDirection('RIGHT');
             if (k === 38 || k === 87) setDirection('UP');
@@ -1142,7 +1324,6 @@
             if (k === 40 || k === 83) setDirection('DOWN');
         });
 
-        // Touch Swipe Gesture Handling
         canvas.addEventListener('touchstart', e => {
             touchStartX = e.touches[0].clientX;
             touchStartY = e.touches[0].clientY;
@@ -1171,11 +1352,15 @@
             else if (isPaused) { isPaused = false; overlay.classList.add("hidden"); }
         });
 
-        // --- Game Over / Quests / Shop ---
+        // --- Game Over / Quests / Shop / Upgrades ---
         function handleGameOver(msg = "بازی تمام شد!") {
             clearInterval(gameInterval);
             if (countdownTimer) clearInterval(countdownTimer);
+            clearAllTimers();
             isGameRunning = false;
+
+            // Unlock Speed Slider when Game Over
+            speedInput.disabled = false;
 
             overlayTitle.textContent = msg;
             overlaySub.textContent = `امتیاز نهایی: ${score} | سکه کسب شده: ${Math.floor(score / 10)}`;
@@ -1194,6 +1379,7 @@
             coinsEl.textContent = coins;
             localStorage.setItem("snake_coins_v2", coins);
             renderShop();
+            renderUpgrades();
         }
 
         function updateHighScore() {
@@ -1224,6 +1410,44 @@
                 qText.textContent = "✓ چالش امروز تکمیل شد!";
             } else {
                 qText.textContent = `خوردن ۱۵ سیب (${questApplesEaten}/۱۵)`;
+            }
+        }
+
+        // Render Upgrades UI
+        function renderUpgrades() {
+            upgradesList.innerHTML = '';
+            POWERUP_TYPES.forEach(pw => {
+                const level = powerupLevels[pw.id] || 0;
+                const cost = getUpgradeCost(level);
+
+                const card = document.createElement('div');
+                card.className = 'upgrade-card';
+                card.innerHTML = `
+                    <div class="upgrade-info">
+                        <div class="upgrade-title">${pw.name}</div>
+                        <div class="upgrade-lvl">سطح فعلی: ${level}</div>
+                    </div>
+                    <button class="upgrade-btn" onclick="buyUpgrade('${pw.id}')">${cost} سکه</button>
+                `;
+                upgradesList.appendChild(card);
+            });
+        }
+
+        function buyUpgrade(powerupId) {
+            const level = powerupLevels[powerupId] || 0;
+            const cost = getUpgradeCost(level);
+
+            if (coins >= cost) {
+                coins -= cost;
+                coinsEl.textContent = coins;
+                localStorage.setItem("snake_coins_v2", coins);
+
+                powerupLevels[powerupId] = level + 1;
+                localStorage.setItem("snake_powerup_levels_v2", JSON.stringify(powerupLevels));
+
+                renderUpgrades();
+            } else {
+                alert("سکه کافی برای ارتقا ندارید!");
             }
         }
 
@@ -1265,6 +1489,7 @@
         }
 
         renderShop();
+        renderUpgrades();
     </script>
 </body>
 
