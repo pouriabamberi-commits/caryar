@@ -84,7 +84,6 @@
             -webkit-font-smoothing: antialiased;
         }
     </style>
-</head>
 
 <body class="bg-slate-50 min-h-screen text-slate-800 antialiased overflow-x-hidden">
 
@@ -311,7 +310,7 @@
 
             <div class="pt-4 flex  flex-col gap-3">
                 <!-- change lang -->
-                <div  class="relative w-full">
+                <div class="relative w-full">
                     <select x-model="lang"
                         class="w-full bg-slate-100 hover:bg-karyar-50 text-slate-700 hover:text-karyar-900 text-xs font-bold px-4 py-3 rounded-xl border border-slate-200 transition-all focus:outline-none cursor-pointer appearance-none text-center">
                         <option value="fa"> فارسی (FA)</option>
@@ -387,15 +386,18 @@
                     <!-- آمار کوتاه -->
                     <div class="pt-4 grid grid-cols-3 gap-4 border-t border-slate-100 text-center lg:text-right">
                         <div>
-                            <span class="block text-xl sm:text-2xl font-black text-karyar-900">+۱,۵۰۰</span>
+                            <span class="counter block text-xl sm:text-2xl font-black text-karyar-900" data-count="1500"
+                                data-prefix="+">0</span>
                             <span class="text-xs text-slate-500">موقعیت شغلی فعال</span>
                         </div>
                         <div>
-                            <span class="block text-xl sm:text-2xl font-black text-karyar-900">+۸۰۰</span>
+                            <span class="counter block text-xl sm:text-2xl font-black text-karyar-900" data-count="800"
+                                data-prefix="+">0</span>
                             <span class="text-xs text-slate-500">شرکت معتبر</span>
                         </div>
                         <div>
-                            <span class="block text-xl sm:text-2xl font-black text-karyar-900">+۱۰,۰۰۰</span>
+                            <span class="counter block text-xl sm:text-2xl font-black text-karyar-900"
+                                data-count="10000" data-prefix="+">0</span>
                             <span class="text-xs text-slate-500">رزومه ثبت‌شده</span>
                         </div>
                     </div>
@@ -573,19 +575,24 @@
             <!-- Animated Stats Counter Grid -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16" data-aos="fade-up">
                 <div class="bg-karyar-50/50 border border-karyar-100 p-5 rounded-2xl text-center">
-                    <div class="text-2xl sm:text-3xl font-black text-karyar-900">+۵۰۰</div>
+                    <div class="counter text-2xl sm:text-3xl font-black text-karyar-900" data-count="500"
+                        data-prefix="+">۰</div>
                     <div class="text-xs text-slate-600 mt-1 font-medium">شرکت فعال</div>
                 </div>
                 <div class="bg-karyar-50/50 border border-karyar-100 p-5 rounded-2xl text-center">
-                    <div class="text-2xl sm:text-3xl font-black text-karyar-900">+۱۲,۰۰۰</div>
+                    <div class="counter text-2xl sm:text-3xl font-black text-karyar-900" data-count="12000"
+                        data-prefix="+">۰
+                    </div>
                     <div class="text-xs text-slate-600 mt-1 font-medium">استخدام موفق</div>
                 </div>
                 <div class="bg-karyar-50/50 border border-karyar-100 p-5 rounded-2xl text-center">
-                    <div class="text-2xl sm:text-3xl font-black text-karyar-900">۹۸٪</div>
+                    <div class="counter text-2xl sm:text-3xl font-black text-karyar-900" data-count="98" data-suffix="%">0
+                    </div>
                     <div class="text-xs text-slate-600 mt-1 font-medium">رضایت کارفرمایان</div>
                 </div>
                 <div class="bg-karyar-50/50 border border-karyar-100 p-5 rounded-2xl text-center">
-                    <div class="text-2xl sm:text-3xl font-black text-karyar-900">+۸۵۰</div>
+                    <div class="counter text-2xl sm:text-3xl font-black text-karyar-900" data-count="850"
+                        data-prefix="+">۰</div>
                     <div class="text-xs text-slate-600 mt-1 font-medium">آگهی فعال امروز</div>
                 </div>
             </div>
@@ -1284,6 +1291,55 @@
             duration: 800,
             once: true,
             easing: 'ease-in-out'
+        });
+    </script>
+
+    <!-- countup.js -->
+    <script src="./library/countUp.umd.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const easingFn = (t, b, c, d) => {
+                const ts = (t /= d) * t;
+                const tc = ts * t;
+                return b + c * (tc + -3 * ts + 3 * t);
+            };
+
+            // تنظیمات عمومی
+            const baseOptions = {
+                duration: 3,
+                easingFn,
+                numerals: ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],
+                enableScrollSpy: true,
+                scrollSpyOnce: true,
+            };
+
+            const elements = document.querySelectorAll('.counter');
+
+            const CountUpClass = (typeof countUpModule !== 'undefined' && countUpModule.CountUp)
+                ? countUpModule.CountUp
+                : (typeof countUp !== 'undefined' ? countUp.CountUp : window.CountUp);
+
+            if (!CountUpClass) {
+                console.error('کتابخانه CountUp یافت نشد!');
+                return;
+            }
+
+            elements.forEach((el) => {
+                const targetValue = parseFloat(el.getAttribute('data-count')) || 0;
+
+                // خواندن پیشوند و پسوند به صورت اختصاصی از روی HTML
+                const prefix = el.getAttribute('data-prefix') || '';
+                const suffix = el.getAttribute('data-suffix') || '';
+
+                // ترکیب تنظیمات عمومی با پیشوند/پسوند این المان
+                const options = {
+                    ...baseOptions,
+                    prefix: prefix,
+                    suffix: suffix,
+                };
+
+                new CountUpClass(el, targetValue, options);
+            });
         });
     </script>
     <script src="./js/app.js"></script>
