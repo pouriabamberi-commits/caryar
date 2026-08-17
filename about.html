@@ -104,7 +104,7 @@
     <!-- Alpine.js CDN -->
     <script defer src="./library/apline.min.js"></script>
 
-        <!-- icon  -->
+    <!-- icon  -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
         integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g=="
@@ -321,9 +321,6 @@
             </div>
         </div>
     </header>
-    <!-- Experience Layer (The 3D Scene) -->
-    <div id="three-container"></div>
-
     <!-- UI Layer (Content & User Interface) -->
     <div class="main-content">
 
@@ -334,7 +331,7 @@
                 <div class="max-w-4xl text-center space-y-6">
                     <span
                         class="hero-fade inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-white/80 text-brand-900 border border-brand-200 shadow-sm backdrop-blur-md">
-                        نسل سوم پلتفرم‌های کاریابی (3D Web)
+                        پلتفرم‌های کاریابی 
                     </span>
                     <h1 class="hero-fade text-5xl md:text-7xl font-black text-brand-900 leading-tight text-glow">
                         شفاف، سریع، <span class="text-brand-500">کاریار</span>
@@ -391,17 +388,17 @@
                 <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div
                         class="bg-white/40 backdrop-blur-lg border border-white p-10 rounded-3xl text-center shadow-xl">
-                        <span class="block text-5xl font-black text-brand-900 mb-2">+۲۰,۰۰۰</span>
+                        <span class="counter block text-5xl font-black text-brand-900 mb-2"data-count="20000"data-prefix="+">0</span>
                         <span class="text-sm font-bold text-slate-700">تطبیق هوشمند موفق</span>
                     </div>
                     <div
                         class="bg-white/40 backdrop-blur-lg border border-white p-10 rounded-3xl text-center shadow-xl">
-                        <span class="block text-5xl font-black text-brand-500 mb-2">۴۸ ساعت</span>
+                        <span class="counter block text-5xl font-black text-brand-500 mb-2"data-count="48"data-prefix="ساعت">0</span>
                         <span class="text-sm font-bold text-slate-700">میانگین زمان اولین مصاحبه</span>
                     </div>
                     <div
                         class="bg-white/40 backdrop-blur-lg border border-white p-10 rounded-3xl text-center shadow-xl">
-                        <span class="block text-5xl font-black text-brand-900 mb-2">+۱,۵۰۰</span>
+                        <span class="counter block text-5xl font-black text-brand-900 mb-2"data-count="1500" data-prefix="+">0</span>
                         <span class="text-sm font-bold text-slate-700">شرکت معتبر همکار</span>
                     </div>
                 </div>
@@ -412,7 +409,7 @@
 
     </div>
 
-        <!-- ================= FOOTER START ================= -->
+    <!-- ================= FOOTER START ================= -->
     <footer class="bg-ky-900 text-white relative overflow-hidden pt-16 pb-8 border-t-4 border-ky-500"
         role="contentinfo">
 
@@ -480,7 +477,8 @@
                 <div>
                     <h4 class="text-ky-200 font-bold text-sm mb-4 border-r-2 border-ky-500 pr-2">برای کارفرمایان</h4>
                     <ul class="space-y-2.5 text-xs text-gray-300">
-                        <li><a href="./creat-job.html" class="hover:text-ky-200 transition-colors duration-200 block py-1">ثبت
+                        <li><a href="./creat-job.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">ثبت
                                 آگهی استخدام</a></li>
                         <li><a href="./price.html"
                                 class="hover:text-ky-200 transition-colors duration-200 block py-1">تعرفه‌ها و
@@ -492,11 +490,13 @@
                 <div>
                     <h4 class="text-ky-200 font-bold text-sm mb-4 border-r-2 border-ky-500 pr-2">کاریار</h4>
                     <ul class="space-y-2.5 text-xs text-gray-300">
-                        <li><a href="./about.html" class="hover:text-ky-200 transition-colors duration-200 block py-1">درباره
+                        <li><a href="./about.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">درباره
                                 ما</a></li>
                         <li><a href="/blog" class="hover:text-ky-200 transition-colors duration-200 block py-1">مجله
                                 آموزشی و مقالات</a></li>
-                        <li><a href="./contact.html" class="hover:text-ky-200 transition-colors duration-200 block py-1">تماس
+                        <li><a href="./contact.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">تماس
                                 با پشتیبانی</a></li>
                     </ul>
                 </div>
@@ -505,8 +505,9 @@
                 <div>
                     <h4 class="text-ky-200 font-bold text-sm mb-4 border-r-2 border-ky-500 pr-2">قوانین و امنیت</h4>
                     <ul class="space-y-2.5 text-xs text-gray-300">
-                        <li><a href="./rule.html" class="hover:text-ky-200 transition-colors duration-200 block py-1">قوانین 
-                                </a></li>
+                        <li><a href="./rule.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">قوانین
+                            </a></li>
                     </ul>
                 </div>
 
@@ -538,185 +539,52 @@
         </div>
     </footer>
     <!-- ================= FOOTER END ================= -->
-
-    <!-- The Custom 3D Experience (Three.js & GSAP) -->
+    <!-- countup.js -->
+    <script src="./library/countUp.umd.js"></script>
     <script>
-        // 1. Initial State & SEO Handling
-        // Although the content is transparently in HTML, we ensure everything is ready before interactions start.
-        window.addEventListener('load', () => {
-            document.body.classList.add('loaded');
-            // GSAP Entrance Animation for content
-            gsap.from(".hero-fade", { opacity: 0, y: 30, duration: 1, stagger: 0.2, ease: "power3.out" });
-        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const easingFn = (t, b, c, d) => {
+                const ts = (t /= d) * t;
+                const tc = ts * t;
+                return b + c * (tc + -3 * ts + 3 * t);
+            };
 
-        // 2. Scene Setup
-        const container = document.getElementById('three-container');
-        const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0xE3F2FD, 0.1); // Add atmospheric depth
+            // تنظیمات عمومی
+            const baseOptions = {
+                duration: 3,
+                easingFn,
+                numerals: ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],
+                enableScrollSpy: true,
+                scrollSpyOnce: true,
+            };
 
-        const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 100);
-        camera.position.set(0, 0, 8); // Move camera slightly further back
+            const elements = document.querySelectorAll('.counter');
 
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for speed
-        renderer.outputEncoding = THREE.sRGBEncoding;
-        container.appendChild(renderer.domElement);
+            const CountUpClass = (typeof countUpModule !== 'undefined' && countUpModule.CountUp)
+                ? countUpModule.CountUp
+                : (typeof countUp !== 'undefined' ? countUp.CountUp : window.CountUp);
 
-        // 3. Custom Geometric Composition (The "Career Planes")
-        const careerGroup = new THREE.Group();
-        scene.add(careerGroup);
-
-        const planeGeometry = new THREE.BoxGeometry(2.5, 1.5, 0.05);
-        // Use MeshPhysicalMaterial for world-class glass/crystal effect (Transmission, Roughness)
-        const planeMaterial = new THREE.MeshPhysicalMaterial({
-            color: 0xffffff,
-            metalness: 0.0,
-            roughness: 0.05,
-            transmission: 0.95, // Glass transparency
-            thickness: 0.5,
-            ior: 1.45,
-            reflectivity: 0.5,
-            clearcoat: 1.0,
-            transparent: true,
-            opacity: 0.8,
-            envMapIntensity: 1.0
-        });
-
-        const planes = [];
-        const numPlanes = 5;
-
-        for (let i = 0; i < numPlanes; i++) {
-            const plane = new THREE.Mesh(planeGeometry, planeMaterial);
-            // Random initial placement within a tight range
-            plane.position.set(
-                (Math.random() - 0.5) * 1,
-                (Math.random() - 0.5) * 1,
-                (Math.random() - 0.5) * 1
-            );
-            // Unique initial rotation
-            plane.rotation.set(
-                Math.random() * Math.PI,
-                Math.random() * Math.PI,
-                Math.random() * Math.PI
-            );
-            careerGroup.add(plane);
-            planes.push(plane);
-        }
-
-        // Add a central, glowing "Core" (The Talent)
-        const coreGeo = new THREE.IcosahedronGeometry(0.6, 1);
-        const coreMat = new MeshStandardMaterial({
-            color: 0x2196F3,
-            emissive: 0x0D47A1,
-            emissiveIntensity: 0.5,
-            metalness: 1.0,
-            roughness: 0.1
-        });
-        const coreNode = new THREE.Mesh(coreGeo, coreMat);
-        careerGroup.add(coreNode);
-
-        // 4. Advanced Cinematic Lighting
-        scene.add(new THREE.AmbientLight(0xffffff, 1.5)); // Base fill light
-
-        const lightTop = new THREE.PointLight(0x90CAF9, 3, 20); // Brand Light 1
-        lightTop.position.set(5, 5, 5);
-        scene.add(lightTop);
-
-        const lightBottom = new THREE.PointLight(0x0D47A1, 4, 15); // Brand Light 2 (Deep Blue)
-        lightBottom.position.set(-5, -5, -5);
-        scene.add(lightBottom);
-
-        const centralGlow = new THREE.PointLight(0x2196F3, 2, 8); // Core light
-        centralGlow.position.set(0, 0, 0);
-        scene.add(centralGlow);
-
-        // 5. User Interaction (Scroll & Mouse)
-        // Global mouse storage
-        let mouseX = 0, mouseY = 0;
-        let targetX = 0, targetY = 0;
-
-        window.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth - 0.5);
-            mouseY = (e.clientY / window.innerHeight - 0.5);
-        });
-
-        // GSAP ScrollTrigger for 3D Animations
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Timeline for coordinated animations
-        const scrollTl = gsap.timeline({
-            scrollTrigger: {
-                trigger: "body",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 1.5, // Smooth animation follow the scroll
+            if (!CountUpClass) {
+                console.error('کتابخانه CountUp یافت نشد!');
+                return;
             }
-        });
 
-        // Animation 1: The group shifts position for the content grid
-        scrollTl.to(careerGroup.position, {
-            x: -3, // Shifts to the left in RTL (appears right to the user)
-            z: 2,
-            duration: 2
-        });
+            elements.forEach((el) => {
+                const targetValue = parseFloat(el.getAttribute('data-count')) || 0;
 
-        // Animation 2: Individual Planes open up like opportunities
-        planes.forEach((plane, index) => {
-            // Expand their range
-            scrollTl.to(plane.position, {
-                x: (Math.random() - 0.5) * 6,
-                y: (Math.random() - 0.5) * 5,
-                z: (Math.random() - 0.5) * 4,
-                duration: 2
-            }, 0); // Start all at time 0
+                // خواندن پیشوند و پسوند به صورت اختصاصی از روی HTML
+                const prefix = el.getAttribute('data-prefix') || '';
+                const suffix = el.getAttribute('data-suffix') || '';
 
-            // Align their rotations slightly toward the camera for transparency effect
-            scrollTl.to(plane.rotation, {
-                x: Math.PI / 2 * (index % 2 ? 1 : -1),
-                y: Math.PI / 4,
-                duration: 2
-            }, 0);
-        });
+                // ترکیب تنظیمات عمومی با پیشوند/پسوند این المان
+                const options = {
+                    ...baseOptions,
+                    prefix: prefix,
+                    suffix: suffix,
+                };
 
-        // Animation 3: The Core pulses faster as we scroll down
-        scrollTl.to(coreMat, { emissiveIntensity: 2.0, duration: 1 }, 1);
-
-
-        // 6. Animation Loop (Smooth Rendering)
-        const clock = new THREE.Clock();
-
-        function animate() {
-            requestAnimationFrame(animate);
-            const delta = clock.getDelta();
-            const elapsedTime = clock.getElapsedTime();
-
-            // Constant, slow ambient rotation of the whole composition
-            careerGroup.rotation.y += delta * 0.05;
-
-            // Core Pulse Animation
-            const pulse = Math.sin(elapsedTime * 2) * 0.2 + 0.8;
-            coreMat.emissiveIntensity = 0.5 + pulse * 0.5;
-            centralGlow.intensity = 1.0 + pulse * 1.0;
-
-            // Mouse Interaction: Smooth interpolation (easing)
-            targetX += (mouseX - targetX) * 0.05;
-            targetY += (mouseY - targetY) * 0.05;
-
-            // Subtle rotation based on mouse
-            careerGroup.rotation.x = -targetY * 0.2;
-            careerGroup.rotation.y = targetX * 0.3 + elapsedTime * 0.05;
-
-            renderer.render(scene, camera);
-        }
-
-        animate();
-
-        // Handle Responsive Resizing efficiently
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
+                new CountUpClass(el, targetValue, options);
+            });
         });
     </script>
 </body>
