@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بازی مار - ارتقای قدرت‌ها و کنترل سرعت</title>
+    <!-- FONT CSS -->
+    <link rel="stylesheet" href="./styles/style.css">
     <!-- Tailwind CSS CDN -->
     <script src="./library/tailwind.js"></script>
-    <!-- Font & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap"
-        rel="stylesheet">
+
 
     <style>
         * {
@@ -17,7 +17,6 @@
             margin: 0;
             padding: 0;
             user-select: none;
-            font-family: vazirmatn;
         }
 
         body {
@@ -77,9 +76,17 @@
             gap: 6px;
         }
 
-        .stat-item .val { color: #38bdf8; }
-        .stat-item .high-val { color: #facc15; }
-        .stat-item .coins-val { color: #eab308; }
+        .stat-item .val {
+            color: #38bdf8;
+        }
+
+        .stat-item .high-val {
+            color: #facc15;
+        }
+
+        .stat-item .coins-val {
+            color: #eab308;
+        }
 
         /* Combo Popup */
         .combo-badge {
@@ -112,16 +119,52 @@
         }
 
         @keyframes pulse {
-            from { transform: scale(0.95); opacity: 0.8; }
-            to { transform: scale(1.05); opacity: 1; }
+            from {
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
+
+            to {
+                transform: scale(1.05);
+                opacity: 1;
+            }
         }
 
-        .badge.shield { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid #3b82f6; }
-        .badge.slow { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid #a855f7; }
-        .badge.magnet { background: rgba(236, 72, 153, 0.2); color: #f472b6; border: 1px solid #ec4899; }
-        .badge.ghost { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; }
-        .badge.double { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid #f59e0b; }
-        .badge.shoot { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid #ef4444; }
+        .badge.shield {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            border: 1px solid #3b82f6;
+        }
+
+        .badge.slow {
+            background: rgba(168, 85, 247, 0.2);
+            color: #c084fc;
+            border: 1px solid #a855f7;
+        }
+
+        .badge.magnet {
+            background: rgba(236, 72, 153, 0.2);
+            color: #f472b6;
+            border: 1px solid #ec4899;
+        }
+
+        .badge.ghost {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            border: 1px solid #10b981;
+        }
+
+        .badge.double {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            border: 1px solid #f59e0b;
+        }
+
+        .badge.shoot {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border: 1px solid #ef4444;
+        }
 
         /* Canvas Wrapper */
         .canvas-wrapper {
@@ -158,9 +201,20 @@
             z-index: 50;
         }
 
-        .overlay.hidden { display: none; }
-        .overlay h2 { font-size: 1.6rem; color: #f8fafc; }
-        .overlay p { color: #94a3b8; font-size: 0.9rem; max-width: 90%; }
+        .overlay.hidden {
+            display: none;
+        }
+
+        .overlay h2 {
+            font-size: 1.6rem;
+            color: #f8fafc;
+        }
+
+        .overlay p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            max-width: 90%;
+        }
 
         /* Buttons */
         .btn {
@@ -182,7 +236,11 @@
         }
 
         /* Mode Selector Tab */
-        .mode-selector { display: flex; gap: 8px; margin-bottom: 5px; }
+        .mode-selector {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
 
         .mode-btn {
             padding: 6px 12px;
@@ -223,11 +281,30 @@
             touch-action: manipulation;
         }
 
-        .touch-btn:active { background: #0284c7; border-color: #38bdf8; }
-        .touch-btn.up { grid-column: 2; }
-        .touch-btn.left { grid-column: 1; grid-row: 2; }
-        .touch-btn.right { grid-column: 3; grid-row: 2; }
-        .touch-btn.down { grid-column: 2; grid-row: 2; }
+        .touch-btn:active {
+            background: #0284c7;
+            border-color: #38bdf8;
+        }
+
+        .touch-btn.up {
+            grid-column: 2;
+        }
+
+        .touch-btn.left {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .touch-btn.right {
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        .touch-btn.down {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
         .touch-btn.shoot {
             grid-column: 2;
             grid-row: 3;
@@ -291,7 +368,11 @@
         }
 
         /* Skin Shop Items */
-        .skins-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+        .skins-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
 
         .skin-card {
             background: #0a1120;
@@ -306,14 +387,37 @@
             transition: all 0.2s;
         }
 
-        .skin-card:hover { border-color: #38bdf8; }
-        .skin-card.selected { border-color: #facc15; background: #162032; }
-        .skin-preview { width: 22px; height: 22px; border-radius: 6px; }
-        .skin-name { font-size: 0.8rem; font-weight: bold; }
-        .skin-cost { font-size: 0.7rem; color: #eab308; }
+        .skin-card:hover {
+            border-color: #38bdf8;
+        }
+
+        .skin-card.selected {
+            border-color: #facc15;
+            background: #162032;
+        }
+
+        .skin-preview {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+        }
+
+        .skin-name {
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .skin-cost {
+            font-size: 0.7rem;
+            color: #eab308;
+        }
 
         /* Upgrade Items List */
-        .upgrades-list { display: flex; flex-direction: column; gap: 8px; }
+        .upgrades-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
 
         .upgrade-card {
             background: #0a1120;
@@ -325,9 +429,22 @@
             justify-content: space-between;
         }
 
-        .upgrade-info { display: flex; flex-direction: column; gap: 2px; }
-        .upgrade-title { font-size: 0.85rem; font-weight: bold; color: #f8fafc; }
-        .upgrade-lvl { font-size: 0.7rem; color: #38bdf8; }
+        .upgrade-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .upgrade-title {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #f8fafc;
+        }
+
+        .upgrade-lvl {
+            font-size: 0.7rem;
+            color: #38bdf8;
+        }
 
         .upgrade-btn {
             background: #0284c7;
@@ -341,7 +458,9 @@
             transition: background 0.2s;
         }
 
-        .upgrade-btn:hover { background: #0369a1; }
+        .upgrade-btn:hover {
+            background: #0369a1;
+        }
 
         /* Quests and Achievements */
         .quest-box {
@@ -355,7 +474,10 @@
             align-items: center;
         }
 
-        .quest-completed { border-color: #10b981; color: #34d399; }
+        .quest-completed {
+            border-color: #10b981;
+            color: #34d399;
+        }
 
         /* Item Legend / Instructions */
         .legend-list {
@@ -366,7 +488,11 @@
             color: #cbd5e1;
         }
 
-        .legend-item { display: flex; align-items: center; gap: 8px; }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
         .icon-box {
             width: 18px;
@@ -399,8 +525,10 @@
             <div class="hud-bar">
                 <div class="stat-item">امتیاز: <span id="score" class="val">0</span></div>
                 <div class="stat-item">سکه‌ها: <span id="coins" class="coins-val">0</span></div>
-                <div class="stat-item" id="comboBox" style="display:none;"><span id="comboVal" class="combo-badge">2x Combo!</span></div>
-                <div class="stat-item" id="timerBox" style="display:none;">زمان: <span id="timerVal" class="val">60</span>s</div>
+                <div class="stat-item" id="comboBox" style="display:none;"><span id="comboVal" class="combo-badge">2x
+                        Combo!</span></div>
+                <div class="stat-item" id="timerBox" style="display:none;">زمان: <span id="timerVal"
+                        class="val">60</span>s</div>
                 <div class="stat-item">رکورد: <span id="highScore" class="high-val">0</span></div>
             </div>
 
@@ -444,7 +572,8 @@
                     <span>سطح سرعت:</span>
                     <span id="speedDisplay" class="text-sky-400">متوسط (110ms)</span>
                 </div>
-                <input type="range" id="speedInput" class="speed-slider" min="50" max="180" step="10" value="110" dir="ltr" oninput="updateSpeedDisplay(this.value)">
+                <input type="range" id="speedInput" class="speed-slider" min="50" max="180" step="10" value="110"
+                    dir="ltr" oninput="updateSpeedDisplay(this.value)">
             </div>
 
             <div class="panel-title">ارتقای دائمی قدرت‌ها ⚡</div>
@@ -465,13 +594,15 @@
                     <div class="icon-box" style="background:#ef4444;"></div><span>سیب معمولی (+۱۰ امتیاز)</span>
                 </div>
                 <div class="legend-item">
-                    <div class="icon-box" style="background:#facc15; color:#000;">★</div><span>سیب طلایی (+۳۰ امتیاز، +۵ سکه)</span>
+                    <div class="icon-box" style="background:#facc15; color:#000;">★</div><span>سیب طلایی (+۳۰ امتیاز، +۵
+                        سکه)</span>
                 </div>
                 <div class="legend-item">
                     <div class="icon-box" style="background:#3b82f6;">🛡️</div><span>سپر محافظت</span>
                 </div>
                 <div class="legend-item">
-                    <div class="icon-box" style="background:#10b981;">👻</div><span>پاورآپ شبح (عبور از دیوارهای مانع/خود)</span>
+                    <div class="icon-box" style="background:#10b981;">👻</div><span>پاورآپ شبح (عبور از دیوارهای
+                        مانع/خود)</span>
                 </div>
                 <div class="legend-item">
                     <div class="icon-box" style="background:#f59e0b;">✖2</div><span>امتیاز دوبرابر (۱۰ ثانیه)</span>
@@ -483,7 +614,8 @@
                     <div class="icon-box" style="background:#ec4899;">🧲</div><span>آهنربا (جذب غذاها)</span>
                 </div>
                 <div class="legend-item">
-                    <div class="icon-box" style="background:#ef4444; color:#fff;">🔫</div><span>شلیک لیزر (امکان نابودی موانع)</span>
+                    <div class="icon-box" style="background:#ef4444; color:#fff;">🔫</div><span>شلیک لیزر (امکان نابودی
+                        موانع)</span>
                 </div>
                 <div class="legend-item">
                     <div class="icon-box" style="background:#06b6d4;">🌀</div><span>پورتال جابه‌جایی</span>
@@ -654,7 +786,7 @@
             else if (numVal <= 90) speedText = `سریع (${numVal}ms)`;
             else if (numVal <= 130) speedText = `متوسط (${numVal}ms)`;
             else speedText = `آرام (${numVal}ms)`;
-            
+
             speedDisplay.textContent = speedText;
         }
 
@@ -679,7 +811,7 @@
         let bonusTimer = null;
         let poisonFood = null;
         let poisonTimer = null;
-        let powerup = null; 
+        let powerup = null;
         let powerupSpawnTimer = null;
         let portals = [];
         let obstacles = [];
@@ -746,13 +878,13 @@
             dx = gridSize; dy = 0;
             score = 0;
             scoreEl.textContent = score;
-            
+
             // Set speed from user selection
-            baseSpeed = parseInt(speedInput.value); 
+            baseSpeed = parseInt(speedInput.value);
             speed = baseSpeed;
-            
+
             activeShield = false;
-            
+
             clearAllTimers();
             comboMultiplier = 1;
             comboBox.style.display = 'none';
@@ -1070,7 +1202,7 @@
             if (food && head.x === food.x && head.y === food.y) {
                 audio.playEat();
                 createParticles(food.x, food.y, '#ef4444');
-                
+
                 headScale = 1.35;
                 mouthOpenTimer = 8;
 

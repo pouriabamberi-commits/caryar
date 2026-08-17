@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- تنظیمات SEO بهینه شده برای خزنده های گوگل -->
     <title>مجله تخصصی کاریار | اخبار، مقالات و راهنمای بازار کار فناوری</title>
-    <meta name="description" content="جدیدترین مقالات تخصصی، اخبار فناوری، آموزش‌های برنامه‌نویسی و راهنماهای ارتقای مسیر شغلی در مجله کاریار.">
-    <meta name="keywords" content="کاریار, بلاگ کاریار, مقالات برنامه‌نویسی, فناوری, استخدام, فرانت‌اند, هوش مصنوعی, بازار کار">
+    <meta name="description"
+        content="جدیدترین مقالات تخصصی، اخبار فناوری، آموزش‌های برنامه‌نویسی و راهنماهای ارتقای مسیر شغلی در مجله کاریار.">
+    <meta name="keywords"
+        content="کاریار, بلاگ کاریار, مقالات برنامه‌نویسی, فناوری, استخدام, فرانت‌اند, هوش مصنوعی, بازار کار">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://karyar.ir/blog" />
 
@@ -19,6 +21,8 @@
     <meta property="og:url" content="https://karyar.ir/blog">
     <meta property="og:site_name" content="کاریار">
 
+    <!-- FONT CSS -->
+    <link rel="stylesheet" href="./styles/style.css">
     <!-- Tailwind CSS CDN -->
     <script src="./library/tailwind.js"></script>
     <script>
@@ -38,24 +42,22 @@
                             500: '#2196F3',
                             900: '#0D47A1',
                         }
-                    },
-                    fontFamily: {
-                        sans: ['Vazirmatn', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
 
-    <!-- Font & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- AOS (Animate On Scroll) Library CDN -->
     <link rel="stylesheet" href="./library/aos.css" />
 
     <!-- Alpine.js CDN -->
-    <script defer src="./library/apline.min.js"></script>
+    <script src="./library/apline.min.js"></script>
 
     <!-- Structured Data Schema (JSON-LD) for SEO -->
     <script type="application/ld+json">
@@ -69,9 +71,6 @@
     </script>
 
     <style>
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-        }
         html {
             text-rendering: optimizeSpeed;
             -webkit-font-smoothing: antialiased;
@@ -124,21 +123,56 @@
                         x-transition:leave-end="opacity-0 translate-y-2"
                         class="absolute right-0 mt-4 w-[600px] bg-white rounded-2xl shadow-xl border border-karyar-50 p-6 grid grid-cols-3 gap-3 z-50">
 
-                        <a href="./front-job.html" class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i class="bi bi-code text-karyar-500 text-xs"></i><span>برنامه‌نویس Frontend</span></a>
-                        <a href="/jobs/backend" class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i class="bi bi-hdd-fill text-karyar-500 text-xs"></i><span>برنامه‌نویس Backend</span></a>
-                        <a href="/jobs/fullstack" class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i class="bi bi-stack text-karyar-500 text-xs"></i><span>برنامه‌نویس Full-Stack</span></a>
-                        <a href="/jobs/ui-ux" class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i class="bi bi-easel text-karyar-500 text-xs"></i><span>طراح UI/UX</span></a>
-                        <a href="/jobs/devops" class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i class="bi bi-infinity text-karyar-500 text-xs"></i><span>مهندس DevOps</span></a>
-                        <a href="/jobs/ai" class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i class="bi bi-anthropic text-karyar-500 text-xs"></i><span>متخصص هوش مصنوعی</span></a>
-                        <a href="/jobs/data-science" class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i class="bi bi-bar-chart-line-fill text-karyar-500 text-xs"></i><span>دانشمند داده (Data)</span></a>
-                        <a href="/jobs/mobile" class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i class="bi bi-phone-fill text-karyar-500 text-xs"></i><span>توسعه‌دهنده موبایل</span></a>
-                        <a href="/jobs/seo" class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i class="bi bi-search text-karyar-500 text-xs"></i><span>متخصص سئو (SEO)</span></a>
-                        <a href="/jobs/security" class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i class="bi bi-shield-fill-plus text-karyar-500 text-xs"></i><span>امنیت شبکه و سایبر</span></a>
-                        <a href="/jobs/qa" class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i class="bi bi-badge-vr-fill text-karyar-500 text-xs"></i><span>تستر نرم‌افزار (QA)</span></a>
-                        <a href="/jobs/product-manager" class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i class="bi bi-box2-fill text-karyar-500 text-xs"></i><span>مدیر محصول (Product)</span></a>
-                        <a href="/jobs/network" class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i class="bi bi-hdd-network-fill text-karyar-500 text-xs"></i><span>مهندس شبکه</span></a>
-                        <a href="/jobs/game-dev" class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i class="bi bi-controller text-karyar-500 text-xs"></i><span>بازیساز (Game Dev)</span></a>
-                        <a href="/jobs/database" class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i class="bi bi-database-fill text-karyar-500 text-xs"></i><span>مدیر پایگاه داده</span></a>
+                        <a href="./front-job.html"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i
+                                class="bi bi-code text-karyar-500 text-xs"></i><span>برنامه‌نویس Frontend</span></a>
+                        <a href="/jobs/backend"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i
+                                class="bi bi-hdd-fill text-karyar-500 text-xs"></i><span>برنامه‌نویس Backend</span></a>
+                        <a href="/jobs/fullstack"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i
+                                class="bi bi-stack text-karyar-500 text-xs"></i><span>برنامه‌نویس Full-Stack</span></a>
+                        <a href="/jobs/ui-ux"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i
+                                class="bi bi-easel text-karyar-500 text-xs"></i><span>طراح UI/UX</span></a>
+                        <a href="/jobs/devops"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i
+                                class="bi bi-infinity text-karyar-500 text-xs"></i><span>مهندس DevOps</span></a>
+                        <a href="/jobs/ai"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i
+                                class="bi bi-anthropic text-karyar-500 text-xs"></i><span>متخصص هوش مصنوعی</span></a>
+                        <a href="/jobs/data-science"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i
+                                class="bi bi-bar-chart-line-fill text-karyar-500 text-xs"></i><span>دانشمند داده
+                                (Data)</span></a>
+                        <a href="/jobs/mobile"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i
+                                class="bi bi-phone-fill text-karyar-500 text-xs"></i><span>توسعه‌دهنده موبایل</span></a>
+                        <a href="/jobs/seo"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i
+                                class="bi bi-search text-karyar-500 text-xs"></i><span>متخصص سئو (SEO)</span></a>
+                        <a href="/jobs/security"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i
+                                class="bi bi-shield-fill-plus text-karyar-500 text-xs"></i><span>امنیت شبکه و
+                                سایبر</span></a>
+                        <a href="/jobs/qa"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i
+                                class="bi bi-badge-vr-fill text-karyar-500 text-xs"></i><span>تستر نرم‌افزار
+                                (QA)</span></a>
+                        <a href="/jobs/product-manager"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i
+                                class="bi bi-box2-fill text-karyar-500 text-xs"></i><span>مدیر محصول
+                                (Product)</span></a>
+                        <a href="/jobs/network"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i
+                                class="bi bi-hdd-network-fill text-karyar-500 text-xs"></i><span>مهندس شبکه</span></a>
+                        <a href="/jobs/game-dev"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i
+                                class="bi bi-controller text-karyar-500 text-xs"></i><span>بازیساز (Game Dev)</span></a>
+                        <a href="/jobs/database"
+                            class="p-2.5 rounded-xl hover:bg-karyar-50 transition-colors flex items-center gap-2 text-slate-700 hover:text-karyar-900"><i
+                                class="bi bi-database-fill text-karyar-500 text-xs"></i><span>مدیر پایگاه
+                                داده</span></a>
                     </div>
                 </li>
 
@@ -186,52 +220,63 @@
             class="lg:hidden bg-white border-b border-slate-100 px-6 py-6 space-y-4 max-h-[80vh] overflow-y-auto">
 
             <a href="./index.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">صفحه اصلی</a>
-            <a href="./game.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">🎮 بازی و سرگرمی</a>
-            <a href="./creat-job.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">ثبت آگهی شغلی</a>
+            <a href="./game.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">🎮 بازی و
+                سرگرمی</a>
+            <a href="./creat-job.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">ثبت آگهی
+                شغلی</a>
             <a href="./about.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">درباره ما</a>
             <a href="./contact.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">تماس با ما</a>
 
             <div class="pt-4 flex flex-col gap-3">
-                <a href="./login.html" class="text-center bg-karyar-500 text-white font-bold py-2.5 rounded-xl shadow-md">ورود</a>
-                <a href="./regester.html" class="text-center bg-karyar-500 text-white font-bold py-2.5 rounded-xl shadow-md">ثبت‌نام</a>
+                <a href="./login.html"
+                    class="text-center bg-karyar-500 text-white font-bold py-2.5 rounded-xl shadow-md">ورود</a>
+                <a href="./regester.html"
+                    class="text-center bg-karyar-500 text-white font-bold py-2.5 rounded-xl shadow-md">ثبت‌نام</a>
             </div>
         </div>
     </header>
 
     <!-- Page Title / Hero Header -->
-    <section class="bg-gradient-to-b from-karyar-50/70 via-white to-slate-50 py-12 border-b border-karyar-100 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" data-aos="fade-down" data-aos-duration="800">
-            <span class="inline-block px-4 py-1.5 rounded-full bg-white border border-karyar-100 text-karyar-900 text-xs font-bold shadow-sm mb-3">
+    <section
+        class="bg-gradient-to-b from-karyar-50/70 via-white to-slate-50 py-12 border-b border-karyar-100 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" data-aos="fade-down"
+            data-aos-duration="800">
+            <span
+                class="inline-block px-4 py-1.5 rounded-full bg-white border border-karyar-100 text-karyar-900 text-xs font-bold shadow-sm mb-3">
                 <i class="bi bi-journal-bookmark-fill text-karyar-500 ml-1"></i> مجله و یادداشت‌های تخصصی
             </span>
             <h1 class="text-3xl sm:text-5xl font-black text-karyar-900 tracking-tight leading-tight">
                 آخرین مقالات و راهنماهای بازار کار IT
             </h1>
             <p class="text-slate-600 text-sm sm:text-base font-light mt-3 max-w-2xl mx-auto">
-                مسیر رشد شغلی خود را با یادگیری مهارت‌های جدید، تحلیل روند بازار نرم‌افزار و تکنیک‌های مصاحبه هموار کنید.
+                مسیر رشد شغلی خود را با یادگیری مهارت‌های جدید، تحلیل روند بازار نرم‌افزار و تکنیک‌های مصاحبه هموار
+                کنید.
             </p>
         </div>
     </section>
 
     <!-- Main Content Section: Filters + Articles Grid -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full">
-        
+
         <!-- Filter Bar (Time + Job Category) -->
-        <section class="bg-white rounded-2xl p-5 border border-karyar-100 shadow-sm mb-10" data-aos="fade-up" data-aos-duration="800">
+        <section class="bg-white rounded-2xl p-5 border border-karyar-100 shadow-sm mb-10" data-aos="fade-up"
+            data-aos-duration="800">
             <form action="/blog" method="GET" class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
-                
+
                 <!-- Search Box -->
                 <div class="md:col-span-4 relative">
                     <i class="bi bi-search absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    <input type="text" name="search" placeholder="جستجو در بین مقالات..." 
-                           class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 pr-10 pl-4 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-karyar-500 transition-colors">
+                    <input type="text" name="search" placeholder="جستجو در بین مقالات..."
+                        class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 pr-10 pl-4 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-karyar-500 transition-colors">
                 </div>
 
                 <!-- Job Filter Dropdown -->
                 <div class="md:col-span-3">
                     <div class="relative">
-                        <i class="bi bi-briefcase-fill absolute right-3.5 top-1/2 -translate-y-1/2 text-karyar-500 text-sm"></i>
-                        <select name="job_category" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 pr-10 pl-4 text-xs sm:text-sm text-slate-700 focus:outline-none focus:border-karyar-500 transition-colors appearance-none">
+                        <i
+                            class="bi bi-briefcase-fill absolute right-3.5 top-1/2 -translate-y-1/2 text-karyar-500 text-sm"></i>
+                        <select name="job_category"
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 pr-10 pl-4 text-xs sm:text-sm text-slate-700 focus:outline-none focus:border-karyar-500 transition-colors appearance-none">
                             <option value="">همه شغل‌ها و دسته‌ها</option>
                             <option value="frontend">برنامه‌نویس Frontend</option>
                             <option value="backend">برنامه‌نویس Backend</option>
@@ -249,28 +294,33 @@
                             <option value="game-dev">بازیساز (Game Dev)</option>
                             <option value="database">مدیر پایگاه داده</option>
                         </select>
-                        <i class="bi bi-chevron-down absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
+                        <i
+                            class="bi bi-chevron-down absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
                     </div>
                 </div>
 
                 <!-- Time Filter Dropdown -->
                 <div class="md:col-span-3">
                     <div class="relative">
-                        <i class="bi bi-clock-history absolute right-3.5 top-1/2 -translate-y-1/2 text-karyar-500 text-sm"></i>
-                        <select name="time_filter" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 pr-10 pl-4 text-xs sm:text-sm text-slate-700 focus:outline-none focus:border-karyar-500 transition-colors appearance-none">
+                        <i
+                            class="bi bi-clock-history absolute right-3.5 top-1/2 -translate-y-1/2 text-karyar-500 text-sm"></i>
+                        <select name="time_filter"
+                            class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 pr-10 pl-4 text-xs sm:text-sm text-slate-700 focus:outline-none focus:border-karyar-500 transition-colors appearance-none">
                             <option value="all">تمام زمان‌ها</option>
                             <option value="today">امروز</option>
                             <option value="this_week">هفته گذشته</option>
                             <option value="this_month">ماه گذشته</option>
                             <option value="this_year">امسال (۱۴۰۵)</option>
                         </select>
-                        <i class="bi bi-chevron-down absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
+                        <i
+                            class="bi bi-chevron-down absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
                     </div>
                 </div>
 
                 <!-- Submit Button -->
                 <div class="md:col-span-2">
-                    <button type="submit" class="w-full bg-karyar-500 hover:bg-karyar-900 text-white font-bold text-xs sm:text-sm py-2.5 rounded-xl transition-all shadow-md shadow-karyar-500/20 hover:shadow-lg flex items-center justify-center gap-2">
+                    <button type="submit"
+                        class="w-full bg-karyar-500 hover:bg-karyar-900 text-white font-bold text-xs sm:text-sm py-2.5 rounded-xl transition-all shadow-md shadow-karyar-500/20 hover:shadow-lg flex items-center justify-center gap-2">
                         <i class="bi bi-funnel-fill"></i>
                         <span>اعمال فیلتر</span>
                     </button>
@@ -283,31 +333,40 @@
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <!-- Card 1 -->
-            <article class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-karyar-100 transition-all duration-300 flex flex-col justify-between"
-                     data-aos="fade-up" data-aos-delay="100">
+            <article
+                class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-karyar-100 transition-all duration-300 flex flex-col justify-between"
+                data-aos="fade-up" data-aos-delay="100">
                 <div>
-                    <div class="relative h-52 overflow-hidden bg-gradient-to-tr from-karyar-900 to-karyar-500 flex items-center justify-center">
+                    <div
+                        class="relative h-52 overflow-hidden bg-gradient-to-tr from-karyar-900 to-karyar-500 flex items-center justify-center">
                         <span class="text-white font-black text-2xl tracking-widest">FRONTEND 2026</span>
-                        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-karyar-900 font-bold text-[11px] px-3 py-1 rounded-full shadow-sm">
+                        <span
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-karyar-900 font-bold text-[11px] px-3 py-1 rounded-full shadow-sm">
                             برنامه‌نویس Frontend
                         </span>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-3 text-slate-400 text-xs mb-3 font-medium">
-                            <time datetime="2026-08-01"><i class="bi bi-calendar3 ml-1 text-karyar-500"></i>۱۱ مرداد ۱۴۰۵</time>
+                            <time datetime="2026-08-01"><i class="bi bi-calendar3 ml-1 text-karyar-500"></i>۱۱ مرداد
+                                ۱۴۰۵</time>
                             <span>•</span>
                             <span><i class="bi bi-clock ml-1 text-karyar-500"></i>۵ دقیقه مطالعه</span>
                         </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-2 leading-snug hover:text-karyar-500 transition-colors">
-                            <a href="./blog-detail.html">نقشه راه فرانت‌اند در سال ۱۴۰۵؛ از فریمورک‌ها تا بهینه‌سازی ۳بعدی</a>
+                        <h2
+                            class="text-lg font-bold text-slate-900 mb-2 leading-snug hover:text-karyar-500 transition-colors">
+                            <a href="./blog-detail.html">نقشه راه فرانت‌اند در سال ۱۴۰۵؛ از فریمورک‌ها تا بهینه‌سازی
+                                ۳بعدی</a>
                         </h2>
                         <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light line-clamp-3">
-                            مرور تکنولوژی‌های نوظهور و نحوه ساخت رابط‌های کاربرپسند با بالا‌ترین سرعت ممکن برای بازار کار ایران و بین‌الملل.
+                            مرور تکنولوژی‌های نوظهور و نحوه ساخت رابط‌های کاربرپسند با بالا‌ترین سرعت ممکن برای بازار
+                            کار ایران و بین‌الملل.
                         </p>
                     </div>
                 </div>
-                <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-karyar-900">
-                    <a href="./blog-detail.html" class="hover:text-karyar-500 flex items-center gap-1 transition-colors">
+                <div
+                    class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-karyar-900">
+                    <a href="./blog-detail.html"
+                        class="hover:text-karyar-500 flex items-center gap-1 transition-colors">
                         <span>ادامه مقاله</span>
                         <i class="bi bi-arrow-left"></i>
                     </a>
@@ -315,31 +374,39 @@
             </article>
 
             <!-- Card 2 -->
-            <article class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-karyar-100 transition-all duration-300 flex flex-col justify-between"
-                     data-aos="fade-up" data-aos-delay="200">
+            <article
+                class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-karyar-100 transition-all duration-300 flex flex-col justify-between"
+                data-aos="fade-up" data-aos-delay="200">
                 <div>
-                    <div class="relative h-52 overflow-hidden bg-gradient-to-tr from-slate-800 to-karyar-900 flex items-center justify-center">
+                    <div
+                        class="relative h-52 overflow-hidden bg-gradient-to-tr from-slate-800 to-karyar-900 flex items-center justify-center">
                         <span class="text-karyar-100 font-black text-2xl tracking-widest">AI & RESUME</span>
-                        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-karyar-900 font-bold text-[11px] px-3 py-1 rounded-full shadow-sm">
+                        <span
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-karyar-900 font-bold text-[11px] px-3 py-1 rounded-full shadow-sm">
                             متخصص هوش مصنوعی
                         </span>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-3 text-slate-400 text-xs mb-3 font-medium">
-                            <time datetime="2026-07-28"><i class="bi bi-calendar3 ml-1 text-karyar-500"></i>۶ مرداد ۱۴۰۵</time>
+                            <time datetime="2026-07-28"><i class="bi bi-calendar3 ml-1 text-karyar-500"></i>۶ مرداد
+                                ۱۴۰۵</time>
                             <span>•</span>
                             <span><i class="bi bi-clock ml-1 text-karyar-500"></i>۷ دقیقه مطالعه</span>
                         </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-2 leading-snug hover:text-karyar-500 transition-colors">
+                        <h2
+                            class="text-lg font-bold text-slate-900 mb-2 leading-snug hover:text-karyar-500 transition-colors">
                             <a href="./blog-detail.html">بهینه‌سازی رزومه کاری برای الگوریتم‌های هوش مصنوعی شرکت‌ها</a>
                         </h2>
                         <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light line-clamp-3">
-                            چگونه سیستم‌های ATS و فیلترهای هوشمند را با ساختاردهی استاندارد متون و کلیدواژه‌ها با موفقیت پشت سر بگذاریم؟
+                            چگونه سیستم‌های ATS و فیلترهای هوشمند را با ساختاردهی استاندارد متون و کلیدواژه‌ها با موفقیت
+                            پشت سر بگذاریم؟
                         </p>
                     </div>
                 </div>
-                <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-karyar-900">
-                    <a href="./blog-detail.html" class="hover:text-karyar-500 flex items-center gap-1 transition-colors">
+                <div
+                    class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-karyar-900">
+                    <a href="./blog-detail.html"
+                        class="hover:text-karyar-500 flex items-center gap-1 transition-colors">
                         <span>ادامه مقاله</span>
                         <i class="bi bi-arrow-left"></i>
                     </a>
@@ -347,31 +414,39 @@
             </article>
 
             <!-- Card 3 -->
-            <article class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-karyar-100 transition-all duration-300 flex flex-col justify-between"
-                     data-aos="fade-up" data-aos-delay="300">
+            <article
+                class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-karyar-100 transition-all duration-300 flex flex-col justify-between"
+                data-aos="fade-up" data-aos-delay="300">
                 <div>
-                    <div class="relative h-52 overflow-hidden bg-gradient-to-tr from-karyar-500 to-blue-700 flex items-center justify-center">
+                    <div
+                        class="relative h-52 overflow-hidden bg-gradient-to-tr from-karyar-500 to-blue-700 flex items-center justify-center">
                         <span class="text-white font-black text-2xl tracking-widest">UI/UX DESIGN</span>
-                        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-karyar-900 font-bold text-[11px] px-3 py-1 rounded-full shadow-sm">
+                        <span
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-karyar-900 font-bold text-[11px] px-3 py-1 rounded-full shadow-sm">
                             طراح UI/UX
                         </span>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-3 text-slate-400 text-xs mb-3 font-medium">
-                            <time datetime="2026-07-15"><i class="bi bi-calendar3 ml-1 text-karyar-500"></i>۲۵ تیر ۱۴۰۵</time>
+                            <time datetime="2026-07-15"><i class="bi bi-calendar3 ml-1 text-karyar-500"></i>۲۵ تیر
+                                ۱۴۰۵</time>
                             <span>•</span>
                             <span><i class="bi bi-clock ml-1 text-karyar-500"></i>۴ دقیقه مطالعه</span>
                         </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-2 leading-snug hover:text-karyar-500 transition-colors">
+                        <h2
+                            class="text-lg font-bold text-slate-900 mb-2 leading-snug hover:text-karyar-500 transition-colors">
                             <a href="./blog-detail.html">اصول رنگ‌بندی و روانشناسی رابط کاربری در سامانه‌های کاریابی</a>
                         </h2>
                         <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light line-clamp-3">
-                            بررسی استفاده هوشمندانه از تنالیته‌های آبی و ایجاد حس اعتماد و خوانایی بالا برای کاربران دسکتاپ و موبایل.
+                            بررسی استفاده هوشمندانه از تنالیته‌های آبی و ایجاد حس اعتماد و خوانایی بالا برای کاربران
+                            دسکتاپ و موبایل.
                         </p>
                     </div>
                 </div>
-                <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-karyar-900">
-                    <a href="./blog-detail.html" class="hover:text-karyar-500 flex items-center gap-1 transition-colors">
+                <div
+                    class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-karyar-900">
+                    <a href="./blog-detail.html"
+                        class="hover:text-karyar-500 flex items-center gap-1 transition-colors">
                         <span>ادامه مقاله</span>
                         <i class="bi bi-arrow-left"></i>
                     </a>
@@ -379,31 +454,40 @@
             </article>
 
             <!-- Card 4 -->
-            <article class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-karyar-100 transition-all duration-300 flex flex-col justify-between"
-                     data-aos="fade-up" data-aos-delay="100">
+            <article
+                class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-karyar-100 transition-all duration-300 flex flex-col justify-between"
+                data-aos="fade-up" data-aos-delay="100">
                 <div>
-                    <div class="relative h-52 overflow-hidden bg-gradient-to-tr from-sky-600 to-karyar-900 flex items-center justify-center">
+                    <div
+                        class="relative h-52 overflow-hidden bg-gradient-to-tr from-sky-600 to-karyar-900 flex items-center justify-center">
                         <span class="text-white font-black text-2xl tracking-widest">BACKEND DEV</span>
-                        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-karyar-900 font-bold text-[11px] px-3 py-1 rounded-full shadow-sm">
+                        <span
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-karyar-900 font-bold text-[11px] px-3 py-1 rounded-full shadow-sm">
                             برنامه‌نویس Backend
                         </span>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-3 text-slate-400 text-xs mb-3 font-medium">
-                            <time datetime="2026-07-02"><i class="bi bi-calendar3 ml-1 text-karyar-500"></i>۱۲ تیر ۱۴۰۵</time>
+                            <time datetime="2026-07-02"><i class="bi bi-calendar3 ml-1 text-karyar-500"></i>۱۲ تیر
+                                ۱۴۰۵</time>
                             <span>•</span>
                             <span><i class="bi bi-clock ml-1 text-karyar-500"></i>۶ دقیقه مطالعه</span>
                         </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-2 leading-snug hover:text-karyar-500 transition-colors">
-                            <a href="./blog-detail.html">مقایسه معماری‌های میکروسرویس و مونولیت در پروژه‌های بزرگ استخدامی</a>
+                        <h2
+                            class="text-lg font-bold text-slate-900 mb-2 leading-snug hover:text-karyar-500 transition-colors">
+                            <a href="./blog-detail.html">مقایسه معماری‌های میکروسرویس و مونولیت در پروژه‌های بزرگ
+                                استخدامی</a>
                         </h2>
                         <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light line-clamp-3">
-                            کدام معماری برای پردازش حجم بالای اطلاعات آگهی‌ها و رزومه‌ها مناسب‌تر است؟ تحلیل عملکرد پایگاه‌های داده.
+                            کدام معماری برای پردازش حجم بالای اطلاعات آگهی‌ها و رزومه‌ها مناسب‌تر است؟ تحلیل عملکرد
+                            پایگاه‌های داده.
                         </p>
                     </div>
                 </div>
-                <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-karyar-900">
-                    <a href="./blog-detail.html" class="hover:text-karyar-500 flex items-center gap-1 transition-colors">
+                <div
+                    class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-karyar-900">
+                    <a href="./blog-detail.html"
+                        class="hover:text-karyar-500 flex items-center gap-1 transition-colors">
                         <span>ادامه مقاله</span>
                         <i class="bi bi-arrow-left"></i>
                     </a>
@@ -411,31 +495,39 @@
             </article>
 
             <!-- Card 5 -->
-            <article class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-karyar-100 transition-all duration-300 flex flex-col justify-between"
-                     data-aos="fade-up" data-aos-delay="200">
+            <article
+                class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-karyar-100 transition-all duration-300 flex flex-col justify-between"
+                data-aos="fade-up" data-aos-delay="200">
                 <div>
-                    <div class="relative h-52 overflow-hidden bg-gradient-to-tr from-blue-900 to-indigo-800 flex items-center justify-center">
+                    <div
+                        class="relative h-52 overflow-hidden bg-gradient-to-tr from-blue-900 to-indigo-800 flex items-center justify-center">
                         <span class="text-white font-black text-2xl tracking-widest">DEVOPS & CLOUD</span>
-                        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-karyar-900 font-bold text-[11px] px-3 py-1 rounded-full shadow-sm">
+                        <span
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-karyar-900 font-bold text-[11px] px-3 py-1 rounded-full shadow-sm">
                             مهندس DevOps
                         </span>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-3 text-slate-400 text-xs mb-3 font-medium">
-                            <time datetime="2026-06-20"><i class="bi bi-calendar3 ml-1 text-karyar-500"></i>۳۰ خرداد ۱۴۰۵</time>
+                            <time datetime="2026-06-20"><i class="bi bi-calendar3 ml-1 text-karyar-500"></i>۳۰ خرداد
+                                ۱۴۰۵</time>
                             <span>•</span>
                             <span><i class="bi bi-clock ml-1 text-karyar-500"></i>۸ دقیقه مطالعه</span>
                         </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-2 leading-snug hover:text-karyar-500 transition-colors">
+                        <h2
+                            class="text-lg font-bold text-slate-900 mb-2 leading-snug hover:text-karyar-500 transition-colors">
                             <a href="./blog-detail.html">راهنمای استقرار پیوسته (CI/CD) در زیرساخت‌های ابری فناوری</a>
                         </h2>
                         <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light line-clamp-3">
-                            اتوماسیون تست، 빌드 و دیپلوی برنامه‌ها با استفاده از Docker و Kubernetes بدون لغو دسترسی کاربران.
+                            اتوماسیون تست، 빌드 و دیپلوی برنامه‌ها با استفاده از Docker و Kubernetes بدون لغو دسترسی
+                            کاربران.
                         </p>
                     </div>
                 </div>
-                <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-karyar-900">
-                    <a href="./blog-detail.html" class="hover:text-karyar-500 flex items-center gap-1 transition-colors">
+                <div
+                    class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-karyar-900">
+                    <a href="./blog-detail.html"
+                        class="hover:text-karyar-500 flex items-center gap-1 transition-colors">
                         <span>ادامه مقاله</span>
                         <i class="bi bi-arrow-left"></i>
                     </a>
@@ -443,31 +535,40 @@
             </article>
 
             <!-- Card 6 -->
-            <article class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-karyar-100 transition-all duration-300 flex flex-col justify-between"
-                     data-aos="fade-up" data-aos-delay="300">
+            <article
+                class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-karyar-100 transition-all duration-300 flex flex-col justify-between"
+                data-aos="fade-up" data-aos-delay="300">
                 <div>
-                    <div class="relative h-52 overflow-hidden bg-gradient-to-tr from-cyan-700 to-karyar-500 flex items-center justify-center">
+                    <div
+                        class="relative h-52 overflow-hidden bg-gradient-to-tr from-cyan-700 to-karyar-500 flex items-center justify-center">
                         <span class="text-white font-black text-2xl tracking-widest">SEO TECH</span>
-                        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-karyar-900 font-bold text-[11px] px-3 py-1 rounded-full shadow-sm">
+                        <span
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-karyar-900 font-bold text-[11px] px-3 py-1 rounded-full shadow-sm">
                             متخصص سئو (SEO)
                         </span>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-3 text-slate-400 text-xs mb-3 font-medium">
-                            <time datetime="2026-06-10"><i class="bi bi-calendar3 ml-1 text-karyar-500"></i>۲۰ خرداد ۱۴۰۵</time>
+                            <time datetime="2026-06-10"><i class="bi bi-calendar3 ml-1 text-karyar-500"></i>۲۰ خرداد
+                                ۱۴۰۵</time>
                             <span>•</span>
                             <span><i class="bi bi-clock ml-1 text-karyar-500"></i>۴ دقیقه مطالعه</span>
                         </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-2 leading-snug hover:text-karyar-500 transition-colors">
-                            <a href="./blog-detail.html">تکنیک‌های بهینه‌سازی موتورهای جستجو برای خزنده‌های جدید گوگل</a>
+                        <h2
+                            class="text-lg font-bold text-slate-900 mb-2 leading-snug hover:text-karyar-500 transition-colors">
+                            <a href="./blog-detail.html">تکنیک‌های بهینه‌سازی موتورهای جستجو برای خزنده‌های جدید
+                                گوگل</a>
                         </h2>
                         <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light line-clamp-3">
-                            نحوه ایندکس سریع‌تر صفحات داینامیک، استفاده درست از داده‌های ساختاریافته (Schema) و افزایش سرعت بارگذاری.
+                            نحوه ایندکس سریع‌تر صفحات داینامیک، استفاده درست از داده‌های ساختاریافته (Schema) و افزایش
+                            سرعت بارگذاری.
                         </p>
                     </div>
                 </div>
-                <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-karyar-900">
-                    <a href="./blog-detail.html" class="hover:text-karyar-500 flex items-center gap-1 transition-colors">
+                <div
+                    class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-karyar-900">
+                    <a href="./blog-detail.html"
+                        class="hover:text-karyar-500 flex items-center gap-1 transition-colors">
                         <span>ادامه مقاله</span>
                         <i class="bi bi-arrow-left"></i>
                     </a>
@@ -478,32 +579,42 @@
 
         <!-- Pagination Section -->
         <nav aria-label="صفحه‌بندی مقالات" class="mt-16 flex justify-center" data-aos="fade-up" data-aos-duration="600">
-            <ul class="inline-flex items-center gap-2 bg-white p-2 rounded-2xl border border-karyar-100 shadow-sm text-xs font-bold">
+            <ul
+                class="inline-flex items-center gap-2 bg-white p-2 rounded-2xl border border-karyar-100 shadow-sm text-xs font-bold">
                 <!-- Previous Page -->
                 <li>
-                    <a href="/blog?page=1" class="w-10 h-10 rounded-xl border border-slate-200 text-slate-400 hover:text-karyar-900 hover:bg-karyar-50 flex items-center justify-center transition-colors aria-disabled:opacity-50" aria-label="صفحه قبلی">
+                    <a href="/blog?page=1"
+                        class="w-10 h-10 rounded-xl border border-slate-200 text-slate-400 hover:text-karyar-900 hover:bg-karyar-50 flex items-center justify-center transition-colors aria-disabled:opacity-50"
+                        aria-label="صفحه قبلی">
                         <i class="bi bi-chevron-right text-sm"></i>
                     </a>
                 </li>
                 <!-- Page Numbers -->
                 <li>
-                    <a href="/blog?page=1" class="w-10 h-10 rounded-xl bg-karyar-500 text-white flex items-center justify-center shadow-md shadow-karyar-500/20" aria-current="page">۱</a>
+                    <a href="/blog?page=1"
+                        class="w-10 h-10 rounded-xl bg-karyar-500 text-white flex items-center justify-center shadow-md shadow-karyar-500/20"
+                        aria-current="page">۱</a>
                 </li>
                 <li>
-                    <a href="/blog?page=2" class="w-10 h-10 rounded-xl border border-transparent text-slate-600 hover:bg-karyar-50 hover:text-karyar-900 flex items-center justify-center transition-colors">۲</a>
+                    <a href="/blog?page=2"
+                        class="w-10 h-10 rounded-xl border border-transparent text-slate-600 hover:bg-karyar-50 hover:text-karyar-900 flex items-center justify-center transition-colors">۲</a>
                 </li>
                 <li>
-                    <a href="/blog?page=3" class="w-10 h-10 rounded-xl border border-transparent text-slate-600 hover:bg-karyar-50 hover:text-karyar-900 flex items-center justify-center transition-colors">۳</a>
+                    <a href="/blog?page=3"
+                        class="w-10 h-10 rounded-xl border border-transparent text-slate-600 hover:bg-karyar-50 hover:text-karyar-900 flex items-center justify-center transition-colors">۳</a>
                 </li>
                 <li>
                     <span class="w-8 h-10 text-slate-400 flex items-center justify-center">...</span>
                 </li>
                 <li>
-                    <a href="/blog?page=8" class="w-10 h-10 rounded-xl border border-transparent text-slate-600 hover:bg-karyar-50 hover:text-karyar-900 flex items-center justify-center transition-colors">۸</a>
+                    <a href="/blog?page=8"
+                        class="w-10 h-10 rounded-xl border border-transparent text-slate-600 hover:bg-karyar-50 hover:text-karyar-900 flex items-center justify-center transition-colors">۸</a>
                 </li>
                 <!-- Next Page -->
                 <li>
-                    <a href="/blog?page=2" class="w-10 h-10 rounded-xl border border-slate-200 text-slate-700 hover:text-karyar-900 hover:bg-karyar-50 flex items-center justify-center transition-colors" aria-label="صفحه بعدی">
+                    <a href="/blog?page=2"
+                        class="w-10 h-10 rounded-xl border border-slate-200 text-slate-700 hover:text-karyar-900 hover:bg-karyar-50 flex items-center justify-center transition-colors"
+                        aria-label="صفحه بعدی">
                         <i class="bi bi-chevron-left text-sm"></i>
                     </a>
                 </li>
@@ -513,7 +624,8 @@
     </main>
 
     <!-- ================= FOOTER START ================= -->
-    <footer class="bg-ky-900 text-white relative overflow-hidden pt-16 pb-8 border-t-4 border-ky-500" role="contentinfo">
+    <footer class="bg-ky-900 text-white relative overflow-hidden pt-16 pb-8 border-t-4 border-ky-500"
+        role="contentinfo">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
             <!-- بخش بالایی: خبرنامه + معرفی -->
@@ -521,23 +633,27 @@
 
                 <div class="lg:col-span-5 space-y-4">
                     <a href="./index.html" class="flex items-center gap-3 group">
-                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-karyar-900 to-karyar-500 flex items-center justify-center text-white font-black text-2xl shadow-md shadow-karyar-500/20 group-hover:scale-105 transition-transform">
+                        <div
+                            class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-karyar-900 to-karyar-500 flex items-center justify-center text-white font-black text-2xl shadow-md shadow-karyar-500/20 group-hover:scale-105 transition-transform">
                             <i class="bi bi-briefcase-fill"></i>
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-2xl font-black text-white tracking-tight leading-none">کار<span class="text-karyar-500">یار</span></span>
+                            <span class="text-2xl font-black text-white tracking-tight leading-none">کار<span
+                                    class="text-karyar-500">یار</span></span>
                             <span class="text-[10px] text-slate-400 font-medium mt-1">سامانه هوشمند کاریابی</span>
                         </div>
                     </a>
                     <p class="text-ky-200 text-sm leading-relaxed max-w-sm">
-                        کاریار پل ارتباطی هوشمند بین کارجویان متخصص و برترین سازمان‌ها است. ساخت آینده شغلی شما از اینجا شروع می‌شود.
+                        کاریار پل ارتباطی هوشمند بین کارجویان متخصص و برترین سازمان‌ها است. ساخت آینده شغلی شما از اینجا
+                        شروع می‌شود.
                     </p>
                 </div>
 
                 <div class="lg:col-span-7 flex flex-col justify-center" x-data="{ subscribed: false }">
                     <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-ky-200/10">
                         <h3 class="text-lg font-bold text-ky-50 mb-2">عضویت در خبرنامه فرصت‌های شغلی</h3>
-                        <p class="text-xs text-ky-200 mb-4">جدیدترین آگهی‌های مرتبط با تخصص خود را هفتگی در ایمیل دریافت کنید.</p>
+                        <p class="text-xs text-ky-200 mb-4">جدیدترین آگهی‌های مرتبط با تخصص خود را هفتگی در ایمیل دریافت
+                            کنید.</p>
 
                         <form @submit.prevent="subscribed = true" class="flex flex-col sm:flex-row gap-3">
                             <input type="email" required placeholder="ایمیل خود را وارد کنید..."
@@ -548,7 +664,8 @@
                             </button>
                         </form>
 
-                        <p x-show="subscribed" x-transition class="text-emerald-400 text-xs mt-3">✓ با موفقیت ثبت شد!</p>
+                        <p x-show="subscribed" x-transition class="text-emerald-400 text-xs mt-3">✓ با موفقیت ثبت شد!
+                        </p>
                     </div>
                 </div>
             </div>
@@ -558,44 +675,62 @@
                 <div>
                     <h4 class="text-ky-200 font-bold text-sm mb-4 border-r-2 border-ky-500 pr-2">برای کارجویان</h4>
                     <ul class="space-y-2.5 text-xs text-gray-300">
-                        <li><a href="./index.html" class="hover:text-ky-200 transition-colors duration-200 block py-1">جستجوی فرصت‌های شغلی</a></li>
-                        <li><a href="14050516_21q.pdf" download="14050516_21q.pdf" class="hover:text-ky-200 transition-colors duration-200 block py-1">استعلام حقوق بازار کار</a></li>
+                        <li><a href="./index.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">جستجوی فرصت‌های
+                                شغلی</a></li>
+                        <li><a href="14050516_21q.pdf" download="14050516_21q.pdf"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">استعلام حقوق بازار
+                                کار</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-ky-200 font-bold text-sm mb-4 border-r-2 border-ky-500 pr-2">برای کارفرمایان</h4>
                     <ul class="space-y-2.5 text-xs text-gray-300">
-                        <li><a href="./creat-job.html" class="hover:text-ky-200 transition-colors duration-200 block py-1">ثبت آگهی استخدام</a></li>
-                        <li><a href="./price.html" class="hover:text-ky-200 transition-colors duration-200 block py-1">تعرفه‌ها و بسته‌ها</a></li>
+                        <li><a href="./creat-job.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">ثبت آگهی استخدام</a>
+                        </li>
+                        <li><a href="./price.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">تعرفه‌ها و
+                                بسته‌ها</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-ky-200 font-bold text-sm mb-4 border-r-2 border-ky-500 pr-2">کاریار</h4>
                     <ul class="space-y-2.5 text-xs text-gray-300">
-                        <li><a href="./about.html" class="hover:text-ky-200 transition-colors duration-200 block py-1">درباره ما</a></li>
-                        <li><a href="./blog.html" class="hover:text-ky-200 transition-colors duration-200 block py-1">مجله آموزشی و مقالات</a></li>
-                        <li><a href="./contact.html" class="hover:text-ky-200 transition-colors duration-200 block py-1">تماس با پشتیبانی</a></li>
+                        <li><a href="./about.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">درباره ما</a></li>
+                        <li><a href="./blog.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">مجله آموزشی و
+                                مقالات</a></li>
+                        <li><a href="./contact.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">تماس با پشتیبانی</a>
+                        </li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-ky-200 font-bold text-sm mb-4 border-r-2 border-ky-500 pr-2">قوانین و امنیت</h4>
                     <ul class="space-y-2.5 text-xs text-gray-300">
-                        <li><a href="./rule.html" class="hover:text-ky-200 transition-colors duration-200 block py-1">قوانین و مقررات</a></li>
+                        <li><a href="./rule.html"
+                                class="hover:text-ky-200 transition-colors duration-200 block py-1">قوانین و مقررات</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
 
             <!-- بخش پایینی: کپی‌رایت -->
-            <div class="pt-8 border-t border-ky-200/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-ky-200">
+            <div
+                class="pt-8 border-t border-ky-200/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-ky-200">
                 <p>© ۱۴۰۵ تمامی حقوق برای سامانه کاریابی کاریار محفوظ است.</p>
                 <div class="flex items-center space-x-4 space-x-reverse">
-                    <a href="https://linkedin.com" aria-label="لینکدین" class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center hover:bg-ky-500 hover:text-white transition-all">
+                    <a href="https://linkedin.com" aria-label="لینکدین"
+                        class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center hover:bg-ky-500 hover:text-white transition-all">
                         <i class="bi bi-linkedin text-sm"></i>
                     </a>
-                    <a href="https://telegram.org" aria-label="تلگرام" class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center hover:bg-ky-500 hover:text-white transition-all">
+                    <a href="https://telegram.org" aria-label="تلگرام"
+                        class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center hover:bg-ky-500 hover:text-white transition-all">
                         <i class="bi bi-telegram text-sm"></i>
                     </a>
                 </div>

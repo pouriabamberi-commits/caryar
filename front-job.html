@@ -12,6 +12,8 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://karyar.ir/jobs/frontend">
 
+    <!-- FONT CSS -->
+    <link rel="stylesheet" href="./styles/style.css">
     <!-- Tailwind CSS CDN -->
     <script src="./library/tailwind.js"></script>
     <script>
@@ -37,9 +39,6 @@
                             500: '#2196F3', /* رنگ اصلی و دکمه‌ها */
                             900: '#0D47A1', /* رنگ متن‌ها و پس‌زمینه فوتر */
                         }
-                    },
-                    fontFamily: {
-                        sans: ['Vazirmatn', 'sans-serif'],
                     }
                 }
             }
@@ -52,17 +51,10 @@
         integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Alpine.js جهت سوئیچ بین آگهی‌ها -->
-    <script defer src="./library/apline.min.js"></script>
+    <script src="./library/apline.min.js"></script>
 
-    <!-- فونت وزیرمتن -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet"
-        type="text/css" />
 
     <style>
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-        }
-
         /* اسکرول‌بار مدرن و روان مخصوص بخش‌های داخلی */
         .custom-scroll::-webkit-scrollbar {
             width: 6px;
@@ -227,8 +219,7 @@
             <section class="lg:col-span-5 space-y-3 h-full overflow-y-auto pl-1 pr-1">
 
                 <!-- آگهی ۱ -->
-                <article
-                    @click=" window.location.href = './front-job-detail.html'"
+                <article @click=" window.location.href = './front-job-detail.html'"
                     :class=" 'border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white' : 'border-[#90CAF9]/60 bg-white/80 hover:bg-white'"
                     class="border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white p-4 rounded-2xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md relative">
                     <div class="flex justify-between items-start">
@@ -248,8 +239,7 @@
                 </article>
 
                 <!-- آگهی 2 -->
-                <article
-                    @click=" window.location.href = './front-job-detail.html'"
+                <article @click=" window.location.href = './front-job-detail.html'"
                     :class=" 'border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white' : 'border-[#90CAF9]/60 bg-white/80 hover:bg-white'"
                     class="border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white p-4 rounded-2xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md relative">
                     <div class="flex justify-between items-start">
@@ -269,8 +259,7 @@
                 </article>
 
                 <!-- آگهی 3 -->
-                <article
-                    @click="window.location.href = './front-job-detail.html' "
+                <article @click="window.location.href = './front-job-detail.html' "
                     :class="'border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white' 'border-[#90CAF9]/60 bg-white/80 hover:bg-white'"
                     class="border-[#2196F3] ring-2 ring-[#2196F3]/30 bg-white p-4 rounded-2xl border transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md relative">
                     <div class="flex justify-between items-start">

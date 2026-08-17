@@ -11,6 +11,8 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://karyar.dev/post-job.html">
 
+    <!-- FONT CSS -->
+    <link rel="stylesheet" href="./styles/style.css">
     <!-- Tailwind CSS CDN -->
     <script src="./library/tailwind.js"></script>
     <script>
@@ -30,18 +32,16 @@
                             500: '#2196F3',
                             900: '#0D47A1',
                         }
-                    },
-                    fontFamily: {
-                        sans: ['Vazirmatn', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
 
-    <!-- Font & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--  Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- AOS Animation Library -->
     <link href="./library/aos.css" rel="stylesheet">
@@ -52,7 +52,6 @@
 
     <style>
         body {
-            font-family: 'Vazirmatn', sans-serif;
             background-color: #f8fafc;
         }
 
@@ -69,7 +68,8 @@
     <main class="max-w-4xl mx-auto">
         <!-- Title & Header Banner -->
         <header class="text-center mb-10" data-aos="fade-down" data-aos-duration="800">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-karyar-50 border border-karyar-100 text-karyar-900 text-xs sm:text-sm font-bold mb-4 shadow-sm">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-karyar-50 border border-karyar-100 text-karyar-900 text-xs sm:text-sm font-bold mb-4 shadow-sm">
                 <i class="bi bi-briefcase-fill text-karyar-500"></i>
                 <span>فرصت شغلی جدید خلق کنید</span>
             </div>
@@ -82,7 +82,9 @@
         </header>
 
         <!-- Form Card Container -->
-        <form action="#" method="POST" class="bg-white rounded-3xl shadow-xl border border-karyar-50 p-6 sm:p-10 space-y-8" data-aos="fade-up" data-aos-duration="1000">
+        <form action="#" method="POST"
+            class="bg-white rounded-3xl shadow-xl border border-karyar-50 p-6 sm:p-10 space-y-8" data-aos="fade-up"
+            data-aos-duration="1000">
 
             <!-- Section 1: General Job Info -->
             <section class="space-y-6">
@@ -94,9 +96,11 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Category Select Box (Filled from Header Menu) -->
                     <div class="space-y-2">
-                        <label for="job_category" class="block text-xs font-bold text-slate-700">حوزه شغلی <span class="text-red-500">*</span></label>
+                        <label for="job_category" class="block text-xs font-bold text-slate-700">حوزه شغلی <span
+                                class="text-red-500">*</span></label>
                         <div class="relative">
-                            <select id="job_category" name="job_category" required class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all appearance-none cursor-pointer">
+                            <select id="job_category" name="job_category" required
+                                class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all appearance-none cursor-pointer">
                                 <option value="" disabled selected>انتخاب کنید...</option>
                                 <option value="frontend">برنامه‌نویس Frontend</option>
                                 <option value="backend">برنامه‌نویس Backend</option>
@@ -114,48 +118,67 @@
                                 <option value="game-dev">بازیساز (Game Dev)</option>
                                 <option value="database">مدیر پایگاه داده</option>
                             </select>
-                            <i class="bi bi-chevron-down absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+                            <i
+                                class="bi bi-chevron-down absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
                         </div>
                     </div>
 
                     <!-- Job Title -->
                     <div class="space-y-2">
-                        <label for="job_title" class="block text-xs font-bold text-slate-700">عنوان آگهی <span class="text-red-500">*</span></label>
-                        <input type="text" id="job_title" name="job_title" placeholder="مثلاً: توسعه‌دهنده Senior React" required class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
+                        <label for="job_title" class="block text-xs font-bold text-slate-700">عنوان آگهی <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" id="job_title" name="job_title" placeholder="مثلاً: توسعه‌دهنده Senior React"
+                            required
+                            class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
                     </div>
 
                     <!-- Company Name -->
                     <div class="space-y-2">
-                        <label for="company_name" class="block text-xs font-bold text-slate-700">نام شرکت / مجموعه <span class="text-red-500">*</span></label>
-                        <input type="text" id="company_name" name="company_name" placeholder="مثلاً: شرکت فناوری اطلاعات کاریار" required class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
+                        <label for="company_name" class="block text-xs font-bold text-slate-700">نام شرکت / مجموعه <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" id="company_name" name="company_name"
+                            placeholder="مثلاً: شرکت فناوری اطلاعات کاریار" required
+                            class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
                     </div>
 
                     <!-- Location -->
                     <div class="space-y-2">
-                        <label for="location" class="block text-xs font-bold text-slate-700">موقعیت مکانی <span class="text-red-500">*</span></label>
-                        <input type="text" id="location" name="location" placeholder="مثلاً: تهران، جردن (یا ریموت)" required class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
+                        <label for="location" class="block text-xs font-bold text-slate-700">موقعیت مکانی <span
+                                class="text-red-500">*</span></label>
+                        <input type="text" id="location" name="location" placeholder="مثلاً: تهران، جردن (یا ریموت)"
+                            required
+                            class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
                     </div>
                 </div>
 
                 <!-- Salary Range -->
                 <div class="space-y-2">
-                    <label class="block text-xs font-bold text-slate-700">بازه حقوق پیشنهادی (میلیون تومان) <span class="text-red-500">*</span></label>
+                    <label class="block text-xs font-bold text-slate-700">بازه حقوق پیشنهادی (میلیون تومان) <span
+                            class="text-red-500">*</span></label>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="relative">
-                            <input type="number" name="salary_min" placeholder="از (مثلاً ۲۰)" min="0" required class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
-                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-light">تومان</span>
+                            <input type="number" name="salary_min" placeholder="از (مثلاً ۲۰)" min="0" required
+                                class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
+                            <span
+                                class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-light">تومان</span>
                         </div>
                         <div class="relative">
-                            <input type="number" name="salary_max" placeholder="تا (مثلاً ۳۵)" min="0" required class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
-                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-light">تومان</span>
+                            <input type="number" name="salary_max" placeholder="تا (مثلاً ۳۵)" min="0" required
+                                class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
+                            <span
+                                class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-light">تومان</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Job Description TextArea -->
                 <div class="space-y-2">
-                    <label for="job_description" class="block text-xs font-bold text-slate-700">توضیحات کلی شغل و مسئولیت‌ها <span class="text-red-500">*</span></label>
-                    <textarea id="job_description" name="job_description" rows="4" placeholder="شرح وظایف، شرح محیط کاری و انتظاراتی که از کارجو دارید را به طور کامل بنویسید..." required class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl p-4 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all leading-relaxed"></textarea>
+                    <label for="job_description" class="block text-xs font-bold text-slate-700">توضیحات کلی شغل و
+                        مسئولیت‌ها <span class="text-red-500">*</span></label>
+                    <textarea id="job_description" name="job_description" rows="4"
+                        placeholder="شرح وظایف، شرح محیط کاری و انتظاراتی که از کارجو دارید را به طور کامل بنویسید..."
+                        required
+                        class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl p-4 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all leading-relaxed"></textarea>
                 </div>
             </section>
 
@@ -172,16 +195,20 @@
                     <!-- TextArea 1: Frameworks & Libraries -->
                     <div class="bg-karyar-50/40 p-4 rounded-2xl border border-karyar-100 space-y-3">
                         <div class="flex items-center justify-between">
-                            <label for="skill_frameworks" class="text-xs font-bold text-karyar-900 flex items-center gap-1.5">
+                            <label for="skill_frameworks"
+                                class="text-xs font-bold text-karyar-900 flex items-center gap-1.5">
                                 <i class="bi bi-box-seam text-karyar-500"></i>
                                 <span>فریم‌ورک‌ها و کتابخانه‌ها</span>
                             </label>
                         </div>
-                        <textarea id="skill_frameworks" name="skill_frameworks" rows="3" placeholder="مثلاً: Tailwind CSS, React.js, Alpine.js..." class="w-full bg-white border border-slate-200 text-slate-800 text-xs rounded-xl p-3 focus:outline-none focus:border-karyar-500 transition-all"></textarea>
-                        
+                        <textarea id="skill_frameworks" name="skill_frameworks" rows="3"
+                            placeholder="مثلاً: Tailwind CSS, React.js, Alpine.js..."
+                            class="w-full bg-white border border-slate-200 text-slate-800 text-xs rounded-xl p-3 focus:outline-none focus:border-karyar-500 transition-all"></textarea>
+
                         <div class="space-y-1">
                             <span class="text-[11px] font-bold text-slate-600 block">سطح مورد نیاز:</span>
-                            <select name="level_frameworks" class="w-full bg-white border border-slate-200 text-xs rounded-lg px-2.5 py-2 text-slate-700 focus:outline-none focus:border-karyar-500">
+                            <select name="level_frameworks"
+                                class="w-full bg-white border border-slate-200 text-xs rounded-lg px-2.5 py-2 text-slate-700 focus:outline-none focus:border-karyar-500">
                                 <option value="senior">ارشد (Senior)</option>
                                 <option value="expert" selected>تسلط کامل</option>
                                 <option value="junior">مبتدی (Junior)</option>
@@ -192,16 +219,20 @@
                     <!-- TextArea 2: Programming Languages -->
                     <div class="bg-karyar-50/40 p-4 rounded-2xl border border-karyar-100 space-y-3">
                         <div class="flex items-center justify-between">
-                            <label for="skill_languages" class="text-xs font-bold text-karyar-900 flex items-center gap-1.5">
+                            <label for="skill_languages"
+                                class="text-xs font-bold text-karyar-900 flex items-center gap-1.5">
                                 <i class="bi bi-code-slash text-karyar-500"></i>
                                 <span>زبان‌های برنامه‌نویسی</span>
                             </label>
                         </div>
-                        <textarea id="skill_languages" name="skill_languages" rows="3" placeholder="مثلاً: JavaScript, Python, TypeScript..." class="w-full bg-white border border-slate-200 text-slate-800 text-xs rounded-xl p-3 focus:outline-none focus:border-karyar-500 transition-all"></textarea>
-                        
+                        <textarea id="skill_languages" name="skill_languages" rows="3"
+                            placeholder="مثلاً: JavaScript, Python, TypeScript..."
+                            class="w-full bg-white border border-slate-200 text-slate-800 text-xs rounded-xl p-3 focus:outline-none focus:border-karyar-500 transition-all"></textarea>
+
                         <div class="space-y-1">
                             <span class="text-[11px] font-bold text-slate-600 block">سطح مورد نیاز:</span>
-                            <select name="level_languages" class="w-full bg-white border border-slate-200 text-xs rounded-lg px-2.5 py-2 text-slate-700 focus:outline-none focus:border-karyar-500">
+                            <select name="level_languages"
+                                class="w-full bg-white border border-slate-200 text-xs rounded-lg px-2.5 py-2 text-slate-700 focus:outline-none focus:border-karyar-500">
                                 <option value="senior">ارشد (Senior)</option>
                                 <option value="expert" selected>تسلط کامل</option>
                                 <option value="junior">مبتدی (Junior)</option>
@@ -212,16 +243,20 @@
                     <!-- TextArea 3: Complementary Skills -->
                     <div class="bg-karyar-50/40 p-4 rounded-2xl border border-karyar-100 space-y-3">
                         <div class="flex items-center justify-between">
-                            <label for="skill_complementary" class="text-xs font-bold text-karyar-900 flex items-center gap-1.5">
+                            <label for="skill_complementary"
+                                class="text-xs font-bold text-karyar-900 flex items-center gap-1.5">
                                 <i class="bi bi-gear-wide-connected text-karyar-500"></i>
                                 <span>مهارت‌های تکمیلی</span>
                             </label>
                         </div>
-                        <textarea id="skill_complementary" name="skill_complementary" rows="3" placeholder="مثلاً: Git, REST API, Docker, CI/CD..." class="w-full bg-white border border-slate-200 text-slate-800 text-xs rounded-xl p-3 focus:outline-none focus:border-karyar-500 transition-all"></textarea>
-                        
+                        <textarea id="skill_complementary" name="skill_complementary" rows="3"
+                            placeholder="مثلاً: Git, REST API, Docker, CI/CD..."
+                            class="w-full bg-white border border-slate-200 text-slate-800 text-xs rounded-xl p-3 focus:outline-none focus:border-karyar-500 transition-all"></textarea>
+
                         <div class="space-y-1">
                             <span class="text-[11px] font-bold text-slate-600 block">سطح مورد نیاز:</span>
-                            <select name="level_complementary" class="w-full bg-white border border-slate-200 text-xs rounded-lg px-2.5 py-2 text-slate-700 focus:outline-none focus:border-karyar-500">
+                            <select name="level_complementary"
+                                class="w-full bg-white border border-slate-200 text-xs rounded-lg px-2.5 py-2 text-slate-700 focus:outline-none focus:border-karyar-500">
                                 <option value="senior">ارشد (Senior)</option>
                                 <option value="expert">تسلط کامل</option>
                                 <option value="junior" selected>مبتدی (Junior)</option>
@@ -238,41 +273,53 @@
                     <span class="w-2.5 h-7 bg-karyar-500 rounded-full inline-block"></span>
                     <div>
                         <h2 class="text-lg font-bold text-karyar-900">مهارت‌های امتیازی (مزیت محسوب می‌شود)</h2>
-                        <p class="text-xs text-slate-400 font-light mt-0.5">ثبت حداکثر ۵ مهارت اختیاری که شانس پذیرش رزومه را افزایش می‌دهد.</p>
+                        <p class="text-xs text-slate-400 font-light mt-0.5">ثبت حداکثر ۵ مهارت اختیاری که شانس پذیرش
+                            رزومه را افزایش می‌دهد.</p>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                     <div class="relative">
-                        <input type="text" name="bonus_skill_1" placeholder="مهارت امتیازی ۱ (مثلاً Three.js)" class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl px-3.5 py-3 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
-                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] bg-karyar-100 text-karyar-900 px-1.5 py-0.5 rounded-md font-bold">+امتیاز</span>
+                        <input type="text" name="bonus_skill_1" placeholder="مهارت امتیازی ۱ (مثلاً Three.js)"
+                            class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl px-3.5 py-3 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
+                        <span
+                            class="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] bg-karyar-100 text-karyar-900 px-1.5 py-0.5 rounded-md font-bold">+امتیاز</span>
                     </div>
 
                     <div class="relative">
-                        <input type="text" name="bonus_skill_2" placeholder="مهارت امتیازی ۲ (مثلاً GSAP)" class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl px-3.5 py-3 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
-                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] bg-karyar-100 text-karyar-900 px-1.5 py-0.5 rounded-md font-bold">+امتیاز</span>
+                        <input type="text" name="bonus_skill_2" placeholder="مهارت امتیازی ۲ (مثلاً GSAP)"
+                            class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl px-3.5 py-3 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
+                        <span
+                            class="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] bg-karyar-100 text-karyar-900 px-1.5 py-0.5 rounded-md font-bold">+امتیاز</span>
                     </div>
 
                     <div class="relative">
-                        <input type="text" name="bonus_skill_3" placeholder="مهارت امتیازی ۳ (مثلاً Figma)" class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl px-3.5 py-3 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
-                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] bg-karyar-100 text-karyar-900 px-1.5 py-0.5 rounded-md font-bold">+امتیاز</span>
+                        <input type="text" name="bonus_skill_3" placeholder="مهارت امتیازی ۳ (مثلاً Figma)"
+                            class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl px-3.5 py-3 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
+                        <span
+                            class="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] bg-karyar-100 text-karyar-900 px-1.5 py-0.5 rounded-md font-bold">+امتیاز</span>
                     </div>
 
                     <div class="relative">
-                        <input type="text" name="bonus_skill_4" placeholder="مهارت امتیازی ۴ (مثلاً PWA)" class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl px-3.5 py-3 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
-                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] bg-karyar-100 text-karyar-900 px-1.5 py-0.5 rounded-md font-bold">+امتیاز</span>
+                        <input type="text" name="bonus_skill_4" placeholder="مهارت امتیازی ۴ (مثلاً PWA)"
+                            class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl px-3.5 py-3 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
+                        <span
+                            class="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] bg-karyar-100 text-karyar-900 px-1.5 py-0.5 rounded-md font-bold">+امتیاز</span>
                     </div>
 
                     <div class="relative sm:col-span-2 md:col-span-1">
-                        <input type="text" name="bonus_skill_5" placeholder="مهارت امتیازی ۵ (مثلاً SEO Web)" class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl px-3.5 py-3 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
-                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] bg-karyar-100 text-karyar-900 px-1.5 py-0.5 rounded-md font-bold">+امتیاز</span>
+                        <input type="text" name="bonus_skill_5" placeholder="مهارت امتیازی ۵ (مثلاً SEO Web)"
+                            class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs rounded-xl px-3.5 py-3 focus:outline-none focus:border-karyar-500 focus:bg-white transition-all">
+                        <span
+                            class="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] bg-karyar-100 text-karyar-900 px-1.5 py-0.5 rounded-md font-bold">+امتیاز</span>
                     </div>
                 </div>
             </section>
 
             <!-- Submit Button Section -->
             <div class="pt-6 border-t border-slate-100">
-                <button type="submit" class="w-full bg-karyar-500 hover:bg-karyar-900 text-white font-bold text-base py-4 rounded-2xl shadow-lg shadow-karyar-500/25 hover:shadow-xl hover:shadow-karyar-900/20 transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2">
+                <button type="submit"
+                    class="w-full bg-karyar-500 hover:bg-karyar-900 text-white font-bold text-base py-4 rounded-2xl shadow-lg shadow-karyar-500/25 hover:shadow-xl hover:shadow-karyar-900/20 transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2">
                     <i class="bi bi-check-circle-fill text-lg"></i>
                     <span>تأیید و انتشار آگهی شغلی</span>
                 </button>

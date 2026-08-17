@@ -8,7 +8,8 @@
 
     <!-- SEO & Crawlability Meta Tags -->
     <meta name="robots" content="index, follow">
-    <meta name="description" content="پنل مدیریت کارفرمایان سامانه کاریابی کار یار. مشاهده آگهی‌های شغلی ثبت شده و بررسی رزومه‌های دریافتی متقاضیان.">
+    <meta name="description"
+        content="پنل مدیریت کارفرمایان سامانه کاریابی کار یار. مشاهده آگهی‌های شغلی ثبت شده و بررسی رزومه‌های دریافتی متقاضیان.">
     <meta name="keywords" content="کاریابی, کار یار, داشبورد کارفرما, مدیریت آگهی, بررسی رزومه">
     <link rel="canonical" href="https://karyar.ir/employer/dashboard">
 
@@ -17,6 +18,8 @@
     <meta property="og:description" content="مدیریت آگهی‌های شغلی و رزومه‌های کارجویان در سامانه کار یار">
     <meta property="og:type" content="website">
 
+    <!-- FONT CSS -->
+    <link rel="stylesheet" href="./styles/style.css">
     <!-- Tailwind CSS CDN -->
     <script src="./library/tailwind.js"></script>
     <script>
@@ -42,9 +45,6 @@
                             500: '#2196F3', /* رنگ اصلی و دکمه‌ها */
                             900: '#0D47A1', /* رنگ متن‌ها و پس‌زمینه فوتر */
                         }
-                    },
-                    fontFamily: {
-                        sans: ['Vazirmatn', 'Tahoma', 'sans-serif'],
                     }
                 }
             }
@@ -62,14 +62,10 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Alpine.js CDN for Modal & Accordion Toggle only -->
-    <script defer src="./library/apline.min.js"></script>
-
-    <!-- Web Font -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <script src="./library/apline.min.js"></script>
 
     <style>
         body {
-            font-family: 'Vazirmatn', sans-serif;
             background-color: #f8fafc;
         }
 
@@ -77,32 +73,38 @@
             width: 6px;
             height: 6px;
         }
+
         ::-webkit-scrollbar-track {
             background: #E3F2FD;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #90CAF9;
             border-radius: 4px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #2196F3;
         }
     </style>
 </head>
 
-<body class="text-slate-800 antialiased selection:bg-brand-200 selection:text-brand-900 min-h-screen flex flex-col justify-between"
-      x-data="{ activeJob: null, activeModal: null }">
+<body
+    class="text-slate-800 antialiased selection:bg-brand-200 selection:text-brand-900 min-h-screen flex flex-col justify-between"
+    x-data="{ activeJob: null, activeModal: null }">
 
     <!-- Header & Navbar Navigation -->
     <header x-data="{ mobileMenuOpen: false }" class="sticky top-0 z-40 bg-white border-b border-karyar-50 shadow-sm">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Logo Section -->
             <a href="./index.html" class="flex items-center gap-3 group">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-karyar-900 to-karyar-500 flex items-center justify-center text-white font-black text-2xl shadow-md shadow-karyar-500/20 group-hover:scale-105 transition-transform">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-karyar-900 to-karyar-500 flex items-center justify-center text-white font-black text-2xl shadow-md shadow-karyar-500/20 group-hover:scale-105 transition-transform">
                     <i class="bi bi-briefcase-fill"></i>
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-2xl font-black text-karyar-900 tracking-tight leading-none">کار<span class="text-karyar-500">یار</span></span>
+                    <span class="text-2xl font-black text-karyar-900 tracking-tight leading-none">کار<span
+                            class="text-karyar-500">یار</span></span>
                     <span class="text-[10px] text-slate-400 font-medium mt-1">سامانه هوشمند کاریابی</span>
                 </div>
             </a>
@@ -110,7 +112,8 @@
             <!-- Desktop Navigation Menu -->
             <ul class="hidden lg:flex items-center gap-7 font-semibold text-slate-600 text-sm">
                 <li><a href="./index.html" class="hover:text-karyar-500 transition-colors">صفحه اصلی</a></li>
-                <li><a href="#" class="text-karyar-500 font-bold border-b-2 border-karyar-500 pb-1">داشبورد کارفرما</a></li>
+                <li><a href="#" class="text-karyar-500 font-bold border-b-2 border-karyar-500 pb-1">داشبورد کارفرما</a>
+                </li>
                 <li><a href="./creat-job.html" class="hover:text-karyar-500 transition-colors">ثبت آگهی جدید</a></li>
             </ul>
 
@@ -128,13 +131,15 @@
             </div>
 
             <!-- Hamburger Button (Mobile) -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-black text-2xl p-2 focus:outline-none">
+            <button @click="mobileMenuOpen = !mobileMenuOpen"
+                class="lg:hidden text-black text-2xl p-2 focus:outline-none">
                 <i :class="mobileMenuOpen ? 'bi bi-x' : 'bi bi-list'"></i>
             </button>
         </nav>
 
         <!-- Mobile Drawer Menu -->
-        <div x-show="mobileMenuOpen" x-transition class="lg:hidden bg-white border-b border-slate-100 px-6 py-4 space-y-3">
+        <div x-show="mobileMenuOpen" x-transition
+            class="lg:hidden bg-white border-b border-slate-100 px-6 py-4 space-y-3">
             <a href="./index.html" class="block text-slate-700 font-bold py-2 border-b border-slate-50">صفحه اصلی</a>
             <a href="#" class="block text-brand-500 font-bold py-2 border-b border-slate-50">داشبورد کارفرما</a>
             <a href="./creat-job.html" class="block text-slate-700 font-bold py-2">ثبت آگهی جدید</a>
@@ -152,9 +157,11 @@
                         <i class="bi bi-speedometer2 text-brand-500"></i>
                         داشبورد مدیریت آگهی‌ها و متقاضیان
                     </h1>
-                    <p class="text-sm text-slate-500 mt-1">روی هر آگهی کلیک کنید تا متقاضیان آن در سمت چپ نمایش داده شوند.</p>
+                    <p class="text-sm text-slate-500 mt-1">روی هر آگهی کلیک کنید تا متقاضیان آن در سمت چپ نمایش داده
+                        شوند.</p>
                 </div>
-                <a href="./creat-job.html" class="inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-900 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-md shadow-brand-500/20 transition-all">
+                <a href="./creat-job.html"
+                    class="inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-900 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-md shadow-brand-500/20 transition-all">
                     <i class="bi bi-plus-circle"></i>
                     <span>ثبت آگهی شغلی جدید</span>
                 </a>
@@ -171,21 +178,24 @@
                                 <i class="bi bi-megaphone-fill text-brand-500"></i>
                                 آگهی‌های فعال شما (۳)
                             </h2>
-                            <span class="text-xs bg-brand-50 text-brand-900 border border-brand-200 px-2.5 py-1 rounded-full font-semibold">
+                            <span
+                                class="text-xs bg-brand-50 text-brand-900 border border-brand-200 px-2.5 py-1 rounded-full font-semibold">
                                 وضعیت فعال
                             </span>
                         </div>
 
                         <!-- Static HTML Jobs List -->
                         <div class="space-y-3 max-h-[600px] overflow-y-auto pr-1">
-                            
+
                             <!-- Job 1 -->
                             <div @click="activeJob = (activeJob === 1 ? null : 1)"
-                                 :class="activeJob === 1 ? 'border-brand-500 bg-brand-50/70 shadow-md ring-2 ring-brand-500/20' : 'border-slate-200 bg-white hover:border-brand-200 hover:bg-slate-50'"
-                                 class="p-4 rounded-xl border transition-all cursor-pointer relative group">
+                                :class="activeJob === 1 ? 'border-brand-500 bg-brand-50/70 shadow-md ring-2 ring-brand-500/20' : 'border-slate-200 bg-white hover:border-brand-200 hover:bg-slate-50'"
+                                class="p-4 rounded-xl border transition-all cursor-pointer relative group">
                                 <div class="flex items-start justify-between">
                                     <div>
-                                        <h3 class="font-bold text-slate-800 group-hover:text-brand-900 text-sm sm:text-base">توسعه‌دهنده ارشد Frontend (React / Tailwind)</h3>
+                                        <h3
+                                            class="font-bold text-slate-800 group-hover:text-brand-900 text-sm sm:text-base">
+                                            توسعه‌دهنده ارشد Frontend (React / Tailwind)</h3>
                                         <p class="text-xs text-slate-500 mt-1 flex items-center gap-2">
                                             <span><i class="bi bi-geo-alt"></i> تهران (امکان دورکاری)</span>
                                             <span>•</span>
@@ -193,13 +203,15 @@
                                         </p>
                                     </div>
                                     <span class="text-xs font-bold px-2.5 py-1 rounded-lg"
-                                          :class="activeJob === 1 ? 'bg-brand-500 text-white' : 'bg-slate-100 text-slate-600'">
+                                        :class="activeJob === 1 ? 'bg-brand-500 text-white' : 'bg-slate-100 text-slate-600'">
                                         ۲ رزومه
                                     </span>
                                 </div>
-                                <div class="mt-3 pt-3 border-t border-slate-100/80 flex items-center justify-between text-xs text-slate-400">
+                                <div
+                                    class="mt-3 pt-3 border-t border-slate-100/80 flex items-center justify-between text-xs text-slate-400">
                                     <span>تاریخ انتشار: ۱۴۰۵/۰۵/۱۵</span>
-                                    <span class="text-brand-500 font-bold group-hover:translate-x-[-4px] transition-transform flex items-center gap-1">
+                                    <span
+                                        class="text-brand-500 font-bold group-hover:translate-x-[-4px] transition-transform flex items-center gap-1">
                                         <span>مشاهده متقاضیان</span>
                                         <i class="bi bi-arrow-left"></i>
                                     </span>
@@ -208,11 +220,13 @@
 
                             <!-- Job 2 -->
                             <div @click="activeJob = (activeJob === 2 ? null : 2)"
-                                 :class="activeJob === 2 ? 'border-brand-500 bg-brand-50/70 shadow-md ring-2 ring-brand-500/20' : 'border-slate-200 bg-white hover:border-brand-200 hover:bg-slate-50'"
-                                 class="p-4 rounded-xl border transition-all cursor-pointer relative group">
+                                :class="activeJob === 2 ? 'border-brand-500 bg-brand-50/70 shadow-md ring-2 ring-brand-500/20' : 'border-slate-200 bg-white hover:border-brand-200 hover:bg-slate-50'"
+                                class="p-4 rounded-xl border transition-all cursor-pointer relative group">
                                 <div class="flex items-start justify-between">
                                     <div>
-                                        <h3 class="font-bold text-slate-800 group-hover:text-brand-900 text-sm sm:text-base">برنامه‌نویس Python / Django</h3>
+                                        <h3
+                                            class="font-bold text-slate-800 group-hover:text-brand-900 text-sm sm:text-base">
+                                            برنامه‌نویس Python / Django</h3>
                                         <p class="text-xs text-slate-500 mt-1 flex items-center gap-2">
                                             <span><i class="bi bi-geo-alt"></i> اصفهان</span>
                                             <span>•</span>
@@ -220,13 +234,15 @@
                                         </p>
                                     </div>
                                     <span class="text-xs font-bold px-2.5 py-1 rounded-lg"
-                                          :class="activeJob === 2 ? 'bg-brand-500 text-white' : 'bg-slate-100 text-slate-600'">
+                                        :class="activeJob === 2 ? 'bg-brand-500 text-white' : 'bg-slate-100 text-slate-600'">
                                         ۱ رزومه
                                     </span>
                                 </div>
-                                <div class="mt-3 pt-3 border-t border-slate-100/80 flex items-center justify-between text-xs text-slate-400">
+                                <div
+                                    class="mt-3 pt-3 border-t border-slate-100/80 flex items-center justify-between text-xs text-slate-400">
                                     <span>تاریخ انتشار: ۱۴۰۵/۰۵/۱۸</span>
-                                    <span class="text-brand-500 font-bold group-hover:translate-x-[-4px] transition-transform flex items-center gap-1">
+                                    <span
+                                        class="text-brand-500 font-bold group-hover:translate-x-[-4px] transition-transform flex items-center gap-1">
                                         <span>مشاهده متقاضیان</span>
                                         <i class="bi bi-arrow-left"></i>
                                     </span>
@@ -235,11 +251,13 @@
 
                             <!-- Job 3 -->
                             <div @click="activeJob = (activeJob === 3 ? null : 3)"
-                                 :class="activeJob === 3 ? 'border-brand-500 bg-brand-50/70 shadow-md ring-2 ring-brand-500/20' : 'border-slate-200 bg-white hover:border-brand-200 hover:bg-slate-50'"
-                                 class="p-4 rounded-xl border transition-all cursor-pointer relative group">
+                                :class="activeJob === 3 ? 'border-brand-500 bg-brand-50/70 shadow-md ring-2 ring-brand-500/20' : 'border-slate-200 bg-white hover:border-brand-200 hover:bg-slate-50'"
+                                class="p-4 rounded-xl border transition-all cursor-pointer relative group">
                                 <div class="flex items-start justify-between">
                                     <div>
-                                        <h3 class="font-bold text-slate-800 group-hover:text-brand-900 text-sm sm:text-base">طراح UI/UX و المنتور کار</h3>
+                                        <h3
+                                            class="font-bold text-slate-800 group-hover:text-brand-900 text-sm sm:text-base">
+                                            طراح UI/UX و المنتور کار</h3>
                                         <p class="text-xs text-slate-500 mt-1 flex items-center gap-2">
                                             <span><i class="bi bi-geo-alt"></i> دورکاری کامل</span>
                                             <span>•</span>
@@ -247,13 +265,15 @@
                                         </p>
                                     </div>
                                     <span class="text-xs font-bold px-2.5 py-1 rounded-lg"
-                                          :class="activeJob === 3 ? 'bg-brand-500 text-white' : 'bg-slate-100 text-slate-600'">
+                                        :class="activeJob === 3 ? 'bg-brand-500 text-white' : 'bg-slate-100 text-slate-600'">
                                         ۰ رزومه
                                     </span>
                                 </div>
-                                <div class="mt-3 pt-3 border-t border-slate-100/80 flex items-center justify-between text-xs text-slate-400">
+                                <div
+                                    class="mt-3 pt-3 border-t border-slate-100/80 flex items-center justify-between text-xs text-slate-400">
                                     <span>تاریخ انتشار: ۱۴۰۵/۰۵/۲۰</span>
-                                    <span class="text-brand-500 font-bold group-hover:translate-x-[-4px] transition-transform flex items-center gap-1">
+                                    <span
+                                        class="text-brand-500 font-bold group-hover:translate-x-[-4px] transition-transform flex items-center gap-1">
                                         <span>مشاهده متقاضیان</span>
                                         <i class="bi bi-arrow-left"></i>
                                     </span>
@@ -266,15 +286,18 @@
 
                 <!-- LEFT COLUMN: Applicants / Resumes List ( رزومه‌های دریافتی ) -->
                 <section class="lg:col-span-7" data-aos="fade-right">
-                    
+
                     <!-- DEFAULT STATE: No Job Selected -->
-                    <div x-show="activeJob === null" class="bg-white rounded-2xl p-10 shadow-sm border border-brand-200 text-center flex flex-col items-center justify-center min-h-[350px]">
-                        <div class="w-20 h-20 bg-brand-50 text-brand-500 rounded-full flex items-center justify-center text-3xl mb-4 border border-brand-200">
+                    <div x-show="activeJob === null"
+                        class="bg-white rounded-2xl p-10 shadow-sm border border-brand-200 text-center flex flex-col items-center justify-center min-h-[350px]">
+                        <div
+                            class="w-20 h-20 bg-brand-50 text-brand-500 rounded-full flex items-center justify-center text-3xl mb-4 border border-brand-200">
                             <i class="bi bi-file-earmark-person"></i>
                         </div>
                         <h3 class="text-lg font-bold text-brand-900 mb-2">هیچ آگهی انتخاب نشده است</h3>
                         <p class="text-slate-500 text-sm max-w-md">
-                            برای مشاهده افراد ارسال‌کننده رزومه، لطفاً از کادر سمت راست روی یکی از آگهی‌های شغلی خود کلیک کنید.
+                            برای مشاهده افراد ارسال‌کننده رزومه، لطفاً از کادر سمت راست روی یکی از آگهی‌های شغلی خود
+                            کلیک کنید.
                         </p>
                     </div>
 
@@ -283,9 +306,11 @@
                         <div class="flex items-center justify-between pb-4 mb-5 border-b border-slate-100">
                             <div>
                                 <span class="text-xs text-brand-500 font-bold">رزومه‌های دریافتی برای:</span>
-                                <h2 class="font-black text-brand-900 text-lg sm:text-xl">توسعه‌دهنده ارشد Frontend (React / Tailwind)</h2>
+                                <h2 class="font-black text-brand-900 text-lg sm:text-xl">توسعه‌دهنده ارشد Frontend
+                                    (React / Tailwind)</h2>
                             </div>
-                            <button @click="activeJob = null" class="text-xs text-slate-400 hover:text-red-500 flex items-center gap-1">
+                            <button @click="activeJob = null"
+                                class="text-xs text-slate-400 hover:text-red-500 flex items-center gap-1">
                                 <i class="bi bi-x-circle"></i>
                                 <span>بستن انتخاب</span>
                             </button>
@@ -294,31 +319,39 @@
                         <!-- Applicants Grid (Showing ONLY Name) -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <!-- Applicant 1 Card -->
-                            <div @click="activeModal = 1" class="p-4 rounded-xl border border-slate-200 bg-white hover:border-brand-500 hover:shadow-md transition-all cursor-pointer flex items-center justify-between group">
+                            <div @click="activeModal = 1"
+                                class="p-4 rounded-xl border border-slate-200 bg-white hover:border-brand-500 hover:shadow-md transition-all cursor-pointer flex items-center justify-between group">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-brand-50 border border-brand-200 flex items-center justify-center text-brand-900 font-bold group-hover:bg-brand-500 group-hover:text-white transition-colors">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-brand-50 border border-brand-200 flex items-center justify-center text-brand-900 font-bold group-hover:bg-brand-500 group-hover:text-white transition-colors">
                                         <i class="bi bi-person-fill"></i>
                                     </div>
                                     <div>
-                                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-brand-900">علی محمدی</h4>
+                                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-brand-900">علی
+                                            محمدی</h4>
                                         <span class="text-[11px] text-slate-400">کلیک جهت مشاهده کامل رزومه</span>
                                     </div>
                                 </div>
-                                <i class="bi bi-chevron-left text-slate-300 group-hover:text-brand-500 transition-colors"></i>
+                                <i
+                                    class="bi bi-chevron-left text-slate-300 group-hover:text-brand-500 transition-colors"></i>
                             </div>
 
                             <!-- Applicant 2 Card -->
-                            <div @click="activeModal = 2" class="p-4 rounded-xl border border-slate-200 bg-white hover:border-brand-500 hover:shadow-md transition-all cursor-pointer flex items-center justify-between group">
+                            <div @click="activeModal = 2"
+                                class="p-4 rounded-xl border border-slate-200 bg-white hover:border-brand-500 hover:shadow-md transition-all cursor-pointer flex items-center justify-between group">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-brand-50 border border-brand-200 flex items-center justify-center text-brand-900 font-bold group-hover:bg-brand-500 group-hover:text-white transition-colors">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-brand-50 border border-brand-200 flex items-center justify-center text-brand-900 font-bold group-hover:bg-brand-500 group-hover:text-white transition-colors">
                                         <i class="bi bi-person-fill"></i>
                                     </div>
                                     <div>
-                                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-brand-900">سارا احمدی</h4>
+                                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-brand-900">سارا
+                                            احمدی</h4>
                                         <span class="text-[11px] text-slate-400">کلیک جهت مشاهده کامل رزومه</span>
                                     </div>
                                 </div>
-                                <i class="bi bi-chevron-left text-slate-300 group-hover:text-brand-500 transition-colors"></i>
+                                <i
+                                    class="bi bi-chevron-left text-slate-300 group-hover:text-brand-500 transition-colors"></i>
                             </div>
                         </div>
                     </div>
@@ -328,9 +361,11 @@
                         <div class="flex items-center justify-between pb-4 mb-5 border-b border-slate-100">
                             <div>
                                 <span class="text-xs text-brand-500 font-bold">رزومه‌های دریافتی برای:</span>
-                                <h2 class="font-black text-brand-900 text-lg sm:text-xl">برنامه‌نویس Python / Django</h2>
+                                <h2 class="font-black text-brand-900 text-lg sm:text-xl">برنامه‌نویس Python / Django
+                                </h2>
                             </div>
-                            <button @click="activeJob = null" class="text-xs text-slate-400 hover:text-red-500 flex items-center gap-1">
+                            <button @click="activeJob = null"
+                                class="text-xs text-slate-400 hover:text-red-500 flex items-center gap-1">
                                 <i class="bi bi-x-circle"></i>
                                 <span>بستن انتخاب</span>
                             </button>
@@ -338,17 +373,21 @@
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <!-- Applicant 3 Card -->
-                            <div @click="activeModal = 3" class="p-4 rounded-xl border border-slate-200 bg-white hover:border-brand-500 hover:shadow-md transition-all cursor-pointer flex items-center justify-between group">
+                            <div @click="activeModal = 3"
+                                class="p-4 rounded-xl border border-slate-200 bg-white hover:border-brand-500 hover:shadow-md transition-all cursor-pointer flex items-center justify-between group">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-brand-50 border border-brand-200 flex items-center justify-center text-brand-900 font-bold group-hover:bg-brand-500 group-hover:text-white transition-colors">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-brand-50 border border-brand-200 flex items-center justify-center text-brand-900 font-bold group-hover:bg-brand-500 group-hover:text-white transition-colors">
                                         <i class="bi bi-person-fill"></i>
                                     </div>
                                     <div>
-                                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-brand-900">حسین رضایی</h4>
+                                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-brand-900">حسین
+                                            رضایی</h4>
                                         <span class="text-[11px] text-slate-400">کلیک جهت مشاهده کامل رزومه</span>
                                     </div>
                                 </div>
-                                <i class="bi bi-chevron-left text-slate-300 group-hover:text-brand-500 transition-colors"></i>
+                                <i
+                                    class="bi bi-chevron-left text-slate-300 group-hover:text-brand-500 transition-colors"></i>
                             </div>
                         </div>
                     </div>
@@ -360,7 +399,8 @@
                                 <span class="text-xs text-brand-500 font-bold">رزومه‌های دریافتی برای:</span>
                                 <h2 class="font-black text-brand-900 text-lg sm:text-xl">طراح UI/UX و المنتور کار</h2>
                             </div>
-                            <button @click="activeJob = null" class="text-xs text-slate-400 hover:text-red-500 flex items-center gap-1">
+                            <button @click="activeJob = null"
+                                class="text-xs text-slate-400 hover:text-red-500 flex items-center gap-1">
                                 <i class="bi bi-x-circle"></i>
                                 <span>بستن انتخاب</span>
                             </button>
@@ -381,25 +421,32 @@
     <!-- STATIC RESUME MODALS ( Contains full inputs matching build-resume.html ) -->
 
     <!-- MODAL 1: Ali Mohammadi -->
-    <div x-show="activeModal === 1" x-transition.opacity class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 overflow-y-auto">
-        <div @click.outside="activeModal = null" class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-brand-200 relative my-8">
-            <div class="sticky top-0 bg-white z-10 px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+    <div x-show="activeModal === 1" x-transition.opacity
+        class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 overflow-y-auto">
+        <div @click.outside="activeModal = null"
+            class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-brand-200 relative my-8">
+            <div
+                class="sticky top-0 bg-white z-10 px-6 py-4 border-b border-slate-100 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <div class="w-3 h-8 bg-brand-500 rounded-full"></div>
                     <h3 class="font-extrabold text-brand-900 text-lg">جزئیات کامل رزومه: علی محمدی</h3>
                 </div>
-                <button @click="activeModal = null" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors">
+                <button @click="activeModal = null"
+                    class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors">
                     <i class="bi bi-x-lg"></i>
                 </button>
             </div>
 
             <div class="p-6 space-y-6">
                 <!-- Profile Image & Personal Info -->
-                <div class="bg-brand-50/50 p-5 rounded-2xl border border-brand-200 flex flex-col sm:flex-row items-center gap-5">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="عکس پروفایل" class="w-24 h-24 rounded-2xl object-cover border-2 border-white shadow-md">
+                <div
+                    class="bg-brand-50/50 p-5 rounded-2xl border border-brand-200 flex flex-col sm:flex-row items-center gap-5">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
+                        alt="عکس پروفایل" class="w-24 h-24 rounded-2xl object-cover border-2 border-white shadow-md">
                     <div class="space-y-2 text-center sm:text-right flex-1">
                         <h2 class="text-xl font-black text-brand-900">علی محمدی</h2>
-                        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs text-slate-600">
+                        <div
+                            class="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs text-slate-600">
                             <span class="flex items-center gap-1 bg-white px-3 py-1 rounded-lg border border-slate-200">
                                 <i class="bi bi-telephone-fill text-brand-500"></i>
                                 <span dir="ltr">09123456789</span>
@@ -414,12 +461,17 @@
                         <i class="bi bi-link-45deg text-brand-500 text-base"></i> راه‌های ارتباطی و شبکه‌های حرفه‌ای
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <a href="https://linkedin.com/in/alimohammadi" target="_blank" class="p-3 rounded-xl border border-slate-200 hover:border-brand-500 flex items-center justify-between text-xs text-slate-700 bg-slate-50/50">
-                            <span class="flex items-center gap-2"><i class="bi bi-linkedin text-blue-600 text-base"></i><span>لینکدین</span></span>
-                            <span dir="ltr" class="text-slate-400 truncate max-w-[180px]">linkedin.com/in/alimohammadi</span>
+                        <a href="https://linkedin.com/in/alimohammadi" target="_blank"
+                            class="p-3 rounded-xl border border-slate-200 hover:border-brand-500 flex items-center justify-between text-xs text-slate-700 bg-slate-50/50">
+                            <span class="flex items-center gap-2"><i
+                                    class="bi bi-linkedin text-blue-600 text-base"></i><span>لینکدین</span></span>
+                            <span dir="ltr"
+                                class="text-slate-400 truncate max-w-[180px]">linkedin.com/in/alimohammadi</span>
                         </a>
-                        <a href="https://github.com/alimohammadi" target="_blank" class="p-3 rounded-xl border border-slate-200 hover:border-brand-500 flex items-center justify-between text-xs text-slate-700 bg-slate-50/50">
-                            <span class="flex items-center gap-2"><i class="bi bi-github text-slate-900 text-base"></i><span>گیت‌هاب</span></span>
+                        <a href="https://github.com/alimohammadi" target="_blank"
+                            class="p-3 rounded-xl border border-slate-200 hover:border-brand-500 flex items-center justify-between text-xs text-slate-700 bg-slate-50/50">
+                            <span class="flex items-center gap-2"><i
+                                    class="bi bi-github text-slate-900 text-base"></i><span>گیت‌هاب</span></span>
                             <span dir="ltr" class="text-slate-400 truncate max-w-[180px]">github.com/alimohammadi</span>
                         </a>
                     </div>
@@ -434,27 +486,37 @@
                         <div>
                             <span class="font-bold text-slate-700 block mb-1">کتابخانه‌ها و فریم‌ورک‌ها:</span>
                             <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md border border-brand-200 font-medium">React.js</span>
-                                <span class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md border border-brand-200 font-medium">Tailwind CSS</span>
-                                <span class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md border border-brand-200 font-medium">Alpine.js</span>
+                                <span
+                                    class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md border border-brand-200 font-medium">React.js</span>
+                                <span
+                                    class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md border border-brand-200 font-medium">Tailwind
+                                    CSS</span>
+                                <span
+                                    class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md border border-brand-200 font-medium">Alpine.js</span>
                             </div>
                         </div>
                         <hr class="border-slate-100">
                         <div>
                             <span class="font-bold text-slate-700 block mb-1">زبان‌های برنامه‌نویسی:</span>
                             <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">JavaScript</span>
-                                <span class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">TypeScript</span>
-                                <span class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">HTML/CSS</span>
+                                <span
+                                    class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">JavaScript</span>
+                                <span
+                                    class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">TypeScript</span>
+                                <span
+                                    class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">HTML/CSS</span>
                             </div>
                         </div>
                         <hr class="border-slate-100">
                         <div>
                             <span class="font-bold text-slate-700 block mb-1">مهارت‌های تکمیلی و ابزارها:</span>
                             <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium">Git</span>
-                                <span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium">Figma</span>
-                                <span class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium">Webpack</span>
+                                <span
+                                    class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium">Git</span>
+                                <span
+                                    class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium">Figma</span>
+                                <span
+                                    class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md border border-slate-200 font-medium">Webpack</span>
                             </div>
                         </div>
                     </div>
@@ -467,7 +529,8 @@
                     </h4>
                     <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
                         <span class="font-bold text-xs text-brand-900 block mb-1">خلاصه توضیحات:</span>
-                        <p class="text-xs text-slate-600 leading-relaxed">توسعه‌دهنده فرانت‌اند با ۵ سال سابقه کار تخصصی در ساخت وب‌اپلیکیشن‌های پیچیده و بهینه‌سازی رابط کاربری.</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">توسعه‌دهنده فرانت‌اند با ۵ سال سابقه کار تخصصی
+                            در ساخت وب‌اپلیکیشن‌های پیچیده و بهینه‌سازی رابط کاربری.</p>
                     </div>
                     <div class="space-y-2">
                         <span class="font-bold text-xs text-slate-700 block">سوابق شغلی:</span>
@@ -476,41 +539,51 @@
                                 <span>توسعه‌دهنده فرانت‌اند</span>
                                 <span class="text-brand-500 font-normal">شرکت فناوران همراه</span>
                             </div>
-                            <p class="text-xs text-slate-500 leading-normal">پیاده‌سازی کامپوننت‌های UI و بازطراحی داشبورد کاربری با Tailwind CSS.</p>
+                            <p class="text-xs text-slate-500 leading-normal">پیاده‌سازی کامپوننت‌های UI و بازطراحی
+                                داشبورد کاربری با Tailwind CSS.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="p-4 bg-slate-50 border-t border-slate-100 rounded-b-3xl flex items-center justify-between">
-                <a href="tel:09123456789" class="bg-brand-500 hover:bg-brand-900 text-white px-5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors">
+                <a href="tel:09123456789"
+                    class="bg-brand-500 hover:bg-brand-900 text-white px-5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors">
                     <i class="bi bi-telephone-out-fill"></i><span>تماس با متقاضی</span>
                 </a>
-                <button @click="activeModal = null" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition-colors">بستن</button>
+                <button @click="activeModal = null"
+                    class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition-colors">بستن</button>
             </div>
         </div>
     </div>
 
     <!-- MODAL 2: Sara Ahmadi -->
-    <div x-show="activeModal === 2" x-transition.opacity class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 overflow-y-auto">
-        <div @click.outside="activeModal = null" class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-brand-200 relative my-8">
-            <div class="sticky top-0 bg-white z-10 px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+    <div x-show="activeModal === 2" x-transition.opacity
+        class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 overflow-y-auto">
+        <div @click.outside="activeModal = null"
+            class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-brand-200 relative my-8">
+            <div
+                class="sticky top-0 bg-white z-10 px-6 py-4 border-b border-slate-100 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <div class="w-3 h-8 bg-brand-500 rounded-full"></div>
                     <h3 class="font-extrabold text-brand-900 text-lg">جزئیات کامل رزومه: سارا احمدی</h3>
                 </div>
-                <button @click="activeModal = null" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors">
+                <button @click="activeModal = null"
+                    class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors">
                     <i class="bi bi-x-lg"></i>
                 </button>
             </div>
 
             <div class="p-6 space-y-6">
                 <!-- Profile Image & Personal Info -->
-                <div class="bg-brand-50/50 p-5 rounded-2xl border border-brand-200 flex flex-col sm:flex-row items-center gap-5">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="عکس پروفایل" class="w-24 h-24 rounded-2xl object-cover border-2 border-white shadow-md">
+                <div
+                    class="bg-brand-50/50 p-5 rounded-2xl border border-brand-200 flex flex-col sm:flex-row items-center gap-5">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80"
+                        alt="عکس پروفایل" class="w-24 h-24 rounded-2xl object-cover border-2 border-white shadow-md">
                     <div class="space-y-2 text-center sm:text-right flex-1">
                         <h2 class="text-xl font-black text-brand-900">سارا احمدی</h2>
-                        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs text-slate-600">
+                        <div
+                            class="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs text-slate-600">
                             <span class="flex items-center gap-1 bg-white px-3 py-1 rounded-lg border border-slate-200">
                                 <i class="bi bi-telephone-fill text-brand-500"></i>
                                 <span dir="ltr">09901234567</span>
@@ -525,12 +598,17 @@
                         <i class="bi bi-link-45deg text-brand-500 text-base"></i> راه‌های ارتباطی و شبکه‌های حرفه‌ای
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <a href="https://linkedin.com/in/sara-ahmadi" target="_blank" class="p-3 rounded-xl border border-slate-200 hover:border-brand-500 flex items-center justify-between text-xs text-slate-700 bg-slate-50/50">
-                            <span class="flex items-center gap-2"><i class="bi bi-linkedin text-blue-600 text-base"></i><span>لینکدین</span></span>
-                            <span dir="ltr" class="text-slate-400 truncate max-w-[180px]">linkedin.com/in/sara-ahmadi</span>
+                        <a href="https://linkedin.com/in/sara-ahmadi" target="_blank"
+                            class="p-3 rounded-xl border border-slate-200 hover:border-brand-500 flex items-center justify-between text-xs text-slate-700 bg-slate-50/50">
+                            <span class="flex items-center gap-2"><i
+                                    class="bi bi-linkedin text-blue-600 text-base"></i><span>لینکدین</span></span>
+                            <span dir="ltr"
+                                class="text-slate-400 truncate max-w-[180px]">linkedin.com/in/sara-ahmadi</span>
                         </a>
-                        <a href="https://github.com/sara-ahmadi" target="_blank" class="p-3 rounded-xl border border-slate-200 hover:border-brand-500 flex items-center justify-between text-xs text-slate-700 bg-slate-50/50">
-                            <span class="flex items-center gap-2"><i class="bi bi-github text-slate-900 text-base"></i><span>گیت‌هاب</span></span>
+                        <a href="https://github.com/sara-ahmadi" target="_blank"
+                            class="p-3 rounded-xl border border-slate-200 hover:border-brand-500 flex items-center justify-between text-xs text-slate-700 bg-slate-50/50">
+                            <span class="flex items-center gap-2"><i
+                                    class="bi bi-github text-slate-900 text-base"></i><span>گیت‌هاب</span></span>
                             <span dir="ltr" class="text-slate-400 truncate max-w-[180px]">github.com/sara-ahmadi</span>
                         </a>
                     </div>
@@ -545,16 +623,21 @@
                         <div>
                             <span class="font-bold text-slate-700 block mb-1">کتابخانه‌ها و فریم‌ورک‌ها:</span>
                             <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md border border-brand-200 font-medium">Vue.js</span>
-                                <span class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md border border-brand-200 font-medium">Tailwind CSS</span>
+                                <span
+                                    class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md border border-brand-200 font-medium">Vue.js</span>
+                                <span
+                                    class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md border border-brand-200 font-medium">Tailwind
+                                    CSS</span>
                             </div>
                         </div>
                         <hr class="border-slate-100">
                         <div>
                             <span class="font-bold text-slate-700 block mb-1">زبان‌های برنامه‌نویسی:</span>
                             <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">JavaScript</span>
-                                <span class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">HTML/CSS</span>
+                                <span
+                                    class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">JavaScript</span>
+                                <span
+                                    class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">HTML/CSS</span>
                             </div>
                         </div>
                     </div>
@@ -567,40 +650,50 @@
                     </h4>
                     <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
                         <span class="font-bold text-xs text-brand-900 block mb-1">خلاصه توضیحات:</span>
-                        <p class="text-xs text-slate-600 leading-relaxed">علاقه‌مند به خلق رابط‌های کاربری زیبا و مدرن با تمرکز روی تجربه کاربری عالی.</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">علاقه‌مند به خلق رابط‌های کاربری زیبا و مدرن
+                            با تمرکز روی تجربه کاربری عالی.</p>
                     </div>
                 </div>
             </div>
 
             <div class="p-4 bg-slate-50 border-t border-slate-100 rounded-b-3xl flex items-center justify-between">
-                <a href="tel:09901234567" class="bg-brand-500 hover:bg-brand-900 text-white px-5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors">
+                <a href="tel:09901234567"
+                    class="bg-brand-500 hover:bg-brand-900 text-white px-5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors">
                     <i class="bi bi-telephone-out-fill"></i><span>تماس با متقاضی</span>
                 </a>
-                <button @click="activeModal = null" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition-colors">بستن</button>
+                <button @click="activeModal = null"
+                    class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition-colors">بستن</button>
             </div>
         </div>
     </div>
 
     <!-- MODAL 3: Hossein Rezaei -->
-    <div x-show="activeModal === 3" x-transition.opacity class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 overflow-y-auto">
-        <div @click.outside="activeModal = null" class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-brand-200 relative my-8">
-            <div class="sticky top-0 bg-white z-10 px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+    <div x-show="activeModal === 3" x-transition.opacity
+        class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 overflow-y-auto">
+        <div @click.outside="activeModal = null"
+            class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-brand-200 relative my-8">
+            <div
+                class="sticky top-0 bg-white z-10 px-6 py-4 border-b border-slate-100 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <div class="w-3 h-8 bg-brand-500 rounded-full"></div>
                     <h3 class="font-extrabold text-brand-900 text-lg">جزئیات کامل رزومه: حسین رضایی</h3>
                 </div>
-                <button @click="activeModal = null" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors">
+                <button @click="activeModal = null"
+                    class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors">
                     <i class="bi bi-x-lg"></i>
                 </button>
             </div>
 
             <div class="p-6 space-y-6">
                 <!-- Profile Image & Personal Info -->
-                <div class="bg-brand-50/50 p-5 rounded-2xl border border-brand-200 flex flex-col sm:flex-row items-center gap-5">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="عکس پروفایل" class="w-24 h-24 rounded-2xl object-cover border-2 border-white shadow-md">
+                <div
+                    class="bg-brand-50/50 p-5 rounded-2xl border border-brand-200 flex flex-col sm:flex-row items-center gap-5">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
+                        alt="عکس پروفایل" class="w-24 h-24 rounded-2xl object-cover border-2 border-white shadow-md">
                     <div class="space-y-2 text-center sm:text-right flex-1">
                         <h2 class="text-xl font-black text-brand-900">حسین رضایی</h2>
-                        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs text-slate-600">
+                        <div
+                            class="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs text-slate-600">
                             <span class="flex items-center gap-1 bg-white px-3 py-1 rounded-lg border border-slate-200">
                                 <i class="bi bi-telephone-fill text-brand-500"></i>
                                 <span dir="ltr">09351112233</span>
@@ -618,16 +711,21 @@
                         <div>
                             <span class="font-bold text-slate-700 block mb-1">کتابخانه‌ها و فریم‌ورک‌ها:</span>
                             <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md border border-brand-200 font-medium">Django</span>
-                                <span class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md border border-brand-200 font-medium">Django REST Framework</span>
+                                <span
+                                    class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md border border-brand-200 font-medium">Django</span>
+                                <span
+                                    class="bg-brand-50 text-brand-900 px-2.5 py-1 rounded-md border border-brand-200 font-medium">Django
+                                    REST Framework</span>
                             </div>
                         </div>
                         <hr class="border-slate-100">
                         <div>
                             <span class="font-bold text-slate-700 block mb-1">زبان‌های برنامه‌نویسی:</span>
                             <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">Python</span>
-                                <span class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">SQL</span>
+                                <span
+                                    class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">Python</span>
+                                <span
+                                    class="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-md border border-emerald-200 font-medium">SQL</span>
                             </div>
                         </div>
                     </div>
@@ -635,10 +733,12 @@
             </div>
 
             <div class="p-4 bg-slate-50 border-t border-slate-100 rounded-b-3xl flex items-center justify-between">
-                <a href="tel:09351112233" class="bg-brand-500 hover:bg-brand-900 text-white px-5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors">
+                <a href="tel:09351112233"
+                    class="bg-brand-500 hover:bg-brand-900 text-white px-5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors">
                     <i class="bi bi-telephone-out-fill"></i><span>تماس با متقاضی</span>
                 </a>
-                <button @click="activeModal = null" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition-colors">بستن</button>
+                <button @click="activeModal = null"
+                    class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold transition-colors">بستن</button>
             </div>
         </div>
     </div>
@@ -646,7 +746,8 @@
     <!-- Footer Section -->
     <footer class="bg-white border-t border-slate-100 py-6 mt-12 text-center text-xs text-slate-500">
         <div class="max-w-7xl mx-auto px-4">
-            <p>© ۱۴۰۵ تمامی حقوق برای سامانه کاریابی <span class="font-bold text-brand-900">کار یار</span> محفوظ است.</p>
+            <p>© ۱۴۰۵ تمامی حقوق برای سامانه کاریابی <span class="font-bold text-brand-900">کار یار</span> محفوظ است.
+            </p>
         </div>
     </footer>
 
